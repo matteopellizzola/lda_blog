@@ -2,6 +2,7 @@ import './App.css';
 import './App.scss';
 
 import {BrowserRouter, Route, Routes, Outlet} from 'react-router-dom';
+import Header from './Components/Header';
 
 function App() {
     return (
@@ -18,7 +19,7 @@ function App() {
 
 function Layout (props) {
     return <>
-        <h1>Website title</h1>
+        <Header/>
 
         <Outlet />
 
