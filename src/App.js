@@ -1,4 +1,5 @@
 import './App.css';
+import './App.scss';
 
 import {BrowserRouter, Route, Routes, Outlet} from 'react-router-dom';
 
