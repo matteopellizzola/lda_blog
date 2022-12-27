@@ -1,11 +1,30 @@
-$grid-breakpoints: (
+/* $grid-breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
   lg: 992px,
   xl: 1200px,
   xxl: 1400px,
-);
+); */
+
+$mobile: "(max-width: 576px)";
+$tablet: "(min-width: 577px) and (max-width: 1023px)";
+$desktop: "(min-width: 1024px)";
+$max-width: 1440px;
+
+$grid-breakpoints: (
+  xs: 0px,
+  sm: 768px,
+  md: 1024px,
+  lg: 1440px,
+  xl: 1920px,
+) !default;
+
+$container-max-widths: (
+  md: 1024px,
+  lg: 1440px,
+  xl: 1920px,
+) !default;
 
 $dark-base-color: #ffe0b0;
 $base-text-color: #14212b;

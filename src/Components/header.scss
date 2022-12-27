@@ -12,8 +12,8 @@
 }
 
 .menu-header-desktop {
-  @media screen {
-    display: none;
+  @media #{$mobile} {
+    display: none !important;
   }
 
   background-color: $dark-base-color;
@@ -44,6 +44,65 @@
         padding: 12px 0 15px 0;
         text-decoration: underline;
         transition: 0.2s linear;
+      }
+    }
+  }
+}
+
+.menu-header-mobile {
+  @media #{$tablet}, #{$desktop} {
+    display: none !important;
+  }
+
+  .menu-wrapper {
+    padding: 0.5rem;
+    position: relative;
+    background-color: $dark-base-color;
+
+    h1 {
+      margin: 0;
+    }
+
+    .menu-link {
+      position: absolute;
+      left: 15px;
+      cursor: pointer;
+      color: $base-text-color;
+    }
+    .mobile-logo {
+      text-align: center;
+    }
+    a {
+      text-decoration: none;
+      color: $base-text-color;
+    }
+  }
+
+  .modal-menu-mobile {
+    position: absolute;
+    right: 0;
+    width: 65%;
+    height: 100%;
+    z-index: 1;
+    //background-color: $base-background-color;
+    backdrop-filter: blur(15px);
+    border: 1px solid $base-background-color;
+    transition: all 2s linear;
+
+    .link-wrapper {
+      text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 10vh 15px;
+      width: 100%;
+      font-size: 1.5rem;
+      line-height: 3.3rem;
+
+      .menu-link {
+        a {
+          text-decoration: none;
+          color: $base-text-color;
+        }
       }
     }
   }
