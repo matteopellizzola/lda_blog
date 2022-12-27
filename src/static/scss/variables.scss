@@ -1,3 +1,12 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
 $dark-base-color: #ffe0b0;
 $base-text-color: #14212b;
 $base-background-color: #faf1e5;

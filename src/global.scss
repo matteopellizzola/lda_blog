@@ -7,7 +7,7 @@ h1 {
 
 html,
 body {
-  font-family: "Oleo Script", cursive;
+  font-family: "Oleo Script", cursive !important;
   color: $base-text-color;
   background-color: $base-background-color !important;
 }

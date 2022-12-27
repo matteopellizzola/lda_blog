@@ -5,27 +5,31 @@ import { Link } from "react-router-dom";
 
 function Header (props) {
     return <>
-        <Row className="menu-header">
+        <Row className="menu-header-desktop">
             {/* <div className="hamb-menu d-none">=</div> */}
-            <Col className="col-6 logo">
+            <Col xs={0} sm={6}  className="logo">
                 <Link to="/">
                     LOGO
                 </Link>
             </Col>
-            <Col className="col-2 menu-item ">
-                <Link to="/about">
-                    <div className="menu-text">Chi Sono</div>
-                </Link>
-            </Col>
-            <Col className="col-2 menu-item ">
-                <Link to="/contacts">
-                    <div className="menu-text">Contatti</div>
-                </Link>
-            </Col>
-            <Col className="col-2 menu-item ">
-                <Link to="/menu">
-                    <div className="menu-text">Menu</div>
-                </Link>
+            <Col xs={0} sm={6} className="menu-item ">
+                <div className="menu-link">
+                    <Link to="/about">
+                        <div className="menu-text">Chi Sono</div>
+                    </Link>
+                </div>
+
+                <div className="menu-link">
+                    <Link to="/contacts">
+                        <div className="menu-text">Contatti</div>
+                    </Link>
+                </div>
+
+                <div className="menu-link">
+                    <Link to="/menu">
+                        <div className="menu-text">Menu</div>
+                    </Link>
+                </div>
             </Col>
       </Row>
     </>;
