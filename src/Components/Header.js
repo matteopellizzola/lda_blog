@@ -71,6 +71,9 @@ function ModalMobileMenu (props) {
     return <>
         <Col className="modal-menu-mobile">
             <div className="link-wrapper">
+                <h3 onClick={() => props.toggleMobileMenu()}>
+                    <i className="icon-cross"></i>
+                </h3>
                 <div className="menu-link">
                     <Link to="/about" onClick={() => props.toggleMobileMenu()}>
                         <div className="menu-text">Chi Sono</div>
