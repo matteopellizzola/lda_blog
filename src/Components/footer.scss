@@ -1,5 +1,16 @@
 @import "../global.scss";
 
 #footer {
+  position: relative;
+  margin-top: 4rem;
   background-color: $dark-base-color;
+  padding: 15px;
+
+  .follow {
+    position: absolute;
+    bottom: 5px;
+    a {
+      color: $base-text-color;
+    }
+  }
 }
