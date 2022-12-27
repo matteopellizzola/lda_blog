@@ -1,0 +1,38 @@
+@import "../global.scss";
+
+.logo {
+  text-align: left;
+  padding: 15px;
+
+  &::before {
+    content: "X";
+    left: 15px;
+  }
+}
+
+.menu-header {
+  background-color: $header-color;
+  .menu-item {
+    a {
+      text-decoration: none;
+      color: $base-text-color;
+    }
+
+    .menu-text {
+      padding: 15px 0;
+      font-weight: bold;
+      cursor: pointer;
+
+      &.selected {
+        color: blue;
+        pointer-events: none;
+      }
+
+      &:hover {
+        padding: 12px 0 15px 0;
+        text-decoration: underline;
+        transition: 0.2s linear;
+      }
+    }
+  }
+}

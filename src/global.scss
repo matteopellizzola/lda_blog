@@ -1,0 +1,13 @@
+@import "./static/scss/variables.scss";
+@import "./static/scss/fontsImport.scss";
+
+h1 {
+  color: $base-text-color;
+}
+
+html,
+body {
+  font-family: "Oleo Script", cursive;
+  color: $base-text-color;
+  background-color: $base-background-color !important;
+}
