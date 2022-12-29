@@ -1,5 +1,11 @@
 @import "../global.scss";
 
+.container-fluid {
+  @media #{$mobile} {
+    padding: 0 !important;
+  }
+}
+
 .logo {
   display: flex;
   justify-content: flex-start;

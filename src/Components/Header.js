@@ -1,4 +1,4 @@
-import { Col, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 
 import "./header.scss";
 import { Link } from "react-router-dom";
@@ -16,15 +16,14 @@ function Header (props) {
         }
     }
 
-    return <>
+    return <Container fluid>
         <Row className="menu-header-desktop">
-            {/* <div className="hamb-menu d-none">=</div> */}
-            <Col xs={0} sm={6}  className="logo">
+            <Col xs={12} sm={6}  className="logo">
                 <Link to="/">
                     LOGO
                 </Link>
             </Col>
-            <Col xs={0} sm={6} className="menu-item ">
+            <Col xs={12} sm={6} className="menu-item ">
                 <div className="menu-link">
                     <Link to="/about">
                         <div className="menu-text">Chi Sono</div>
@@ -45,7 +44,7 @@ function Header (props) {
             </Col>
         </Row>
         <Row className="menu-header-mobile">
-            <Col>
+            <Col xs={12}>
                 <div className="menu-wrapper">
                     <div className="menu-link" onClick={() => toggleMobileMenu()}>
                         <h1>
@@ -63,7 +62,7 @@ function Header (props) {
             </Col>
             {mobileMenu && <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} /> }
         </Row>
-    </>;
+    </Container>;
 }
 
 function ModalMobileMenu (props) {
