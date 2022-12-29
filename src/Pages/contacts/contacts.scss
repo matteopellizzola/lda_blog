@@ -5,4 +5,24 @@
   margin-left: auto;
   margin-right: auto;
   padding: 15px;
+
+  .contacts {
+    text-align: left;
+
+    .mail-phone-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      a {
+        text-decoration: underline;
+        color: $base-text-color;
+        font-weight: 400;
+
+        &:hover {
+          color: $orange-color;
+        }
+      }
+    }
+  }
 }

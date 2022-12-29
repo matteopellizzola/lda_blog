@@ -1,6 +1,7 @@
-function Schedule(day, hour) {
+function Schedule(day, hour, closed) {
   this.day = day;
   this.hour = hour;
+  this.closed = closed ? true : false;
 }
 
 function ScheduleList() {

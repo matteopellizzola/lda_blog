@@ -18,26 +18,44 @@ function Contact (props) {
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
-                            Sono in laboratorio a creare leccornie, ma puoi sempre mandare una mail, oppure passare a trovarmi
+                        <Col className="contacts">
+                            <div className="cta-contacts">
+                                Sono in laboratorio a creare leccornie, ma puoi sempre mandare una mail, oppure passare a trovarmi
+                            </div>
+                             <hr />
                             <div className="mail-phone-wrapper">
                                     {/*TODO: cambiare con cose reali*/ }
-                                <a href="mailto:matteo.pellizzola@gmail.com">asd@åsd.com</a>
-                                <br />
-                                <a href="https://wa.me/+393315620020" target="_blank">asd</a>
+                                <a href="mailto:matteo.pellizzola@gmail.com"> <i className="icon-mail"></i>  Scrivimi una mail</a>
+
+                                <a href="https://wa.me/+393315620020" target="_blank">mandami un messaggio <i className="icon-phone"></i></a>
                             </div>
 
                         </Col>
                         </Row>
                         <hr />
                     <Row>
-                        <Col>Orari</Col>
+                        <Col xs={12}>Orari</Col>
+
+                        {schedules.scheduleList.map(day => <OpeningDay day={day.day} hour={day.hour} closed={day.closed} />)}
                     </Row>
                 </Col>
                 <Col xs={12} sm={6} >Picture</Col>
             </Row>
 
         </div>
+    </>;
+}
+
+function OpeningDay (props) {
+    return <>
+        <Row>
+            <Col>
+                {props.day}
+            </Col>
+            <Col>
+                {props.hour}
+            </Col>
+        </Row>
     </>;
 }
 
