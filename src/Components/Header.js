@@ -60,7 +60,7 @@ function Header (props) {
                     </div>
                 </div>
             </Col>
-            {mobileMenu && <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} /> }
+            {mobileMenu && <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} /> }
         </Row>
     </Container>;
 }
@@ -68,6 +68,8 @@ function Header (props) {
 function ModalMobileMenu (props) {
 
     return <>
+        <div className="modal-backdrop-custom" onClick={() => props.setMobileMenu(false)}>
+        </div>
         <Col className="modal-menu-mobile">
             <div className="link-wrapper">
                 <h3 onClick={() => props.toggleMobileMenu()}>

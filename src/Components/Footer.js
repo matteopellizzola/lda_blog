@@ -23,7 +23,7 @@ function Footer (props) {
                 <Col xs={12} md={6}>
                     <div>
                         <h6 className="follow">
-                            Seguimi su: <a href="instagram.com/laboratoriodiantonella/">Instagram</a>
+                            Seguimi su: <a href="https://www.instagram.com/laboratoriodiantonella/">Instagram</a>
                         </h6>
                     </div>
                 </Col>
