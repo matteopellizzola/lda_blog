@@ -6,6 +6,10 @@
   background-color: $dark-base-color;
   padding: 15px;
 
+  .footer-inner{
+    @include maxWidth();
+  }
+
   .follow {
     a {
       color: $base-text-color;

@@ -26,7 +26,9 @@ function Layout (props) {
     return <>
         <Header/>
 
-        <Outlet />
+        <div className="main-content">
+          <Outlet />
+        </div>
 
         <Footer />
     </>;

@@ -1,5 +1,6 @@
 @import "./static/scss/variables.scss";
 @import "./static/scss/fontsImport.scss";
+@import "./static/scss/mixins.scss";
 
 h1 {
   color: $base-text-color;
@@ -17,4 +18,8 @@ body {
   /* max-width: 1440px;
   margin-left: auto;
   margin-right: auto; */
+
+  .main-content{
+    @include maxWidth();
+  }
 }
