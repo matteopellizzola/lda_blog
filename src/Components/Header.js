@@ -1,12 +1,17 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
 import "./header.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import loadNavigation from "../database/loadNavigation";
+import HeaderMenuLink from "./HeaderMenuLink";
+
+const menuItems = loadNavigation();
 
 function Header (props) {
 
     const [mobileMenu, setMobileMenu] = useState(false);
+    const [page, setPage] = useState("home");
 
     function toggleMobileMenu(){
         if (mobileMenu) {
@@ -16,33 +21,17 @@ function Header (props) {
         }
     }
 
-    return <Container fluid>
-        <Row className="menu-header-desktop">
-            <Col xs={12} sm={6}  className="logo">
+    return <>
+        <div className="menu-header-desktop">
+            <div  className="logo">
                 <Link to="/">
                     LOGO
                 </Link>
-            </Col>
-            <Col xs={12} sm={6} className="menu-item ">
-                <div className="menu-link">
-                    <Link to="/about">
-                        <div className="menu-text">Chi Sono</div>
-                    </Link>
-                </div>
-
-                <div className="menu-link">
-                    <Link to="/contacts">
-                        <div className="menu-text">Contatti</div>
-                    </Link>
-                </div>
-
-                <div className="menu-link">
-                    <Link to="/menu">
-                        <div className="menu-text">Menu</div>
-                    </Link>
-                </div>
-            </Col>
-        </Row>
+            </div>
+            <div className="menu-item">
+                {menuItems.navigationList.map((item) => <HeaderMenuLink page={page} item={item} setPage={setPage} toggleMobileMenu={() => { return; }} />)}
+            </div>
+        </div>
         <Row className="menu-header-mobile">
             <Col xs={12}>
                 <div className="menu-wrapper">
@@ -60,9 +49,9 @@ function Header (props) {
                     </div>
                 </div>
             </Col>
-            {mobileMenu && <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} /> }
+            {mobileMenu && <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} page={page} menuItems={menuItems} setPage={setPage}/> }
         </Row>
-    </Container>;
+    </>;
 }
 
 function ModalMobileMenu (props) {
@@ -75,23 +64,7 @@ function ModalMobileMenu (props) {
                 <h3 onClick={() => props.toggleMobileMenu()}>
                     <i className="icon-cross"></i>
                 </h3>
-                <div className="menu-link">
-                    <Link to="/about" onClick={() => props.toggleMobileMenu()}>
-                        <div className="menu-text">Chi Sono</div>
-                    </Link>
-                </div>
-
-                <div className="menu-link">
-                    <Link to="/contacts" onClick={() => props.toggleMobileMenu()}>
-                        <div className="menu-text">Contatti</div>
-                    </Link>
-                </div>
-
-                <div className="menu-link">
-                    <Link to="/menu" onClick={() => props.toggleMobileMenu()}>
-                        <div className="menu-text">Menu</div>
-                    </Link>
-                </div>
+                {props.menuItems.navigationList.map((item) => <HeaderMenuLink page={props.page} item={item} setPage={props.setPage} toggleMobileMenu={props.toggleMobileMenu} />)}
             </div>
         </Col>
     </>;

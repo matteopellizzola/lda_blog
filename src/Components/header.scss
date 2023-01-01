@@ -17,6 +17,10 @@
   }
 }
 
+.menu-link.selected{
+  text-decoration: underline;
+}
+
 .menu-header-desktop {
   @media #{$mobile} {
     display: none !important;
@@ -24,6 +28,9 @@
 
   background-color: $dark-base-color;
   padding: 0 2vw;
+  display: flex;
+  justify-content: space-between;
+
   .menu-item {
     display: flex;
     justify-content: flex-end;
