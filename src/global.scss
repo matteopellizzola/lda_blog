@@ -21,5 +21,6 @@ body {
 
   .main-content{
     @include maxWidth();
+    margin-top: 60px;
   }
 }

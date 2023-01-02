@@ -1,9 +1,10 @@
 @import "../global.scss";
 
-.container-fluid {
-  @media #{$mobile} {
-    padding: 0 !important;
-  }
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 150;
 }
 
 .logo {

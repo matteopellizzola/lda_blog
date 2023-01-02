@@ -21,7 +21,7 @@ function Header (props) {
         }
     }
 
-    return <>
+    return <header>
         <div className="menu-header-desktop">
             <div  className="logo">
                 <Link to="/">
@@ -51,7 +51,7 @@ function Header (props) {
             </Col>
             {mobileMenu && <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} page={page} menuItems={menuItems} setPage={setPage}/> }
         </Row>
-    </>;
+    </header>;
 }
 
 function ModalMobileMenu (props) {
