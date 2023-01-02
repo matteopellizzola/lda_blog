@@ -1,0 +1,27 @@
+@import "../../global.scss";
+
+.about-wrapper {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .image-bio {
+        float: left;
+        margin: 5px;
+        border-radius: 100%;
+
+        @media #{$mobile} {
+            max-width: 50%;
+        }
+
+        @media #{$tablet},
+        #{$desktop} {
+            max-width: 30%;
+        }
+    }
+
+    p {
+        text-align: justify;
+        font-size: 20px;
+    }
+}
