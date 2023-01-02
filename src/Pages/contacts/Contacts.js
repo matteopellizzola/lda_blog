@@ -27,7 +27,7 @@ function Contact (props) {
                                     {/*TODO: cambiare con cose reali*/ }
                                 <a href="mailto:matteo.pellizzola@gmail.com"> <i className="icon-mail"></i>  Scrivimi una mail</a>
 
-                                <a href="https://wa.me/+393315620020" target="_blank">mandami un messaggio <i className="icon-phone"></i></a>
+                                <a href="https://wa.me/+393315620020" rel="noreferrer" target="_blank">mandami un messaggio <i className="icon-phone"></i></a>
                             </div>
 
                         </Col>
