@@ -8,9 +8,16 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import "./home.scss";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Home (props) {
+
+    const navigate = useNavigate();
+    const handleClick = (path) => {
+        console.log(path);
+        navigate('/' + path);
+    };
+
     return <>
         <h1>
             home pageeee
@@ -23,25 +30,28 @@ function Home (props) {
                 spaceBetween={15}
                 slidesPerView={1}
             >
-                <SwiperSlide><img src="https://picsum.photos/300/400" alt=''/></SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/100/200" alt=''/></SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/200/300" alt=''/></SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/200/500" alt=''/></SwiperSlide>
+                <SwiperSlide>
+                    <img src="https://picsum.photos/1920/1090" alt='' className='desktop-slide'/>
+                    {/* <img src="https://picsum.photos/1080/1920" alt='' className='mobile-slide'/> TODO:*/}
+                </SwiperSlide>
+                <SwiperSlide><img src="https://picsum.photos/1921/1089" alt=''/></SwiperSlide>
+                <SwiperSlide><img src="https://picsum.photos/1922/1090" alt=''/></SwiperSlide>
+                <SwiperSlide><img src="https://picsum.photos/1920/1089" alt=''/></SwiperSlide>
             </Swiper>
         </div>
         <div className="dual-boxes">
-            <Link className='box-container' to="/about">
-                    <img src="https://picsum.photos/600/400" alt=''/>
+            <div className='box-container' onClick={() => handleClick('about')}>
+                    <img src="https://picsum.photos/1800/1200" alt=''/>
                     <span className='cta-box'>
                         testo di esempio
                     </span>
-            </Link>
-            <Link className='box-container' to="/menu">
-                <img src="https://picsum.photos/601/401" alt=''/>
+            </div>
+            <div className='box-container' onClick={() => handleClick('menu')}>
+                <img src="https://picsum.photos/1801/1201" alt=''/>
                 <span className='cta-box'>
                     altro testo di esempio
                 </span>
-            </Link>
+            </div>
         </div>
     </>;
 }
