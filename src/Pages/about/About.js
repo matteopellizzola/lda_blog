@@ -12,7 +12,7 @@ function About (props) {
             Chi sono
         </h1>
         <div className="about-wrapper">
-            <img className="image-bio" src={biographyData.biographyObj.mainImage} />
+            <img className="image-bio" src={biographyData.biographyObj.mainImage} alt='' />
             <p className="bio-text">
                 {biographyData.biographyObj.mainParagraph}
             </p>
