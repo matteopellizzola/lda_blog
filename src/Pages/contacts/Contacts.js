@@ -39,7 +39,12 @@ function Contact (props) {
                         {schedules.scheduleList.map(day => <OpeningDay day={day.day} hour={day.hour} closed={day.closed} />)}
                     </Row>
                 </Col>
-                <Col xs={12} sm={6} >Picture</Col>
+                <Col xs={12} sm={6} className="map">Picture</Col>
+            </Row>
+            <Row className="bottom-contacts">
+                <Col>
+                    Qua ci sono le info per registrarsi alla newsletter
+                </Col>
             </Row>
 
         </div>
