@@ -1,11 +1,13 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { Navigation, Pagination } from 'swiper';
+import { Navigation, Pagination, Autoplay, Lazy } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay';
+import 'swiper/css/lazy';
 
 import "./home.scss";
 import { useNavigate } from 'react-router-dom';
@@ -24,11 +26,14 @@ function Home (props) {
         </h1>
         <div className='main-slider'>
             <Swiper
-                modules={[Navigation, Pagination]}
+                modules={[Navigation, Pagination, Autoplay, Lazy]}
+                loop={true}
                 navigation={{ clickable: true}}
                 pagination={{ clickable: true }}
                 spaceBetween={15}
                 slidesPerView={1}
+                lazy={true}
+                autoplay={{ delay: 3000 }}
             >
                 <SwiperSlide>
                     <img src="https://picsum.photos/1920/1090" alt='' className='desktop-slide'/>

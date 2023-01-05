@@ -1,5 +1,7 @@
 @import "../global.scss";
 
+@import "../static/scss/swiperSlider.scss";
+
 header {
   position: fixed;
   top: 0;
@@ -18,7 +20,7 @@ header {
   }
 }
 
-.menu-link.selected{
+.menu-link.selected {
   text-decoration: underline;
 }
 

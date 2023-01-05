@@ -1,0 +1,14 @@
+span.swiper-pagination-bullet {
+  width: 20px;
+  height: 3px;
+  border-radius: 0;
+
+  &.swiper-pagination-bullet-active {
+    background-color: $orange-color;
+  }
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  color: $orange-color;
+}
