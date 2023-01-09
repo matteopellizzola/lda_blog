@@ -2,6 +2,7 @@ import { Row, Col } from "react-bootstrap";
 import loadSchedule from "../../database/loadSchedules";
 
 import "./contacts.scss";
+import NewsLetterForm from "./NewsLetterForm";
 
 const schedules = loadSchedule();
 
@@ -44,6 +45,7 @@ function Contact (props) {
             <Row className="bottom-contacts">
                 <Col>
                     Qua ci sono le info per registrarsi alla newsletter
+                    <NewsLetterForm />
                 </Col>
             </Row>
 
