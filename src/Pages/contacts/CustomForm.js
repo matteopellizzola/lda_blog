@@ -6,8 +6,6 @@ function CustomForm (props) {
     //const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
 
-     console.log(props.status);
-
     const handleSubmit = (e) =>{
         e.preventDefault();
         email &&
@@ -22,7 +20,6 @@ function CustomForm (props) {
 
     return (
       <form className="mc__form" onSubmit={(e) => handleSubmit(e)}>
-        <h3 className="mc__title">Join our email list for future updates.</h3>
         <div className="mc__field-container">
           {/* <input
             label="First Name"
@@ -53,7 +50,7 @@ function CustomForm (props) {
 
         </div>
 
-        <button label="subscribe" type="submit" formValues={[email, /* firstName */ lastName]}>submit</button>
+        <button label="subscribe" type="submit" formValues={[email, /* firstName */ lastName]}>Iscriviti</button>
       </form>
     );
 };

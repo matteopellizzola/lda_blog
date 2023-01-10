@@ -44,9 +44,8 @@ function Contact (props) {
             </Row>
             <Row className="bottom-contacts">
                 <Col>
-                    Qua ci sono le info per registrarsi alla newsletter
-                    <NewsLetterForm />
                 </Col>
+                    <NewsLetterForm />
             </Row>
 
         </div>
