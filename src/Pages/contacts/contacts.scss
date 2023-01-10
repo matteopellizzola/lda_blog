@@ -42,6 +42,11 @@
   .newsletter-description {
     padding-top: 1rem;
     text-align: justify;
+
+    a {
+      color: $base-text-color;
+      text-decoration: underline;
+    }
   }
 
   .newsletter-image-col {
@@ -60,6 +65,12 @@
 
   .mc__form {
     padding-top: 1rem;
+
+    .warning,
+    .text-warning {
+      border-color: $dark-orange-color;
+      color: $dark-orange-color;
+    }
 
     .mc__field-container {
       input {
