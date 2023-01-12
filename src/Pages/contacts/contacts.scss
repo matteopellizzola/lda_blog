@@ -1,4 +1,5 @@
 @import "../../global.scss";
+@import "../../static/scss/mixins.scss";
 
 .contacts-wrapper {
   max-width: 1920px;
@@ -34,5 +35,52 @@
 
   .bottom-contacts {
     padding-top: 2rem;
+  }
+}
+
+.newsletter-form-wrapper {
+  .newsletter-description {
+    padding-top: 1rem;
+    text-align: justify;
+
+    a {
+      color: $base-text-color;
+      text-decoration: underline;
+    }
+  }
+
+  .newsletter-image-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 100%;
+    }
+  }
+
+  .mc__form {
+    padding-top: 1rem;
+
+    .warning,
+    .text-warning {
+      border-color: $dark-orange-color;
+      color: $dark-orange-color;
+    }
+
+    .mc__field-container {
+      input {
+        @include formInputs();
+      }
+    }
+
+    button {
+      background-color: $orange-color !important;
+      @include formInputs();
+    }
   }
 }
