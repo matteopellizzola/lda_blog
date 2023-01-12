@@ -1,0 +1,36 @@
+.instagram-container {
+  padding-top: 1rem;
+
+  ._2R-kh {
+    justify-content: space-between;
+
+    ._wPDyp {
+      @media #{$mobile} {
+        flex-basis: 47%;
+      }
+
+      @media #{$tablet}, #{$desktop} {
+        flex-basis: 31%;
+      }
+
+      @media #{$desktop} {
+        flex-basis: 23%;
+      }
+    }
+
+    ._3xnQP {
+      transition: all 0.2s;
+
+      &:hover {
+        .icon {
+          padding-left: 0;
+        }
+      }
+
+      .icon {
+        transition: all 0.2s;
+        padding-left: 5rem;
+      }
+    }
+  }
+}
