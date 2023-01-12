@@ -12,6 +12,9 @@ import 'swiper/css/lazy';
 import "./home.scss";
 import { useNavigate } from 'react-router-dom';
 
+import InstagramFeed from 'react-ig-feed';
+import 'react-ig-feed/dist/index.css';
+
 function Home (props) {
 
     const navigate = useNavigate();
@@ -19,6 +22,8 @@ function Home (props) {
         console.log(path);
         navigate('/' + path);
     };
+
+    const ig_token = 'IGQVJYdXVuWFpGci1VbXlGcXZAwR3JLbGd0Wi1FSXd2cmZAOT0J3djVnMzUwbEFCNUpXLS1vcVM3ZA3cyT3cyd1ZAlZAXU4SVJtVFdUdmJuTF8wc2VvMnh2YlUwQnoxZAmZA1cy1mdTZAEV1VLSk85dlhsTjlMWgZDZD';
 
     return <>
         <h1>
@@ -58,7 +63,16 @@ function Home (props) {
                 </span>
             </div>
         </div>
+
+        <div className='instagram-container text-center'>
+            <h4>Segui gli aggiornamenti in tempo reale</h4>
+            <h6>alcuni post del mio profilo instagram </h6>
+
+            <InstagramFeed token={ig_token} counter="12" />
+        </div>
     </>;
 }
 
 export default Home;
+
+   //https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=IGQVJYdXVuWFpGci1VbXlGcXZAwR3JLbGd0Wi1FSXd2cmZAOT0J3djVnMzUwbEFCNUpXLS1vcVM3ZA3cyT3cyd1ZAlZAXU4SVJtVFdUdmJuTF8wc2VvMnh2YlUwQnoxZAmZA1cy1mdTZAEV1VLSk85dlhsTjlMWgZDZD

@@ -1,0 +1,9 @@
+instagram token: IGQVJYdXVuWFpGci1VbXlGcXZAwR3JLbGd0Wi1FSXd2cmZAOT0J3djVnMzUwbEFCNUpXLS1vcVM3ZA3cyT3cyd1ZAlZAXU4SVJtVFdUdmJuTF8wc2VvMnh2YlUwQnoxZAmZA1cy1mdTZAEV1VLSk85dlhsTjlMWgZDZD
+
+
+url: https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=IGQVJYdXVuWFpGci1VbXlGcXZAwR3JLbGd0Wi1FSXd2cmZAOT0J3djVnMzUwbEFCNUpXLS1vcVM3ZA3cyT3cyd1ZAlZAXU4SVJtVFdUdmJuTF8wc2VvMnh2YlUwQnoxZAmZA1cy1mdTZAEV1VLSk85dlhsTjlMWgZDZD
+
+//useful link: https://developers.facebook.com/docs/instagram-api/reference/ig-user/media#get-media
+https://developers.facebook.com/apps/865896741321182/dashboard/
+https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
+https://blog.devgenius.io/how-add-your-instagram-posts-to-your-react-project-e8527d2a7187
