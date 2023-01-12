@@ -13,8 +13,7 @@ import "./home.scss";
 import { useNavigate } from 'react-router-dom';
 
 import InstagramFeed from 'react-ig-feed';
-import 'react-ig-feed/dist/index.css'
-//import InstaFeed from '../../Components/InstaFeed';
+import 'react-ig-feed/dist/index.css';
 
 function Home (props) {
 
@@ -65,9 +64,11 @@ function Home (props) {
             </div>
         </div>
 
-        <div>
-            {/* <InstaFeed token={ig_token} counter={6} /> */}
-            <InstagramFeed token={ig_token}  counter="6"/>
+        <div className='instagram-container text-center'>
+            <h4>Segui gli aggiornamenti in tempo reale</h4>
+            <h6>alcuni post del mio profilo instagram </h6>
+
+            <InstagramFeed token={ig_token} counter="12" />
         </div>
     </>;
 }
