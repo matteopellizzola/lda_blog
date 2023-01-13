@@ -1,16 +1,22 @@
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { GoogleMap, useLoadScript,  } from '@react-google-maps/api';
 
 function GoogleMapsLocation (props) {
-    const render = (status: Status) => {
-        return <h1>{status}</h1>;
-    };
+    const {isLoaded} = useLoadScript({
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+    });
 
-    return <>
+    if(!isLoaded) return <div>Loading ...</div>
+    return <Map />
+}
+export default GoogleMapsLocation;
 
-        <Wrapper apiKey={"YOUR_API_KEY"} render={render}>
-        </Wrapper>
 
-    </>;
+function Map () {
+    return <GoogleMap zoom={10} center={{ lat: 44, lng: -80 }} mapContainerClassName="google-map">
+
+    </GoogleMap>
 }
 
-export default GoogleMapsLocation;
+// AIzaSyC9lddvhxMb1pCwbEm3q9sGPHXvfhVvHa8
+
+//https://www.youtube.com/watch?v=9e-5QHpadi0&ab_channel=GoogleMapsPlatform
