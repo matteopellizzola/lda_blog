@@ -1,13 +1,14 @@
 import { Row, Col } from "react-bootstrap";
 
 import "./footer.scss";
+import GoogleMapsLocation from "../Pages/contacts/GoogleMapsLocation";
 
 function Footer (props) {
     return <>
         <div id="footer">
           <div className="footer-inner">
               <Row>
-                  <Col xs={12} md={6}>
+                  <Col xs={6} md={6}>
                       <div>
                           <h6 className="title">
                               Laboratorio di Antonella
@@ -21,12 +22,13 @@ function Footer (props) {
                           </div>
                       </div>
                   </Col>
-                  <Col xs={12} md={6}>
-                      <div>
-                          <h6 className="follow">
-                              Seguimi su: <a href="https://www.instagram.com/laboratoriodiantonella/">Instagram</a>
-                          </h6>
-                      </div>
+                  <Col xs={6} md={6}>
+                        <div>
+                            <h6 className="follow">
+                                Seguimi su: <a href="https://www.instagram.com/laboratoriodiantonella/">Instagram</a>
+                            </h6>
+                        </div>
+                        <GoogleMapsLocation className={"google-map"} />
                   </Col>
               </Row>
               <Row>
