@@ -41,7 +41,7 @@ function Contact (props) {
                     </Row>
                 </Col>
                 <Col xs={12} sm={6} className="map">
-                    <GoogleMapsLocation />
+                    <GoogleMapsLocation className={"google-map"} />
                 </Col>
             </Row>
             <Row className="bottom-contacts">
