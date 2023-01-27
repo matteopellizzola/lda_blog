@@ -11,7 +11,7 @@ const menuItems = loadNavigation();
 function Header (props) {
 
     const [mobileMenu, setMobileMenu] = useState(false);
-    const [page, setPage] = useState("home");
+    const [page, setPage] = useState(window.location.pathname);
 
     function toggleMobileMenu(){
         if (mobileMenu) {
@@ -24,7 +24,7 @@ function Header (props) {
     return <header>
         <div className="menu-header-desktop">
             <div  className="logo">
-                <Link to="/">
+                <Link to="/" onClick={() => setPage("home")}>
                     LOGO
                 </Link>
             </div>
