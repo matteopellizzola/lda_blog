@@ -14,7 +14,7 @@ function NewsLetterForm (props) {
             </Col>
             <Col sm={6} xs={12}>
                 <div className='newsletter-description'>
-                    In base alla stagionalità e al giorno della settimana preparo nuove proposte, le puoi trovare nella scheda <Link className='link_' to={"/menu"}>menu</Link> oppure puoi iscriverti alla newsletter per ricevere aggiornamenti via mail
+                    In base alla stagionalità e al giorno della settimana preparo nuove proposte, le puoi trovare nella scheda <Link className='link_' to={"/products"}>prodotti</Link> oppure puoi iscriverti alla newsletter per ricevere aggiornamenti via mail
                 </div>
                 <MailChimpForm />
             </Col>

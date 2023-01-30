@@ -5,7 +5,7 @@ function loadNavigation () {
 
     transcript.add(new Navigation('Chi Sono', '/about'));
     transcript.add(new Navigation('Contatti', '/contacts'));
-    transcript.add(new Navigation('Menu', '/menu'));
+    transcript.add(new Navigation('Prodotti', '/products'));
 
     return transcript;
 }
