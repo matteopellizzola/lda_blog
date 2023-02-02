@@ -69,7 +69,7 @@ function Home (props) {
             <h4>Segui gli aggiornamenti in tempo reale</h4>
             <h6>alcuni post del mio profilo instagram </h6>
 
-            {/* <InstagramFeed token={ig_token} counter="12" /> */}
+            {/* <InstagramFeed token={ig_token} counter="9" /> */}
             <InstaFeed token={ig_token} counter="12" />
         </div>
     </>;

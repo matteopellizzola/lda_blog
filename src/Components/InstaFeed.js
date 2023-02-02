@@ -1,12 +1,13 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay, Lazy } from 'swiper';
+import { Navigation, Pagination, Autoplay, Lazy, FreeMode, Scrollbar } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css/lazy';
+import 'swiper/css/free-mode';
 
 var React = require("react");
 
@@ -93,14 +94,27 @@ var InstaFeed = function InstagramFeed (props) {
     return (
         <div>
             <Swiper
-                modules={[Navigation, Pagination, Autoplay, Lazy]}
-                loop={true}
-                navigation={{ clickable: true }}
+                modules={[Pagination, Autoplay, Lazy, FreeMode, Scrollbar]}
+                loop={false}
+                /*  scrollbar={{ clickable: true }} */
+                /* navigation={{ clickable: true }} */
                 pagination={{ clickable: true }}
                 spaceBetween={15}
                 slidesPerView={4}
+                breakpoints={
+                    {
+                        0: {
+                            slidesPerView: 2
+                        },
+                        576: {
+                            slidesPerView: 4
+                        }
+                    }
+                }
+                freeMode={true}
                 lazy={true}
                 autoplay={{ delay: 3000 }}
+            /* speed={300} */
             >
                 {isLoading ? (
                     <div> Loading... </div>
@@ -161,7 +175,7 @@ var InstaFeed = function InstagramFeed (props) {
                     </div>
                 )}
             </Swiper>
-        </div>
+        </div >
     );
     //return result;
 };
