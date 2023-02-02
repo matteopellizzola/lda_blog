@@ -1,7 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 
 import "./footer.scss";
-import GoogleMapsLocation from "../Pages/contacts/GoogleMapsLocation";
 
 function Footer (props) {
     return <>
@@ -28,7 +27,6 @@ function Footer (props) {
                                 Seguimi su: <a href="https://www.instagram.com/laboratoriodiantonella/">Instagram</a>
                             </h6>
                         </div>
-                        <GoogleMapsLocation className={"google-map"} />
                   </Col>
               </Row>
               <Row>

@@ -33,6 +33,11 @@
       height: 30vh;
     }
   }
+  .map {
+    iframe {
+      max-width: 100%;
+    }
+  }
 
   .bottom-contacts {
     padding-top: 2rem;

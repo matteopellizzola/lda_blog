@@ -2,7 +2,7 @@ import { Row, Col } from "react-bootstrap";
 import loadSchedule from "../../database/loadSchedules";
 
 import "./contacts.scss";
-import GoogleMapsLocation from "./GoogleMapsLocation";
+import GoogleIframeMap from "./GoogleIframeMap";
 
 const schedules = loadSchedule();
 
@@ -41,7 +41,7 @@ function Contact (props) {
                     </Row>
                 </Col>
                 <Col xs={12} sm={6} className="map">
-                    <GoogleMapsLocation className={"google-map"} />
+                    <GoogleIframeMap width={600} height={450} />
                 </Col>
             </Row>
             <Row className="bottom-contacts">
