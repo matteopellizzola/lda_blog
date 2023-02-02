@@ -21,8 +21,6 @@ function CustomForm (props) {
         }
     }
 
-    console.log(props.status);
-
     useEffect(() => {
         if (props.status === "success") {
             setLastName('');
@@ -65,8 +63,8 @@ function CustomForm (props) {
             {props.status === "success" && <div className="mc__alert mc__alert--success" dangerouslySetInnerHTML={{ __html: "registrazione effettuata" }} />}
             {props.statusCustom === "warning" && <div className="text-warning">Inserisci correttamente tutti i campi</div>}
 
-            {props.status === "sending" && <button disabled label="subscribe" type="submit" formValues={[email, /* firstName */ lastName]}>invio...</button>}
-            {props.status !== "sending" && <button label="subscribe" type="submit" formValues={[email, /* firstName */ lastName]}>Iscriviti</button>}
+            {props.status === "sending" && <button disabled label="subscribe" type="submit" formvalues={[email, /* firstName */ lastName]}>invio...</button>}
+            {props.status !== "sending" && <button label="subscribe" type="submit" formvalues={[email, /* firstName */ lastName]}>Iscriviti</button>}
         </form>
     </>;
 };

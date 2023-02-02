@@ -5,10 +5,10 @@ function GoogleIframeMap (props) {
             width={props.width}
             height={props.height}
             style={{ border: 0 }}
-            allowfullscreen=""
+            allowFullScreen={true}
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-
+            referrerPolicy="no-referrer-when-downgrade"
+            title={props.title}>
         </iframe>
     </>;
 }

@@ -8,7 +8,6 @@ import NewsLetterForm from "./NewsLetterForm";
 const schedules = loadSchedule();
 
 function Contact (props) {
-    console.log(schedules.scheduleList);
     return <>
             <div className="text-center contacts-wrapper">
 
@@ -42,7 +41,7 @@ function Contact (props) {
                     </Row>
                 </Col>
                 <Col xs={12} sm={6} className="map">
-                    <GoogleIframeMap width={600} height={450} />
+                    <GoogleIframeMap width={600} height={450} title={"googleMapsContacts"} />
                 </Col>
             </Row>
             <Row className="bottom-contacts">

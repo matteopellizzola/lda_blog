@@ -4,8 +4,6 @@ import "./about.scss";
 
 const biographyData = loadBiography();
 
-console.log(JSON.stringify(biographyData));
-
 function About (props) {
     return <>
         <h1 className="text-center">

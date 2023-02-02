@@ -19,7 +19,6 @@ function Home (props) {
 
     const navigate = useNavigate();
     const handleClick = (path) => {
-        console.log(path);
         navigate('/' + path);
     };
 
