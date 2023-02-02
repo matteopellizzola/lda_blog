@@ -2,6 +2,7 @@ import { Row, Col } from "react-bootstrap";
 import loadSchedule from "../../database/loadSchedules";
 
 import "./contacts.scss";
+import GoogleIframeMap from "./GoogleIframeMap";
 import NewsLetterForm from "./NewsLetterForm";
 
 const schedules = loadSchedule();
@@ -40,7 +41,9 @@ function Contact (props) {
                         {schedules.scheduleList.map(day => <OpeningDay day={day.day} hour={day.hour} closed={day.closed} />)}
                     </Row>
                 </Col>
-                <Col xs={12} sm={6} className="map">Picture</Col>
+                <Col xs={12} sm={6} className="map">
+                    <GoogleIframeMap width={600} height={450} />
+                </Col>
             </Row>
             <Row className="bottom-contacts">
                 <Col>

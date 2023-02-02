@@ -6,7 +6,7 @@
   background-color: $dark-base-color;
   padding: 15px;
 
-  .footer-inner{
+  .footer-inner {
     @include maxWidth();
   }
 
@@ -14,5 +14,11 @@
     a {
       color: $base-text-color;
     }
+  }
+
+  .google-map {
+    padding: 1rem;
+    width: 100%;
+    height: 70%;
   }
 }
