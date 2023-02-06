@@ -30,10 +30,16 @@ header {
     display: none !important;
   }
 
+  .header-wrapper {
+    max-width: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
   background-color: $dark-base-color;
   padding: 0 2vw;
-  display: flex;
-  justify-content: space-between;
 
   .menu-item {
     display: flex;

@@ -13,7 +13,7 @@ function Header (props) {
     const [mobileMenu, setMobileMenu] = useState(false);
     const [page, setPage] = useState(window.location.pathname);
 
-    function toggleMobileMenu(){
+    function toggleMobileMenu () {
         if (mobileMenu) {
             setMobileMenu(false);
         } else {
@@ -23,13 +23,15 @@ function Header (props) {
 
     return <header>
         <div className="menu-header-desktop">
-            <div  className="logo">
-                <Link to="/" onClick={() => setPage("home")}>
-                    LOGO
-                </Link>
-            </div>
-            <div className="menu-item">
-                {menuItems.navigationList.map((item) => <HeaderMenuLink page={page} item={item} setPage={setPage} toggleMobileMenu={() => { return; }} />)}
+            <div className="header-wrapper">
+                <div className="logo">
+                    <Link to="/" onClick={() => setPage("home")}>
+                        LOGO
+                    </Link>
+                </div>
+                <div className="menu-item">
+                    {menuItems.navigationList.map((item) => <HeaderMenuLink page={page} item={item} setPage={setPage} toggleMobileMenu={() => { return; }} />)}
+                </div>
             </div>
         </div>
         <Row className="menu-header-mobile">
@@ -49,7 +51,7 @@ function Header (props) {
                     </div>
                 </div>
             </Col>
-            {mobileMenu && <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} page={page} menuItems={menuItems} setPage={setPage}/> }
+            {mobileMenu && <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} page={page} menuItems={menuItems} setPage={setPage} />}
         </Row>
     </header>;
 }
