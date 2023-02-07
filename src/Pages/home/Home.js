@@ -12,7 +12,6 @@ import 'swiper/css/lazy';
 import "./home.scss";
 import { useNavigate } from 'react-router-dom';
 
-import InstagramFeed from 'react-ig-feed';
 import 'react-ig-feed/dist/index.css';
 import InstaFeed from '../../Components/InstaFeed';
 

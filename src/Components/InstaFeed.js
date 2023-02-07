@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 var React = require("react");
 
@@ -13,27 +14,28 @@ var styles = {
 };
 
 var InstaFeed = function InstagramFeed (props) {
-    var result = [];
-
     var token = props.token,
         counter = props.counter;
     var placeholder = React.useRef();
 
-    var _useState = React.useState([]),
-        data = _useState[0],
-        setData = _useState[1];
+    var [data, setData] = useState([]);
+    /* data = _useState[0],
+    setData = _useState[1]; */
 
-    var _useState2 = React.useState(false),
-        isLoading = _useState2[0],
-        setIsLoading = _useState2[1];
+    var [isLoading, setIsLoading] = useState(false);
+    /* var _useState2 = React.useState(false),
+    isLoading = _useState2[0],
+    setIsLoading = _useState2[1]; */
 
-    var _useState3 = React.useState(false),
-        isError = _useState3[0],
-        setIsError = _useState3[1];
+    var [isError, setIsError] = useState(false);
+    /* var _useState3 = React.useState(false),
+    isError = _useState3[0],
+    setIsError = _useState3[1]; */
 
-    var _useState4 = React.useState(false),
+    var [showImage, setShowImage] = useState(false);
+    /* var _useState4 = React.useState(false),
         showImage = _useState4[0],
-        setShowImage = _useState4[1];
+        setShowImage = _useState4[1]; */
     var url =
         "https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=" +
         token;
@@ -78,7 +80,7 @@ var InstaFeed = function InstagramFeed (props) {
                 return observer.disconnect();
             };
         },
-        [url],
+        [url]
     );
 
     return (
