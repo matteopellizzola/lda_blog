@@ -1,35 +1,145 @@
-import { useState } from "react";
 
-function InstaFeed (props) {
-    const url = "https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=" + props.token;
+var React = require("react");
 
-    const [data, setData] = useState({});
+var styles = {
+    instagramItems: "_2R-kh",
+    instagramItem: "_wPDyp",
+    instagramImg: "_vzTHL",
+    instagramIcon: "_3xnQP",
+    errorMessage: "_3lhLL",
+    wrapper: "_1I_qj",
+    placeholder: "_3qwMT",
+    hidePlaceholder: "_3rVly",
+};
 
-    var fetchData = function fetchData () {
-      try {
-        //setIsLoading(true);
-        fetch(url).then(function (response) {
-          return response.json();
-        }).then(function (result) {
-          setData(result.data);
-          console.log('JavaScript version is here https://codecanyon.net/item/instaget-javascript-library-for-instagram/26300578');
-        })["catch"](function (error) {
-            return null; //setIsError(true);
-        });
-        //setIsLoading(false);
-        return Promise.resolve();
-      } catch (e) {
-        return Promise.reject(e);
-      }
-    };
+var InstaFeed = function InstagramFeed (props) {
+    var result = [];
 
-    fetchData();
+    var token = props.token,
+        counter = props.counter;
+    var placeholder = React.useRef();
 
-    console.log(data);
+    var _useState = React.useState([]),
+        data = _useState[0],
+        setData = _useState[1];
 
-    return <>
-        {/* {data.map((post) => <div>{post.id}</div>)} */}
-    </>;
-}
+    var _useState2 = React.useState(false),
+        isLoading = _useState2[0],
+        setIsLoading = _useState2[1];
 
-//export default InstaFeed;
+    var _useState3 = React.useState(false),
+        isError = _useState3[0],
+        setIsError = _useState3[1];
+
+    var _useState4 = React.useState(false),
+        showImage = _useState4[0],
+        setShowImage = _useState4[1];
+    var url =
+        "https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=" +
+        token;
+    React.useEffect(
+        function () {
+            var fetchData = function fetchData () {
+                try {
+                    setIsLoading(true);
+                    fetch(url)
+                        .then(function (response) {
+                            return response.json();
+                        })
+                        .then(function (result) {
+                            setData(result.data);
+                        })
+                    ["catch"](function (error) {
+                        return setIsError(true);
+                    });
+                    setIsLoading(false);
+                    return Promise.resolve();
+                } catch (e) {
+                    return Promise.reject(e);
+                }
+            };
+
+            fetchData();
+
+            var callback = function callback (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        setShowImage(true);
+                    }
+                });
+            };
+
+            var options = {
+                threshold: 1.0,
+            };
+            var observer = new IntersectionObserver(callback, options);
+            observer.observe(placeholder.current);
+            return function () {
+                return observer.disconnect();
+            };
+        },
+        [url],
+    );
+
+    return (
+        <div>
+            {isLoading ? (
+                <div> Loading... </div>
+            ) : isError ? (
+                <div>
+                    <p className="errorMessage"> the access token is not valid</p>
+                </div>
+            ) : (
+                <div className={styles.instagramItems} ref={placeholder}>
+                    {showImage &&
+                        data.slice(0, counter).map((item, index) => {
+                            return (
+                                <div key={index} className={styles.instagramItem}>
+                                    <a
+                                        key={index}
+                                        href={item.permalink}
+                                        className="ig-instagram-link"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {item.media_type === "IMAGE" ||
+                                            item.media_type === "CAROUSEL_ALBUM" ? (
+                                            <img
+                                                className={styles.instagramImg}
+                                                key={index}
+                                                src={item.media_url}
+                                                alt="description"
+                                            />
+                                        ) : (
+                                            <video
+                                                className={styles.instagramImg}
+                                                key={index}
+                                                src={item.media_url}
+                                                alt={item.caption}
+                                                type="video/mp4"
+                                            />
+                                        )}
+                                        <div className={styles.instagramIcon}>
+                                            <div className="instagram-count-item">
+                                                <span className="icon">
+                                                    <svg height="18" viewBox="0 0 512 512" width="18">
+                                                        <path
+                                                            fill="currentColor"
+                                                            d="m256 386c-71.683 0-130-58.317-130-130 7.14-172.463 252.886-172.413 260 .001 0 71.682-58.317 129.999-130 129.999zm0-220c-49.626 0-90 40.374-90 90 4.944 119.397 175.074 119.362 180-.001 0-49.625-40.374-89.999-90-89.999zm236 346h-472c-11.046 0-20-8.954-20-20v-472c0-11.046 8.954-20 20-20h472c11.046 0 20 8.954 20 20v472c0 11.046-8.954 20-20 20zm-452-40h432v-432h-432zm372-392c-11.046 0-20 8.954-20 20 0 11.046 8.954 20 20 20 11.046 0 20-8.954 20-20 0-11.046-8.954-20-20-20z"
+                                                        />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            );
+                        })}
+                </div>
+            )}
+        </div >
+    );
+    //return result;
+};
+
+export default InstaFeed;
