@@ -26,15 +26,15 @@ function Contact (props) {
                              <hr />
                             <div className="mail-phone-wrapper">
                                     {/*TODO: cambiare con cose reali*/ }
-                                <a href="mailto:matteo.pellizzola@gmail.com"> <i className="icon-mail"></i>  Scrivimi una mail</a>
+                                <a href="mailto:matteo.pellizzola@gmail.com" className="btn btn-outline-dark"> <i className="icon-mail"></i>  Scrivimi una mail</a>
 
-                                <a href="https://wa.me/+393315620020" rel="noreferrer" target="_blank">mandami un messaggio <i className="icon-phone"></i></a>
+                                <a href="https://wa.me/+393315620020" className="btn btn-outline-dark" rel="noreferrer" target="_blank"><i className="icon-phone"></i> mandami un messaggio</a>
                             </div>
 
                         </Col>
                         </Row>
                         <hr />
-                    <Row>
+                    <Row className="opening-hours">
                         <Col xs={12}>Orari</Col>
 
                         {schedules.scheduleList.map(day => <OpeningDay day={day.day} hour={day.hour} closed={day.closed} />)}
@@ -56,7 +56,7 @@ function Contact (props) {
 
 function OpeningDay (props) {
     return <>
-        <Row>
+        <Row className={props.closed ? "closed" : ""}>
             <Col>
                 {props.day}
             </Col>
