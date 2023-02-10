@@ -2,7 +2,7 @@
 @import "../../static/scss/mixins.scss";
 
 .contacts-wrapper {
-  max-width: 1920px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 
@@ -14,7 +14,9 @@
     text-align: left;
 
     .mail-phone-wrapper {
-      @media #{$tablet}, #{$desktop} {
+
+      @media #{$tablet},
+      #{$desktop} {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
