@@ -25,9 +25,6 @@ function Home (props) {
     const ig_token = 'IGQVJYdXVuWFpGci1VbXlGcXZAwR3JLbGd0Wi1FSXd2cmZAOT0J3djVnMzUwbEFCNUpXLS1vcVM3ZA3cyT3cyd1ZAlZAXU4SVJtVFdUdmJuTF8wc2VvMnh2YlUwQnoxZAmZA1cy1mdTZAEV1VLSk85dlhsTjlMWgZDZD';
 
     return <>
-        <h1>
-            home pageeee
-        </h1>
         <div className='main-slider'>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay, Lazy]}
@@ -59,6 +56,31 @@ function Home (props) {
                 <img src="https://picsum.photos/1801/1201" alt='' />
                 <span className='cta-box'>
                     altro testo di esempio
+                </span>
+            </div>
+        </div>
+
+        <div className='dual-boxes'>
+            <div className='box-container' onClick={() => handleClick('about')}>
+                <img src="https://picsum.photos/1801/1200" alt='' />
+                <span className='cta-box'>
+                    testo di esempio
+                </span>
+            </div>
+
+            <div className='box-container' onClick={() => handleClick('about')}>
+                <img src="https://picsum.photos/1800/1201" alt='' />
+                <span className='cta-box'>
+                    testo di esempio
+                </span>
+            </div>
+        </div>
+
+        <div className='mono-box'>
+            <div className='box-container' onClick={() => handleClick('about')}>
+                <img src="https://picsum.photos/1801/1200" alt='' />
+                <span className='cta-box'>
+                    testo di esempio
                 </span>
             </div>
         </div>
