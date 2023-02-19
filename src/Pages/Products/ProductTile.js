@@ -7,10 +7,11 @@ function ProductTile (props) {
         <div className="product-wrapper">
             <div className="product-inner">
                 <div className="image">
-                    <img src="https://picsum.photos/1800/1440" alt='' className='' />
+                    <img src="https://picsum.photos/1800/1440" alt='' className='first-image' />
+                    <img src="https://picsum.photos/1801/1441" alt='' className='second-image' />
                 </div>
                 <div className="description-container">
-                    <h5 className="name">{product.name}</h5>
+                    <h2 className="name">{product.name}</h2>
                     <div className="description">{product.description ? product.description : ''}</div>
 
                     <div className="ingredients">
@@ -21,15 +22,15 @@ function ProductTile (props) {
                     <div className="product-footer">
                         <div className="left-footer">
                             <div className="">
-                                {product.bakingDay ? <div><span className="">Sfornato il:</span> {product.bakingDay} </div> : ''}
+                                {product.bakingDay ? <div><span className="header">Sfornato il:</span> {product.bakingDay} </div> : ''}
                             </div>
                             <div className="">
-                                {product.shelfLife ? <div><span className="">Conservazione:</span> {product.shelfLife} </div> : ''}
+                                {product.shelfLife ? <div><span className="header">Conservazione:</span> {product.shelfLife} </div> : ''}
                             </div>
                         </div>
 
                         <div className="right-footer">
-                            {product.typeOfCooking ? <div><span className="">Cottura:</span> {product.typeOfCooking} </div> : ''}
+                            {product.typeOfCooking ? <div><span className="header">Cottura:</span> {product.typeOfCooking} </div> : ''}
                         </div>
                     </div>
                 </div>

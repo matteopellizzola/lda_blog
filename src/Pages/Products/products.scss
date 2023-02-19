@@ -1,11 +1,68 @@
+@import "../../global.scss";
+
 .product-wrapper {
+  &:nth-child(even) {
+    .product-inner {
+      flex-direction: row-reverse;
+    }
+
+    // &::before {
+    //   float: right;
+    // }
+  }
+
+  &:first-child {
+    .product-inner {
+      padding: 15px 0;
+    }
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 75%;
+    margin: auto;
+    opacity: 0.1;
+    text-align: center;
+    border: 1px dashed #99610e;
+  }
+
   .product-inner {
     display: flex;
-    padding: 15px 0;
+    padding: 25px 0;
+    width: 100%;
+
+    &::after {
+      content: "";
+      width: 0;
+      border: 1px dashed $dark-orange-color;
+      opacity: 0.1;
+    }
 
     .image {
+      position: relative;
       max-width: 50%;
       height: 100%;
+
+      .first-image {
+        opacity: 1;
+        transition: 0.4s all linear;
+        &:hover {
+          opacity: 0;
+        }
+      }
+
+      .second-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        opacity: 0;
+        transition: 0.4s all linear;
+        &:hover {
+          opacity: 1;
+        }
+      }
 
       img {
         max-width: 100%;
@@ -18,6 +75,7 @@
       position: relative;
       display: block;
       padding: 0 15px;
+      width: 100%;
 
       .name {
         text-align: center;
@@ -28,10 +86,9 @@
         padding-bottom: 4rem;
       }
 
-      .ingredients {
-        .header {
-          font-weight: bold;
-        }
+      .header {
+        font-size: 20px;
+        font-family: $boldFontFamily;
       }
     }
   }
