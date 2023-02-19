@@ -32,6 +32,10 @@
     padding: 25px 0;
     width: 100%;
 
+    @media #{$mobile} {
+      display: block;
+    }
+
     &::after {
       content: "";
       width: 0;
@@ -43,6 +47,18 @@
       position: relative;
       max-width: 50%;
       height: 100%;
+
+      @media #{$mobile} {
+        max-width: 100%;
+
+        .second-image {
+          animation-name: fade;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          animation-duration: 5s;
+          animation-direction: alternate;
+        }
+      }
 
       .first-image {
         opacity: 1;
@@ -104,5 +120,20 @@
       bottom: 15px;
       right: 15px;
     }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }
