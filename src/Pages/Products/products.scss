@@ -1,0 +1,184 @@
+@import "../../global.scss";
+
+.product-wrapper {
+  &:nth-child(even) {
+    .product-inner {
+      flex-direction: row-reverse;
+
+      .description-container::before {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+
+  &:first-child {
+    .product-inner {
+      padding: 15px 0;
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 75%;
+    margin: auto;
+    opacity: 0.2;
+    text-align: center;
+    border: 1px dashed $dark-orange-color;
+
+    @media #{$mobile} {
+      width: 95%;
+    }
+  }
+
+  .product-inner {
+    display: flex;
+    padding: 25px 0;
+    width: 100%;
+
+    @media #{$mobile} {
+      display: block;
+    }
+
+    &::after {
+      content: "";
+      width: 0;
+      border: 1px dashed $dark-orange-color;
+      opacity: 0.2;
+
+      @media #{$mobile} {
+        display: none;
+      }
+    }
+
+    .image {
+      position: relative;
+      max-width: 50%;
+      height: 100%;
+
+      @media #{$mobile} {
+        max-width: 100%;
+
+        .second-image {
+          animation-name: fade;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          animation-duration: 5s;
+          animation-direction: alternate;
+        }
+      }
+
+      .first-image {
+        opacity: 1;
+        transition: 0.4s all linear;
+        &:hover {
+          opacity: 0;
+        }
+      }
+
+      .second-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        opacity: 0;
+        transition: 0.4s all linear;
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      img {
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .description-container {
+      position: relative;
+      display: block;
+      padding: 0 15px;
+      width: 100%;
+
+      &::before {
+        content: "";
+        left: 0;
+        top: 15px;
+        position: absolute;
+        height: 95%;
+        opacity: 0.2;
+        border: 1px dashed $dark-orange-color;
+
+        @media #{$desktop}, #{$tablet} {
+          display: none;
+        }
+      }
+
+      .name {
+        text-align: center;
+
+        @media #{$mobile} {
+          padding-top: 10px;
+        }
+      }
+
+      .description {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+
+        @media #{$mobile} {
+          padding: 1rem 0;
+        }
+      }
+
+      .header {
+        font-size: 20px;
+        font-family: $boldFontFamily;
+      }
+    }
+  }
+
+  .product-footer {
+    @media #{$desktop}, #{$tablet} {
+      .left-footer {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+      }
+      .right-footer {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+
+    @media #{$mobile} {
+      padding: 1rem 0;
+      .left-footer,
+      .right-footer {
+        padding: 0.25rem 0;
+      }
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
