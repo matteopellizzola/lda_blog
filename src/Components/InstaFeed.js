@@ -13,7 +13,7 @@ var styles = {
     hidePlaceholder: "_3rVly",
 };
 
-var InstaFeed = function InstagramFeed (props) {
+var InstaFeed = function InstaFeed (props) {
     var token = props.token,
         counter = props.counter;
     var placeholder = React.useRef();
