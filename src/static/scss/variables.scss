@@ -26,8 +26,12 @@ $container-max-widths: (
   xl: 1920px,
 ) !default;
 
+$regularFontFamily: "Nunito Script", cursive;
+$boldFontFamily: "Oleo Script", cursive;
+
 $dark-base-color: #ffe0b0;
 $base-text-color: #14212b;
+$base-gray-color: #26333c;
 $base-background-color: #faf1e5;
 $base-background-color-transparent: #faf1e56c;
 $orange-color: #faba5c;

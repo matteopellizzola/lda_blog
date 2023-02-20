@@ -9,7 +9,7 @@
   }
 }
 
-.dual-boxes {
+.dual-boxes, .mono-box {
   @media #{$mobile} {
     display: block;
     margin-left: auto;
@@ -77,5 +77,11 @@
       z-index: 2;
       transition: all 0.5s;
     }
+  }
+}
+
+.mono-box {
+  .box-container {
+    max-width: 100%;
   }
 }

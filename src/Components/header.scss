@@ -3,9 +3,9 @@
 @import "../static/scss/swiperSlider.scss";
 
 header {
-  font-style: italic;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 150;
 }
@@ -38,6 +38,7 @@ header {
     justify-content: space-between;
   }
 
+  font-size: 18px;
   background-color: $dark-base-color;
   padding: 0 2vw;
 
@@ -74,7 +75,8 @@ header {
 }
 
 .menu-header-mobile {
-  @media #{$tablet}, #{$desktop} {
+  @media #{$tablet},
+  #{$desktop} {
     display: none !important;
   }
 
@@ -93,9 +95,11 @@ header {
       cursor: pointer;
       color: $base-text-color;
     }
+
     .mobile-logo {
       text-align: center;
     }
+
     a {
       text-decoration: none;
       color: $base-text-color;

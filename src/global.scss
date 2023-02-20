@@ -13,16 +13,28 @@ body {
   font-family: "Nunito", sans-serif;
   color: $base-text-color;
   background-color: $base-background-color !important;
-  max-width: 100vw;
+  max-width: 2160px;
   margin-left: auto;
   margin-right: auto;
   overflow-x: hidden;
-  /* max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto; */
 
   .main-content {
     @include maxWidth();
     margin-top: 60px;
+  }
+
+  @media #{$desktop},
+  #{$tablet} {
+    padding-top: 10px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  header {
+    font-family: "Oleo Script", cursive;
   }
 }

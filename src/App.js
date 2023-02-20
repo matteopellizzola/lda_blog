@@ -1,12 +1,13 @@
 import './App.css';
 import './global.scss';
 
-import {BrowserRouter, Route, Routes, Outlet} from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Contact from './Pages/contacts/Contacts';
 import About from './Pages/about/About';
 import Home from './Pages/home/Home';
+import Products from './Pages/Products/Products';
 
 function App () {
 
@@ -15,9 +16,9 @@ function App () {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route path="/" element={<Home />}></Route>
-                    <Route path="/about" element={ <About /> }></Route>
+                    <Route path="/about" element={<About />}></Route>
                     <Route path="/contacts" element={<Contact />}></Route>
-                    <Route path="/products" element={ <h1>Products Page</h1>}></Route>
+                    <Route path="/products" element={<Products />}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>
@@ -26,10 +27,10 @@ function App () {
 
 function Layout (props) {
     return <>
-        <Header/>
+        <Header />
 
         <div className="main-content">
-          <Outlet />
+            <Outlet />
         </div>
 
         <Footer />
