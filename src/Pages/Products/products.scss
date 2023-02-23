@@ -31,7 +31,8 @@
     text-align: center;
     border: 1px dashed $dark-orange-color;
 
-    @media #{$mobile} {
+    @media #{$mobile},
+    #{$tablet} {
       width: 95%;
     }
   }
@@ -41,8 +42,20 @@
     padding: 25px 0;
     width: 100%;
 
-    @media #{$mobile} {
+    @media #{$desktop} {
+      .name-mobile{
+        display: none;
+      }
+    }
+
+    @media #{$mobile},
+    #{$tablet} {
       display: block;
+
+      .name-mobile {
+        text-align: center;
+        padding-bottom: 15px;
+      }
     }
 
     &::after {
@@ -51,7 +64,8 @@
       border: 1px dashed $dark-orange-color;
       opacity: 0.2;
 
-      @media #{$mobile} {
+      @media #{$mobile},
+      #{$tablet} {
         display: none;
       }
     }
@@ -61,7 +75,8 @@
       max-width: 50%;
       height: 100%;
 
-      @media #{$mobile} {
+      @media #{$mobile},
+      #{$tablet} {
         max-width: 100%;
 
         .second-image {
@@ -76,6 +91,7 @@
       .first-image {
         opacity: 1;
         transition: 0.4s all linear;
+
         &:hover {
           opacity: 0;
         }
@@ -88,6 +104,7 @@
 
         opacity: 0;
         transition: 0.4s all linear;
+
         &:hover {
           opacity: 1;
         }
@@ -98,7 +115,8 @@
         height: 100%;
         object-fit: cover;
 
-        @media #{$mobile} {
+        @media #{$mobile},
+        #{$tablet} {
           height: auto;
         }
       }
@@ -119,16 +137,18 @@
         opacity: 0.2;
         border: 1px dashed $dark-orange-color;
 
-        @media #{$desktop}, #{$tablet} {
+        @media #{$desktop} {
           display: none;
         }
       }
 
-      .name {
+      .name-desktop {
         text-align: center;
 
-        @media #{$mobile} {
+        @media #{$mobile},
+        #{$tablet} {
           padding-top: 10px;
+          display: none;
         }
       }
 
@@ -136,7 +156,8 @@
         padding-top: 4rem;
         padding-bottom: 4rem;
 
-        @media #{$mobile} {
+        @media #{$mobile},
+        #{$tablet} {
           padding: 1rem 0;
         }
       }
@@ -149,12 +170,13 @@
   }
 
   .product-footer {
-    @media #{$desktop}, #{$tablet} {
+    @media #{$desktop} {
       .left-footer {
         position: absolute;
         bottom: 15px;
         left: 15px;
       }
+
       .right-footer {
         position: absolute;
         bottom: 15px;
@@ -162,8 +184,10 @@
       }
     }
 
-    @media #{$mobile} {
+    @media #{$mobile},
+    #{$tablet} {
       padding: 1rem 0;
+
       .left-footer,
       .right-footer {
         padding: 0.25rem 0;
@@ -176,12 +200,15 @@
   0% {
     opacity: 1;
   }
+
   25% {
     opacity: 1;
   }
+
   75% {
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }

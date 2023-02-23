@@ -6,12 +6,13 @@ function ProductTile (props) {
     return <>
         <div className="product-wrapper">
             <div className="product-inner">
+                <h2 className="name-mobile">{product.name}</h2>
                 <div className="image">
                     <img src="https://picsum.photos/1800/1440" alt='' className='first-image' />
                     <img src="https://picsum.photos/1801/1441" alt='' className='second-image' />
                 </div>
                 <div className="description-container">
-                    <h2 className="name">{product.name}</h2>
+                    <h2 className="name-desktop">{product.name}</h2>
                     <div className="description">{product.description ? product.description : ''}</div>
 
                     <div className="ingredients">
