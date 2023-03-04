@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ldablog-dev-102925-authRole",
+      "UnauthRoleArn": "arn:aws:iam::485978082168:role/amplify-ldablog-dev-102925-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::485978082168:role/amplify-ldablog-dev-102925-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-ldablog-dev-102925-deployment",
+      "UnauthRoleName": "amplify-ldablog-dev-102925-unauthRole",
+      "StackName": "amplify-ldablog-dev-102925",
+      "StackId": "arn:aws:cloudformation:us-east-1:485978082168:stack/amplify-ldablog-dev-102925/10882080-b5b8-11ed-b7aa-12e21802a293",
+      "AmplifyAppId": "d3kfgu9q7bzqz9"
+    },
+    "categories": {
+      "auth": {
+        "ldablogf29527ce": {}
+      },
+      "api": {
+        "laboratoriodiantonella": {}
+      }
+    }
+  }
+}

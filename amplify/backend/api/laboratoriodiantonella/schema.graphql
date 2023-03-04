@@ -1,0 +1,15 @@
+type Todo @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  description: String
+}
+
+type Product @model @auth(rules: [{allow: public, operations: [read]}]) {
+  id: ID!
+  name: String
+  description: String
+  ingredients: String
+  bakingDay: String
+  typeOfCooking: String
+  shelfLife: String
+}

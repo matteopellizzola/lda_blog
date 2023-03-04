@@ -1,4 +1,6 @@
+import { DataStore } from "aws-amplify";
 import "./products.scss";
+import { Product } from "../../models";
 
 function ProductTile (props) {
     console.log(JSON.stringify(props));
@@ -35,6 +37,12 @@ function ProductTile (props) {
                     </div>
                 </div>
             </div>
+
+            {props.user && <button onClick={async () => {
+                const productToDelete = await DataStore.query(Product, product.id);
+                DataStore.delete(productToDelete);
+                window.location.reload(false);
+            }}>Delete</button>}
         </div>
     </>;
 }
