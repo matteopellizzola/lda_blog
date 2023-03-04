@@ -48,6 +48,8 @@ type EagerProduct = {
   readonly bakingDay?: string | null;
   readonly typeOfCooking?: string | null;
   readonly shelfLife?: string | null;
+  readonly img1?: string | null;
+  readonly img2?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -64,6 +66,8 @@ type LazyProduct = {
   readonly bakingDay?: string | null;
   readonly typeOfCooking?: string | null;
   readonly shelfLife?: string | null;
+  readonly img1?: string | null;
+  readonly img2?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

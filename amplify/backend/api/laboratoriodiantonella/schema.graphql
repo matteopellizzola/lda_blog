@@ -4,12 +4,19 @@ type Todo @model @auth(rules: [{allow: public}]) {
   description: String
 }
 
-type Product @model @auth(rules: [{allow: public, operations: [read]}]) {
+type Product @model @auth(
+    rules: [
+      { allow: public, operations: [read]},
+      { allow: owner }
+    ]
+  ) {
   id: ID!
   name: String
   description: String
   ingredients: String
   bakingDay: String
   typeOfCooking: String
-  shelfLife: String
+  shelfLife: String,
+  img1: String,
+  img2: String
 }

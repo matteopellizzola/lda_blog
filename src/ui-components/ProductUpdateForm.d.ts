@@ -20,6 +20,8 @@ export declare type ProductUpdateFormInputValues = {
     bakingDay?: string;
     typeOfCooking?: string;
     shelfLife?: string;
+    img1?: string;
+    img2?: string;
 };
 export declare type ProductUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
@@ -28,6 +30,8 @@ export declare type ProductUpdateFormValidationValues = {
     bakingDay?: ValidationFunction<string>;
     typeOfCooking?: ValidationFunction<string>;
     shelfLife?: ValidationFunction<string>;
+    img1?: ValidationFunction<string>;
+    img2?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ProductUpdateFormOverridesProps = {
@@ -38,6 +42,8 @@ export declare type ProductUpdateFormOverridesProps = {
     bakingDay?: PrimitiveOverrideProps<TextFieldProps>;
     typeOfCooking?: PrimitiveOverrideProps<TextFieldProps>;
     shelfLife?: PrimitiveOverrideProps<TextFieldProps>;
+    img1?: PrimitiveOverrideProps<TextFieldProps>;
+    img2?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ProductUpdateFormProps = React.PropsWithChildren<{
     overrides?: ProductUpdateFormOverridesProps | undefined | null;

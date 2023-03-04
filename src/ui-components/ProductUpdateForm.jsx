@@ -30,6 +30,8 @@ export default function ProductUpdateForm(props) {
     bakingDay: "",
     typeOfCooking: "",
     shelfLife: "",
+    img1: "",
+    img2: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [description, setDescription] = React.useState(
@@ -43,6 +45,8 @@ export default function ProductUpdateForm(props) {
     initialValues.typeOfCooking
   );
   const [shelfLife, setShelfLife] = React.useState(initialValues.shelfLife);
+  const [img1, setImg1] = React.useState(initialValues.img1);
+  const [img2, setImg2] = React.useState(initialValues.img2);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = productRecord
@@ -54,6 +58,8 @@ export default function ProductUpdateForm(props) {
     setBakingDay(cleanValues.bakingDay);
     setTypeOfCooking(cleanValues.typeOfCooking);
     setShelfLife(cleanValues.shelfLife);
+    setImg1(cleanValues.img1);
+    setImg2(cleanValues.img2);
     setErrors({});
   };
   const [productRecord, setProductRecord] = React.useState(product);
@@ -72,6 +78,8 @@ export default function ProductUpdateForm(props) {
     bakingDay: [],
     typeOfCooking: [],
     shelfLife: [],
+    img1: [],
+    img2: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -104,6 +112,8 @@ export default function ProductUpdateForm(props) {
           bakingDay,
           typeOfCooking,
           shelfLife,
+          img1,
+          img2,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -165,6 +175,8 @@ export default function ProductUpdateForm(props) {
               bakingDay,
               typeOfCooking,
               shelfLife,
+              img1,
+              img2,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -194,6 +206,8 @@ export default function ProductUpdateForm(props) {
               bakingDay,
               typeOfCooking,
               shelfLife,
+              img1,
+              img2,
             };
             const result = onChange(modelFields);
             value = result?.description ?? value;
@@ -223,6 +237,8 @@ export default function ProductUpdateForm(props) {
               bakingDay,
               typeOfCooking,
               shelfLife,
+              img1,
+              img2,
             };
             const result = onChange(modelFields);
             value = result?.ingredients ?? value;
@@ -252,6 +268,8 @@ export default function ProductUpdateForm(props) {
               bakingDay: value,
               typeOfCooking,
               shelfLife,
+              img1,
+              img2,
             };
             const result = onChange(modelFields);
             value = result?.bakingDay ?? value;
@@ -281,6 +299,8 @@ export default function ProductUpdateForm(props) {
               bakingDay,
               typeOfCooking: value,
               shelfLife,
+              img1,
+              img2,
             };
             const result = onChange(modelFields);
             value = result?.typeOfCooking ?? value;
@@ -310,6 +330,8 @@ export default function ProductUpdateForm(props) {
               bakingDay,
               typeOfCooking,
               shelfLife: value,
+              img1,
+              img2,
             };
             const result = onChange(modelFields);
             value = result?.shelfLife ?? value;
@@ -323,6 +345,68 @@ export default function ProductUpdateForm(props) {
         errorMessage={errors.shelfLife?.errorMessage}
         hasError={errors.shelfLife?.hasError}
         {...getOverrideProps(overrides, "shelfLife")}
+      ></TextField>
+      <TextField
+        label="Img1"
+        isRequired={false}
+        isReadOnly={false}
+        value={img1}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              description,
+              ingredients,
+              bakingDay,
+              typeOfCooking,
+              shelfLife,
+              img1: value,
+              img2,
+            };
+            const result = onChange(modelFields);
+            value = result?.img1 ?? value;
+          }
+          if (errors.img1?.hasError) {
+            runValidationTasks("img1", value);
+          }
+          setImg1(value);
+        }}
+        onBlur={() => runValidationTasks("img1", img1)}
+        errorMessage={errors.img1?.errorMessage}
+        hasError={errors.img1?.hasError}
+        {...getOverrideProps(overrides, "img1")}
+      ></TextField>
+      <TextField
+        label="Img2"
+        isRequired={false}
+        isReadOnly={false}
+        value={img2}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              description,
+              ingredients,
+              bakingDay,
+              typeOfCooking,
+              shelfLife,
+              img1,
+              img2: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.img2 ?? value;
+          }
+          if (errors.img2?.hasError) {
+            runValidationTasks("img2", value);
+          }
+          setImg2(value);
+        }}
+        onBlur={() => runValidationTasks("img2", img2)}
+        errorMessage={errors.img2?.errorMessage}
+        hasError={errors.img2?.hasError}
+        {...getOverrideProps(overrides, "img2")}
       ></TextField>
       <Flex
         justifyContent="space-between"

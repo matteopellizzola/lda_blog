@@ -1,0 +1,16 @@
+{
+  "resourceName": "ldaStorage",
+  "policyUUID": "5517dd4a",
+  "bucketName": "ldablog9be9a88544ff4cc6b84216157e7b9327",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

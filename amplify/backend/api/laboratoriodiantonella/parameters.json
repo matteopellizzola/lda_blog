@@ -1,5 +1,11 @@
 {
   "AppSyncApiName": "laboratoriodiantonella",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authldablogf29527ce",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

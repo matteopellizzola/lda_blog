@@ -19,6 +19,8 @@ export declare type ProductCreateFormInputValues = {
     bakingDay?: string;
     typeOfCooking?: string;
     shelfLife?: string;
+    img1?: string;
+    img2?: string;
 };
 export declare type ProductCreateFormValidationValues = {
     name?: ValidationFunction<string>;
@@ -27,6 +29,8 @@ export declare type ProductCreateFormValidationValues = {
     bakingDay?: ValidationFunction<string>;
     typeOfCooking?: ValidationFunction<string>;
     shelfLife?: ValidationFunction<string>;
+    img1?: ValidationFunction<string>;
+    img2?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ProductCreateFormOverridesProps = {
@@ -37,6 +41,8 @@ export declare type ProductCreateFormOverridesProps = {
     bakingDay?: PrimitiveOverrideProps<TextFieldProps>;
     typeOfCooking?: PrimitiveOverrideProps<TextFieldProps>;
     shelfLife?: PrimitiveOverrideProps<TextFieldProps>;
+    img1?: PrimitiveOverrideProps<TextFieldProps>;
+    img2?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ProductCreateFormProps = React.PropsWithChildren<{
     overrides?: ProductCreateFormOverridesProps | undefined | null;
