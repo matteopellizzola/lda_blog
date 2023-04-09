@@ -1,0 +1,18 @@
+GET http://localhost:3000/api/v1/exams
+
+###
+
+POST http://localhost:3000/api/v1/exams
+Content-Type: application/json
+
+{
+    "code":"02LSEASX",
+    "name":"MPelliz",
+    "cfu":10,
+    "score":18,
+    "date":"2023-12-31"
+}
+
+###
+
+GET http://localhost:3000/api/v1/products
