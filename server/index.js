@@ -55,3 +55,39 @@ app.get(PREFIX + '/products', (req, res) => {
             res.status(500).json(e);
         });
 });
+
+app.post(PREFIX + '/products', async (req, res) => {
+    const product = req.body;
+    try {
+        const value = await dao.addProduct(product);
+        res.end();
+    } catch (error) {
+        var e = error;
+        console.log(e);
+        res.status(400).json(e);
+    }
+});
+
+app.post(PREFIX + '/productRemove', async (req, res) => {
+    const productID = req.body && req.body.id ? req.body.id : null;
+    try {
+        const value = await dao.removeProduct(productID);
+        res.end();
+    } catch (error) {
+        var e = error;
+        console.log(e);
+        res.status(400).json(e);
+    }
+});
+
+app.post(PREFIX + '/productUpdate', async (req, res) => {
+    const product = req.body;
+    try {
+        const value = await dao.updateProduct(product);
+        res.end();
+    } catch (error) {
+        var e = error;
+        console.log(e);
+        res.status(400).json(e);
+    }
+});

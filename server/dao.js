@@ -52,19 +52,64 @@ function addExam (exam) {
 
 function readProducts () {
     return new Promise((resolve, reject) => {
-        const sql = 'SELECT * FROM product';
-        console.log('sono qui');
+        const sql = 'SELECT * FROM products';
         ldaDB.all(sql, (err, rows) => {
             if (err) {
-                console.log(err);
                 reject(err);
             } else {
-                resolve(rows.map((e) => {
-                    new Product(e.id, e.name, e.description, e.ingredients, e.bakingDay, e.typeOfCooking, e.shelfLife, e.img1, e.img2);
-                }));
+                resolve(rows.map((e) =>
+                    new Product(e.id, e.name, e.description, e.ingredients, e.bakingDay, e.typeOfCooking, e.shelfLife, e.img1, e.img2)
+                ));
             }
         });
     });
 }
 
-module.exports = { readExams, addExam, readProducts };
+/**
+ * Add a new product to the Database
+ * @param {Product} product to be inserted
+ * @return {Promise} if success, resolve to true, otherwise  reject with error code
+ */
+function addProduct (product) {
+    return new Promise((resolve, reject) => {
+        const sql = 'INSERT INTO products (id, name, description, ingredients, bakingDay, typeOfCooking, shelfLife, img1, img2) VALUES(?,?,?,?,?,?,?,?,?)';
+        ldaDB.run(sql, [product.id, product.name, product.description, product.ingredients, product.bakingDay, product.typeOfCooking, product.shelfLife, product.img1, product.img2], (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(true);
+            }
+        });
+    });
+}
+
+function removeProduct (productID) {
+    return new Promise((resolve, reject) => {
+        const sql = 'DELETE FROM products WHERE id = ?';
+
+        ldaDB.run(sql, [productID], (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(true);
+            }
+        });
+    });
+}
+
+function updateProduct (product) {
+    return new Promise((resolve, reject) => {
+        const sql = 'UPDATE products SET id = ?, name = ?, description = ?, ingredients = ?, bakingDay = ?, typeOfCooking = ?, shelfLife = ?, img1 = ?, img2 = ? WHERE id = ?';
+        ldaDB.run(sql, [product.id, product.name, product.description, product.ingredients, product.bakingDay, product.typeOfCooking, product.shelfLife, product.img1, product.img2, product.id], (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(true);
+            }
+        });
+    });
+}
+
+
+
+module.exports = { readExams, addExam, readProducts, addProduct, removeProduct, updateProduct };
