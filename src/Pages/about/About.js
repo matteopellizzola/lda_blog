@@ -5,7 +5,7 @@ import "./about.scss";
 
 const biographyData = loadBiography();
 
-const ig_token = 'IGQVJYdXVuWFpGci1VbXlGcXZAwR3JLbGd0Wi1FSXd2cmZAOT0J3djVnMzUwbEFCNUpXLS1vcVM3ZA3cyT3cyd1ZAlZAXU4SVJtVFdUdmJuTF8wc2VvMnh2YlUwQnoxZAmZA1cy1mdTZAEV1VLSk85dlhsTjlMWgZDZD';
+const ig_token = 'IGQVJXOHR2QUFTZA3dzSWxMRUR1NG4tOW1iWm1rMkY1dzJEa3lMN1ZAXQTJwRTU5RzFYUlhWSm5jMVE1LXREYlNvV0pnLW9UYzIwejJZANXUxamt3NDZANay1XWXNWalU5N0tSZAkdzalJReEh6RFp2eVZASWgZDZD';
 
 function About (props) {
     return <>
