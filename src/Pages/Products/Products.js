@@ -5,11 +5,12 @@ import ProductTile from "./ProductTile";
 function Products (props) {
     //const products = loadProducts();
     const [products, setProducts] = useState([]);
+    const apiUrl = process.env.REACT_APP_API_PUBLIC_URL || "http://localhost:5050";
 
     useEffect(() => {
         const loadProducts = async () => {
-            console.log('asdasd');
-            let products = await fetch("http://localhost:5050/products").then(resp => resp.json()); //TODO: setup variables
+            console.log(process.env.REACT_APP_API_PUBLIC_URL + 'asdasd');
+            let products = await fetch(process.env.REACT_APP_API_PUBLIC_URL + "/products").then(resp => resp.json()); //TODO: setup variables
             setProducts(products);
 
             console.log(products);
