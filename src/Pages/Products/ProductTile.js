@@ -1,15 +1,15 @@
 import "./products.scss";
 
 function ProductTile (props) {
-    console.log(JSON.stringify(props));
     const product = props.product;
+
     return <>
-        <div className="product-wrapper">
+        <div className="product-wrapper" key={product.id}>
             <div className="product-inner">
                 <h2 className="name-mobile">{product.name}</h2>
                 <div className="image">
-                    <img src="https://picsum.photos/1800/1440" alt='' className='first-image' />
-                    <img src="https://picsum.photos/1801/1441" alt='' className='second-image' />
+                    <img src={product.img1} alt='' className='first-image' />
+                    <img src={product.img1} alt='' className='second-image' />
                 </div>
                 <div className="description-container">
                     <h2 className="name-desktop">{product.name}</h2>
