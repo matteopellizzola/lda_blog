@@ -94,92 +94,97 @@ var InstaFeed = function InstagramFeed (props) {
         [url]
     );
 
-    return (
-        <div>
-            <Swiper
-                modules={[Pagination, Autoplay, Lazy, FreeMode, Scrollbar]}
-                loop={false}
-                /*  scrollbar={{ clickable: true }} */
-                /* navigation={{ clickable: true }} */
-                pagination={{ clickable: true }}
-                spaceBetween={15}
-                slidesPerView={4}
-                breakpoints={
-                    {
-                        0: {
-                            slidesPerView: 2
-                        },
-                        576: {
-                            slidesPerView: 4
+
+    if (!isError) {
+        return (
+            <div>
+                <Swiper
+                    modules={[Pagination, Autoplay, Lazy, FreeMode, Scrollbar]}
+                    loop={false}
+                    /*  scrollbar={{ clickable: true }} */
+                    /* navigation={{ clickable: true }} */
+                    pagination={{ clickable: true }}
+                    spaceBetween={15}
+                    slidesPerView={4}
+                    breakpoints={
+                        {
+                            0: {
+                                slidesPerView: 2
+                            },
+                            576: {
+                                slidesPerView: 4
+                            }
                         }
                     }
-                }
-                freeMode={true}
-                lazy={true}
-                autoplay={{ delay: 3000 }}
-            /* speed={300} */
-            >
-                {isLoading ? (
-                    <div> Loading... </div>
-                ) : isError ? (
-                    <div>
-                        <p className="errorMessage"> the access token is not valid</p>
-                    </div>
-                ) : (
+                    freeMode={true}
+                    lazy={true}
+                    autoplay={{ delay: 3000 }}
+                /* speed={300} */
+                >
+                    {isLoading ? (
+                        <div> Loading... </div>
+                    ) : isError ? (
+                        <div>
+                            <p className="errorMessage"> the access token is not valid</p>
+                        </div>
+                    ) : (
 
 
-                    <div className={styles.instagramItems} ref={placeholder}>
-                        {showImage &&
-                            data.slice(0, counter).map((item, index) => {
-                                return (
-                                    <SwiperSlide>
-                                        <div key={index} className={styles.instagramItem}>
-                                            <a
-                                                key={index}
-                                                href={item.permalink}
-                                                className="ig-instagram-link"
-                                                target="_blank"
-                                                rel="noreferrer"
-                                            >
-                                                {item.media_type === "IMAGE" ||
-                                                    item.media_type === "CAROUSEL_ALBUM" ? (
-                                                    <img
-                                                        className={styles.instagramImg}
-                                                        key={index}
-                                                        src={item.media_url}
-                                                        alt="description"
-                                                    />
-                                                ) : (
-                                                    <video
-                                                        className={styles.instagramImg}
-                                                        key={index}
-                                                        src={item.media_url}
-                                                        alt={item.caption}
-                                                        type="video/mp4"
-                                                    />
-                                                )}
-                                                <div className={styles.instagramIcon}>
-                                                    <div className="instagram-count-item">
-                                                        <span className="icon">
-                                                            <svg height="18" viewBox="0 0 512 512" width="18">
-                                                                <path
-                                                                    fill="currentColor"
-                                                                    d="m256 386c-71.683 0-130-58.317-130-130 7.14-172.463 252.886-172.413 260 .001 0 71.682-58.317 129.999-130 129.999zm0-220c-49.626 0-90 40.374-90 90 4.944 119.397 175.074 119.362 180-.001 0-49.625-40.374-89.999-90-89.999zm236 346h-472c-11.046 0-20-8.954-20-20v-472c0-11.046 8.954-20 20-20h472c11.046 0 20 8.954 20 20v472c0 11.046-8.954 20-20 20zm-452-40h432v-432h-432zm372-392c-11.046 0-20 8.954-20 20 0 11.046 8.954 20 20 20 11.046 0 20-8.954 20-20 0-11.046-8.954-20-20-20z"
-                                                                />
-                                                            </svg>
-                                                        </span>
+                        <div className={styles.instagramItems} ref={placeholder}>
+                            {showImage &&
+                                data.slice(0, counter).map((item, index) => {
+                                    return (
+                                        <SwiperSlide>
+                                            <div key={index} className={styles.instagramItem}>
+                                                <a
+                                                    key={index}
+                                                    href={item.permalink}
+                                                    className="ig-instagram-link"
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                >
+                                                    {item.media_type === "IMAGE" ||
+                                                        item.media_type === "CAROUSEL_ALBUM" ? (
+                                                        <img
+                                                            className={styles.instagramImg}
+                                                            key={index}
+                                                            src={item.media_url}
+                                                            alt="description"
+                                                        />
+                                                    ) : (
+                                                        <video
+                                                            className={styles.instagramImg}
+                                                            key={index}
+                                                            src={item.media_url}
+                                                            alt={item.caption}
+                                                            type="video/mp4"
+                                                        />
+                                                    )}
+                                                    <div className={styles.instagramIcon}>
+                                                        <div className="instagram-count-item">
+                                                            <span className="icon">
+                                                                <svg height="18" viewBox="0 0 512 512" width="18">
+                                                                    <path
+                                                                        fill="currentColor"
+                                                                        d="m256 386c-71.683 0-130-58.317-130-130 7.14-172.463 252.886-172.413 260 .001 0 71.682-58.317 129.999-130 129.999zm0-220c-49.626 0-90 40.374-90 90 4.944 119.397 175.074 119.362 180-.001 0-49.625-40.374-89.999-90-89.999zm236 346h-472c-11.046 0-20-8.954-20-20v-472c0-11.046 8.954-20 20-20h472c11.046 0 20 8.954 20 20v472c0 11.046-8.954 20-20 20zm-452-40h432v-432h-432zm372-392c-11.046 0-20 8.954-20 20 0 11.046 8.954 20 20 20 11.046 0 20-8.954 20-20 0-11.046-8.954-20-20-20z"
+                                                                    />
+                                                                </svg>
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </SwiperSlide>
-                                );
-                            })}
-                    </div>
-                )}
-            </Swiper>
-        </div >
-    );
+                                                </a>
+                                            </div>
+                                        </SwiperSlide>
+                                    );
+                                })}
+                        </div>
+                    )}
+                </Swiper>
+            </div >
+        );
+    } else {
+        return <div className='to-be-disabled'>Instagram al momento non disponibile</div>;
+    }
     //return result;
 };
 
