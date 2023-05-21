@@ -1,3 +1,5 @@
+### /api/v1/products
+
 GET http://localhost:3000/api/v1/exams
 
 ###
