@@ -1,10 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import "./products.scss";
 
 function ProductTile (props) {
     const product = props.product;
+    const navigate = useNavigate();
 
     return <>
-        <div className="product-wrapper" key={product.id}>
+        <div className="product-wrapper" key={product._id}>
             <div className="product-inner">
                 <h2 className="name-mobile">{product.name}</h2>
                 <div className="image">
@@ -37,6 +39,12 @@ function ProductTile (props) {
                     {/* TODO: gestione solo se loggato */}
                     <div>
                         <button onClick={(product) => props.removeProduct(props.product._id)}>remove</button>
+                        <button onClick={() => {
+                            navigate({
+                                pathname: '/edit',
+                                search: '?id=' + product._id
+                            });
+                        }}>Edit</button>
                     </div>
                 </div>
             </div>

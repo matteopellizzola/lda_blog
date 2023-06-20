@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import "./edit.scss";
 import api from "../../services/api";
 
@@ -17,6 +18,22 @@ function Edit (props) {
     const apiUrl = process.env.REACT_APP_API_PUBLIC_URL || "http://localhost:5050";
 
     const [formData, setFormData] = useState(initialFormState);
+    const [searchParams] = useSearchParams();
+    const queryID = searchParams.get("id");
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+    async function getData () {
+        if (queryID) {
+            api.products.getProduct(queryID).then((data) => {
+                if (data) {
+                    setFormData(data);
+                }
+            });
+        }
+    }
 
     async function createData () {
         if (!formData.name || !formData.description) return;

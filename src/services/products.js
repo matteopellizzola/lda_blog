@@ -8,7 +8,17 @@ const products = {
                 .then((res) => {
                     resolve(res.json());
                 })
-                .catch(err => reject(err.response ? err.response.data.error : err.message)); //TODO: setup variables
+                .catch(err => reject(err.response ? err.response.data.error : err.message));
+        });
+    },
+
+    getProduct: (id) => {
+        return new Promise((resolve, reject) => {
+            fetch(apiUrl + `/products/${id}`)
+                .then((res) => {
+                    resolve(res.json());
+                })
+                .catch(err => reject(err.response ? err.response.data.error : err.message));
         });
     },
 
