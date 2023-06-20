@@ -9,7 +9,7 @@ function ProductTile (props) {
                 <h2 className="name-mobile">{product.name}</h2>
                 <div className="image">
                     <img src={product.img1} alt='' className='first-image' />
-                    <img src={product.img1} alt='' className='second-image' />
+                    <img src={product.img2} alt='' className='second-image' />
                 </div>
                 <div className="description-container">
                     <h2 className="name-desktop">{product.name}</h2>
@@ -34,9 +34,13 @@ function ProductTile (props) {
                             {product.typeOfCooking ? <div><span className="header">Cottura:</span> {product.typeOfCooking} </div> : ''}
                         </div>
                     </div>
+                    {/* TODO: gestione solo se loggato */}
+                    <div>
+                        <button onClick={(product) => props.removeProduct(props.product._id)}>remove</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div >
     </>;
 }
 

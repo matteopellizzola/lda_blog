@@ -74,6 +74,7 @@
       position: relative;
       max-width: 50%;
       height: 100%;
+      aspect-ratio: 602/482;
 
       @media #{$mobile},
       #{$tablet} {

@@ -1,0 +1,13 @@
+@import "../../global";
+
+input[type=text], textarea {
+    @include formInputs();
+    margin-top: 8px !important;
+
+}
+.three-input{
+    width: 31%;
+}
+.mid-input{
+    width: 48%;
+}
