@@ -18,7 +18,7 @@ function Edit (props) {
     const apiUrl = process.env.REACT_APP_API_PUBLIC_URL || "http://localhost:5050";
 
     const [formData, setFormData] = useState(initialFormState);
-    const [searchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
     const queryID = searchParams.get("id");
 
     useEffect(() => {
@@ -35,23 +35,39 @@ function Edit (props) {
         }
     }
 
+    async function uploadImage (file) {
+        api.images.uploadImage(file).then(res => {
+            console.log(res);
+            api.images.getUrl().then(res => {
+                console.log(res);
+                setFormData({ ...formData, 'img1': res.url });
+            }).catch((e) => alert(e));
+        }).catch(e => alert(e));
+    }
+
     async function createData () {
         if (!formData.name || !formData.description) return;
 
-        api.products.addProduct(formData).then((data) => {
-            if (data.acknowledged) {
-                console.log('done');
-                setFormData(initialFormState);
-                console.log(JSON.stringify(formData));
-            }
-        });
-    }
-
-    async function deleteProduct () {
-        api.products.removeProduct('6491b926e0326cd3ff163183').then((data) => {
-            console.log(data);
-            //setProducts(data);
-        });
+        if (!queryID) {
+            api.products.addProduct(formData).then((data) => {
+                if (data.acknowledged) {
+                    console.log('done');
+                    setFormData(initialFormState);
+                    console.log(JSON.stringify(formData));
+                }
+            });
+        } else {
+            delete formData._id;
+            api.products.editProduct(formData, queryID).then((data) => {
+                if (data.acknowledged) {
+                    console.log('done');
+                    setFormData(initialFormState);
+                    searchParams.delete('id');
+                    setSearchParams(searchParams);
+                    console.log(JSON.stringify(formData));
+                }
+            });
+        }
     }
 
     // async function onChange (e, field) {
@@ -92,6 +108,7 @@ function Edit (props) {
                     <input type='checkbox' id='onlineFlag' className='mx-2'
                         onChange={e => setFormData({ ...formData, 'online': e.target.checked })}
                         placeholder="online flag"
+                        checked={formData.online}
                         value={formData.online}
                     />
                     <label htmlFor="#onlineFlag">Online Product
@@ -156,10 +173,12 @@ function Edit (props) {
                         <label htmlFor="#img1">First image</label>
                         <input id='img1'
                             type='text'
-                            onChange={e => setFormData({ ...formData, 'img1': e.target.value })}
+                            //onChange={e => uploadImage(e.target.files[0])}
+                            //onChange={e => setFormData({ ...formData, 'img1': e.target.value })}
                             placeholder="Insert url"
                             value={formData.img1}
                         />
+                        <button id="upload_widget">Upload files</button>
                     </div>
                     <div className='mid-input'>
                         <label htmlFor="#img2">Second image</label>
@@ -175,10 +194,8 @@ function Edit (props) {
                 {/* <input type='file' onChange={(e) => onChange(e, "img1")} placeholder="Primary Image" />
                 <input type='file' onChange={(e) => onChange(e, "img2")} placeholder="Primary Image" /> */}
 
-                <button className="button btn-submit btn btn-primary" onClick={createData}>Create Note</button>
+                <button className="button btn-submit btn btn-primary" onClick={createData}>Submit</button>
             </div>
-
-            <button onClick={deleteProduct}>delete something</button>
 
             {/* {todoRecord.map((e) => <ProductTile product={e} getData={getData} user={user} formData={formData} setFormData={setFormData} />)} */}
         </>

@@ -1,7 +1,9 @@
 import products from './products';
+import images from './images';
 
 const api = {
-    products
+    products,
+    images
 };
 
 export default api;
