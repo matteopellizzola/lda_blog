@@ -46,6 +46,10 @@ var InstaFeed = function InstaFeed (props) {
                     setIsLoading(true);
                     fetch(url)
                         .then(function (response) {
+                            if (!response.ok) {
+                                setIsError(true);
+                            }
+
                             return response.json();
                         })
                         .then(function (result) {
@@ -89,7 +93,7 @@ var InstaFeed = function InstaFeed (props) {
                 <div> Loading... </div>
             ) : isError ? (
                 <div>
-                    <p className="errorMessage"> the access token is not valid</p>
+                    <p className="errorMessage d-none"> the access token is not valid</p>
                 </div>
             ) : (
                 <div className={styles.instagramItems} ref={placeholder}>
