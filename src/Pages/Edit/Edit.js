@@ -35,13 +35,13 @@ function Edit (props) {
         }
     }
 
-    async function uploadImage (file) {
+    async function uploadImage (file, imageType) {
         api.images.uploadImage(file).then(res => {
             console.log(res);
-            api.images.getUrl().then(res => {
-                console.log(res);
-                setFormData({ ...formData, 'img1': res.url });
-            }).catch((e) => alert(e));
+            console.log(imageType);
+            if (res.secure_url) {
+                setFormData({ ...formData, [imageType]: res.secure_url });
+            }
         }).catch(e => alert(e));
     }
 
@@ -69,27 +69,6 @@ function Edit (props) {
             });
         }
     }
-
-    // async function onChange (e, field) {
-    //     if (!e.target.files[0]) return;
-    //     const file = e.target.files[0];
-    //     switch (field) {
-    //         case "img1":
-    //             setFormData({ ...formData, img1: file.name });
-    //             break;
-    //         case "img2":
-    //             setFormData({ ...formData, img2: file.name });
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    //     await Storage.put(file.name, file);
-    //     getData();
-    // }
-
-    // useEffect(() => {
-    //     getData();
-    // }, []);
 
     return (
         <>
@@ -170,18 +149,26 @@ function Edit (props) {
 
                 <div className='form-row d-flex justify-content-between'>
                     <div className='mid-input'>
-                        <label htmlFor="#img1">First image</label>
+                        <label htmlFor="#img1">First image, select file to upload or paste url</label>
+                        <input
+                            type='file'
+                            onChange={e => uploadImage(e.target.files[0], 'img1')}
+                            placeholder="Insert url"
+                        />
                         <input id='img1'
                             type='text'
-                            //onChange={e => uploadImage(e.target.files[0])}
-                            //onChange={e => setFormData({ ...formData, 'img1': e.target.value })}
+                            onChange={e => setFormData({ ...formData, 'img1': e.target.value })}
                             placeholder="Insert url"
                             value={formData.img1}
                         />
-                        <button id="upload_widget">Upload files</button>
                     </div>
                     <div className='mid-input'>
                         <label htmlFor="#img2">Second image</label>
+                        <input
+                            type='file'
+                            onChange={e => uploadImage(e.target.files[0], 'img2')}
+                            placeholder="Insert url"
+                        />
                         <input id='img2'
                             type='text'
                             onChange={e => setFormData({ ...formData, 'img2': e.target.value })}
@@ -194,7 +181,7 @@ function Edit (props) {
                 {/* <input type='file' onChange={(e) => onChange(e, "img1")} placeholder="Primary Image" />
                 <input type='file' onChange={(e) => onChange(e, "img2")} placeholder="Primary Image" /> */}
 
-                <button className="button btn-submit btn btn-primary" onClick={createData}>Submit</button>
+                <button className="button btn-submit btn btn-primary" onClick={createData}>Save</button>
             </div>
 
             {/* {todoRecord.map((e) => <ProductTile product={e} getData={getData} user={user} formData={formData} setFormData={setFormData} />)} */}
