@@ -9,6 +9,7 @@ import About from './Pages/about/About';
 import Home from './Pages/home/Home';
 import Products from './Pages/Products/Products';
 import Edit from './Pages/Edit/Edit';
+import Edit2 from './Pages/Edit/Edit2';
 
 function App () {
 
@@ -21,6 +22,7 @@ function App () {
                     <Route path="/contacts" element={<Contact />}></Route>
                     <Route path="/products" element={<Products />}></Route>
                     <Route path="/edit" element={<Edit />}></Route>
+                    <Route path="/edit2" element={<Edit2 />}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>
