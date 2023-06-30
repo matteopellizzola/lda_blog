@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
+
 import "./products.scss";
 
 function ProductTile (props) {
@@ -10,8 +12,12 @@ function ProductTile (props) {
             <div className="product-inner">
                 <h2 className="name-mobile">{product.name}</h2>
                 <div className="image">
-                    <img src={product.img1} alt='' className='first-image' />
-                    <img src={product.img2} alt='' className='second-image' />
+                    <LazyLoad offset={300}>
+                        <img src={product.img1} alt='' className='first-image' />
+                    </LazyLoad>
+                    <LazyLoad offset={300}>
+                        <img src={product.img2} alt='' className='second-image' />
+                    </LazyLoad>
                 </div>
                 <div className="description-container">
                     <h2 className="name-desktop">{product.name}</h2>

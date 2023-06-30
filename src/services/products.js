@@ -1,4 +1,4 @@
-const apiUrl = process.env.REACT_APP_API_PUBLIC_URL || "http://localhost:5050";
+const apiUrl = process.env.REACT_APP_API_PUBLIC_URL;
 
 const products = {
 

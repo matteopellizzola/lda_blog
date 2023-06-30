@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 //import loadProducts from "../../database/loadProducts";
 import ProductTile from "./ProductTile";
 import api from "../../services/api";
+import Spinner from "../components/Spinner";
 
 function Products (props) {
     //const products = loadProducts();
     const [products, setProducts] = useState([]);
-    const apiUrl = process.env.REACT_APP_API_PUBLIC_URL || "http://localhost:5050";
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        setIsLoading(true);
         getProducts();
     }, []);
 
@@ -16,6 +18,7 @@ function Products (props) {
         api.products.loadProducts().then((data) => {
             console.log(data);
             setProducts(data);
+            setIsLoading(false);
         });
     }
 
@@ -26,7 +29,7 @@ function Products (props) {
     };
 
     return <>
-        {products ? products.map(product => <ProductTile product={product} removeProduct={removeProduct} />) : <div>no data</div>}
+        {products && !isLoading ? products.map(product => <ProductTile product={product} removeProduct={removeProduct} />) : <Spinner />}
     </>;
 }
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 const apiUrl = process.env.REACT_APP_API_PUBLIC_URL || "http://localhost:5050";
 
 function Edit2 () {
-    const [image, setImage] = useState({});
+    //const [image, setImage] = useState({});
     const [img1Path, setImg1Path] = useState('');
 
     async function submit (image) {
