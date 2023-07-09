@@ -20,7 +20,12 @@ body {
 
   .main-content {
     @include maxWidth();
-    margin-top: 60px;
+    margin-top: 115px;
+
+    @media #{$tablet},
+    #{$mobile} {
+      margin-top: 80px;
+    }
   }
 
   @media #{$desktop},

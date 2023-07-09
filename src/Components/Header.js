@@ -6,6 +6,8 @@ import { useState } from "react";
 import loadNavigation from "../database/loadNavigation";
 import HeaderMenuLink from "./HeaderMenuLink";
 
+import Logo from "../static/logo.png";
+
 const menuItems = loadNavigation();
 
 function Header (props) {
@@ -25,8 +27,8 @@ function Header (props) {
         <div className="menu-header-desktop">
             <div className="header-wrapper">
                 <div className="logo">
-                    <Link to="/" onClick={() => setPage("home")}>
-                        LOGO
+                    <Link to="/" onClick={() => setPage("home")} key="/">
+                        <img src={Logo} alt="" />
                     </Link>
                 </div>
                 <div className="menu-item">
@@ -44,8 +46,8 @@ function Header (props) {
                     </div>
                     <div className="mobile-logo">
                         <h1>
-                            <Link to="/">
-                                <i className="icon-home"></i>
+                            <Link to="/" onClick={() => setPage("home")} key="/m">
+                                <img src={Logo} alt="" />
                             </Link>
                         </h1>
                     </div>
