@@ -16,12 +16,14 @@ function ProductTile (props) {
                     <img src={product.img2} alt='' className='second-image' />
                 </div>
                 <div className="description-container">
-                    <h2 className="name-desktop">{product.name}</h2>
-                    <div className="description">{product.description ? product.description : ''}</div>
+                    <div>
+                        <h2 className="name-desktop">{product.name}</h2>
+                        <div className="description">{product.description ? product.description : ''}</div>
 
-                    <div className="ingredients">
-                        <div className="header">Ingredienti</div>
-                        <div>{product.ingredients}</div>
+                        <div className="ingredients">
+                            <div className="header">Ingredienti</div>
+                            <div>{product.ingredients}</div>
+                        </div>
                     </div>
 
                     <div className="product-footer">
