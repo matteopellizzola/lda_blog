@@ -1,13 +1,34 @@
 @import "../../global";
 
-input[type=text], textarea {
+input[type=text], textarea, input[type=file] {
     @include formInputs();
     margin-top: 8px !important;
 
 }
-.three-input{
-    width: 31%;
+
+button {
+    background-color: $orange-color !important;
+    @include formInputs();
 }
-.mid-input{
-    width: 48%;
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+
+    .three-input{
+        width: 31%;
+    }
+    .mid-input{
+        width: 48%;
+    }
+}
+
+@media #{$mobile}{
+    .form-row{
+        display: block;
+
+        .three-input, .mid-input{
+            width: 100%;
+        }
+    }
 }

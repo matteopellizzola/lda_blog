@@ -74,7 +74,7 @@ function Edit (props) {
             <hr />
             <div className="form">
                 <h2>Insert new product</h2>
-                <div className='form-row'>
+                <div className='form-row d-block'>
                     <label htmlFor="#productName">Product Name</label>
                     <input type='text' id='productName'
                         onChange={e => setFormData({ ...formData, 'name': e.target.value })}
@@ -82,7 +82,7 @@ function Edit (props) {
                         value={formData.name}
                     />
                 </div>
-                <div className='form-row mb-2'>
+                <div className='form-row mb-2 d-block'>
                     <input type='checkbox' id='onlineFlag' className='mx-2'
                         onChange={e => setFormData({ ...formData, 'online': e.target.checked })}
                         placeholder="online flag"
@@ -116,7 +116,7 @@ function Edit (props) {
                         />
                     </div>
                 </div>
-                <div className='form-row d-flex justify-content-between'>
+                <div className='form-row'>
                     <div className='three-input'>
                         <label htmlFor="#bakingDay">Baking Day</label>
                         <input id='bakingDay'
@@ -146,9 +146,10 @@ function Edit (props) {
                     </div>
                 </div>
 
-                <div className='form-row d-flex justify-content-between'>
+                <div className='form-row'>
                     <div className='mid-input'>
                         <label htmlFor="#img1">First image, select file to upload or paste url</label>
+                        <br/>
                         <input
                             type='file'
                             onChange={e => uploadImage(e.target.files[0], 'img1')}
@@ -162,7 +163,8 @@ function Edit (props) {
                         />
                     </div>
                     <div className='mid-input'>
-                        <label htmlFor="#img2">Second image</label>
+                        <label htmlFor="#img2">Second image, select file to upload or paste url</label>
+                        <br/>
                         <input
                             type='file'
                             onChange={e => uploadImage(e.target.files[0], 'img2')}
@@ -180,7 +182,7 @@ function Edit (props) {
                 {/* <input type='file' onChange={(e) => onChange(e, "img1")} placeholder="Primary Image" />
                 <input type='file' onChange={(e) => onChange(e, "img2")} placeholder="Primary Image" /> */}
 
-                <button className="button btn-submit btn btn-primary" onClick={createData}>Save</button>
+                <button className="button btn-submit btn" onClick={createData}>Save</button>
             </div>
 
             {/* {todoRecord.map((e) => <ProductTile product={e} getData={getData} user={user} formData={formData} setFormData={setFormData} />)} */}
