@@ -1,6 +1,9 @@
 @import "../../global";
 
-input[type=text], textarea, input[type=file] {
+input[type=text],
+textarea,
+input[type=file],
+input[type=password] {
     @include formInputs();
     margin-top: 8px !important;
 
@@ -15,19 +18,21 @@ button {
     display: flex;
     justify-content: space-between;
 
-    .three-input{
+    .three-input {
         width: 31%;
     }
-    .mid-input{
+
+    .mid-input {
         width: 48%;
     }
 }
 
-@media #{$mobile}{
-    .form-row{
+@media #{$mobile} {
+    .form-row {
         display: block;
 
-        .three-input, .mid-input{
+        .three-input,
+        .mid-input {
             width: 100%;
         }
     }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import "./edit.scss";
 import api from "../../services/api";
+
 
 function Edit (props) {
     const initialFormState = {
@@ -19,8 +20,18 @@ function Edit (props) {
     const [formData, setFormData] = useState(initialFormState);
     const [searchParams, setSearchParams] = useSearchParams();
     const queryID = searchParams.get("id");
+    const navigate = useNavigate();
+
 
     useEffect(() => {
+        api.users.isLoggedIn().then((data) => {
+            if (!data || data.error) {
+                navigate({
+                    pathname: "/login"
+                });
+            }
+        });
+
         getData();
     }, []);
 
@@ -149,7 +160,7 @@ function Edit (props) {
                 <div className='form-row'>
                     <div className='mid-input'>
                         <label htmlFor="#img1">First image, select file to upload or paste url</label>
-                        <br/>
+                        <br />
                         <input
                             type='file'
                             onChange={e => uploadImage(e.target.files[0], 'img1')}
@@ -164,7 +175,7 @@ function Edit (props) {
                     </div>
                     <div className='mid-input'>
                         <label htmlFor="#img2">Second image, select file to upload or paste url</label>
-                        <br/>
+                        <br />
                         <input
                             type='file'
                             onChange={e => uploadImage(e.target.files[0], 'img2')}
