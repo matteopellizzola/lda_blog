@@ -18,16 +18,18 @@ $grid-breakpoints: (
   md: 1024px,
   lg: 1440px,
   xl: 1920px,
-) !default;
+  ) !default;
 
 $container-max-widths: (
   md: 1024px,
   lg: 1440px,
   xl: 1920px,
-) !default;
+  ) !default;
 
-$regularFontFamily: "Nunito Script", cursive;
-$boldFontFamily: "Oleo Script", cursive;
+$regularFontFamily: "Nunito Script",
+  cursive;
+$boldFontFamily: "Oleo Script",
+  cursive;
 
 $dark-base-color: #ffe0b0;
 $base-text-color: #14212b;
@@ -36,3 +38,8 @@ $base-background-color: #faf1e5;
 $base-background-color-transparent: #faf1e56c;
 $orange-color: #faba5c;
 $dark-orange-color: #99610e;
+
+
+//transitions
+$transition-duration: all 0.2s cubic-bezier(0.4, 1, 0.6, 1
+);

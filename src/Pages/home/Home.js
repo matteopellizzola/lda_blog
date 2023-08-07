@@ -37,23 +37,23 @@ function Home (props) {
                 autoplay={{ delay: 3000 }}
             >
                 <SwiperSlide>
-                    <img src="https://picsum.photos/1920/1090" alt='' className='desktop-slide' />
+                    <img src="https://picsum.photos/1920/1090" alt='slide-img' className='desktop-slide' />
                     {/* <img src="https://picsum.photos/1080/1920" alt='' className='mobile-slide'/> TODO:*/}
                 </SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/1921/1089" alt='' /></SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/1922/1090" alt='' /></SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/1920/1089" alt='' /></SwiperSlide>
+                <SwiperSlide><img src="https://picsum.photos/1921/1089" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://picsum.photos/1922/1090" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://picsum.photos/1920/1089" alt='slide-img' /></SwiperSlide>
             </Swiper>
         </div>
         <div className="dual-boxes">
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1800/1200" alt='' />
+                <img src="https://picsum.photos/1800/1200" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
             </div>
             <div className='box-container' onClick={() => handleClick('menu')}>
-                <img src="https://picsum.photos/1801/1201" alt='' />
+                <img src="https://picsum.photos/1801/1201" alt='slide-img' />
                 <span className='cta-box'>
                     altro testo di esempio
                 </span>
@@ -62,14 +62,14 @@ function Home (props) {
 
         <div className='dual-boxes'>
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1801/1200" alt='' />
+                <img src="https://picsum.photos/1801/1200" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
             </div>
 
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1800/1201" alt='' />
+                <img src="https://picsum.photos/1800/1201" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
@@ -78,7 +78,7 @@ function Home (props) {
 
         <div className='mono-box'>
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1801/1200" alt='' />
+                <img src="https://picsum.photos/1801/1200" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
@@ -97,4 +97,4 @@ function Home (props) {
 
 export default Home;
 
-   //https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=IGQVJYdXVuWFpGci1VbXlGcXZAwR3JLbGd0Wi1FSXd2cmZAOT0J3djVnMzUwbEFCNUpXLS1vcVM3ZA3cyT3cyd1ZAlZAXU4SVJtVFdUdmJuTF8wc2VvMnh2YlUwQnoxZAmZA1cy1mdTZAEV1VLSk85dlhsTjlMWgZDZD
+//https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=IGQVJYdXVuWFpGci1VbXlGcXZAwR3JLbGd0Wi1FSXd2cmZAOT0J3djVnMzUwbEFCNUpXLS1vcVM3ZA3cyT3cyd1ZAlZAXU4SVJtVFdUdmJuTF8wc2VvMnh2YlUwQnoxZAmZA1cy1mdTZAEV1VLSk85dlhsTjlMWgZDZD
