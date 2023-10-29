@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import "./edit.scss";
 import api from "../../services/api";
+import Spinner from "../components/Spinner";
 
 
 function Edit (props) {
@@ -18,6 +19,7 @@ function Edit (props) {
     };
 
     const [formData, setFormData] = useState(initialFormState);
+    const [isLoading, setIsLoading] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const queryID = searchParams.get("id");
     const navigate = useNavigate();
@@ -37,29 +39,39 @@ function Edit (props) {
 
     async function getData () {
         if (queryID) {
+            setIsLoading(true);
             api.products.getProduct(queryID).then((data) => {
                 if (data) {
                     setFormData(data);
+                    setIsLoading(false);
                 }
             });
         }
     }
 
     async function uploadImage (file, imageType) {
+        setIsLoading(true);
         api.images.uploadImage(file).then(res => {
             console.log(res);
             console.log(imageType);
             if (res.secure_url) {
                 setFormData({ ...formData, [imageType]: res.secure_url });
+                setIsLoading(false);
             }
-        }).catch(e => alert(e));
+        }).catch(e => {
+            setIsLoading(false);
+            alert(e);
+        });
     }
 
     async function createData () {
         if (!formData.name || !formData.description) return;
 
+        setIsLoading(true);
+
         if (!queryID) {
             api.products.addProduct(formData).then((data) => {
+                setIsLoading(false);
                 if (data.acknowledged) {
                     console.log('done');
                     setFormData(initialFormState);
@@ -69,6 +81,7 @@ function Edit (props) {
         } else {
             delete formData._id;
             api.products.editProduct(formData, queryID).then((data) => {
+                setIsLoading(false);
                 if (data.acknowledged) {
                     console.log('done');
                     setFormData(initialFormState);
@@ -82,6 +95,7 @@ function Edit (props) {
 
     return (
         <>
+            {isLoading && <div className='spinner-loading-form'><Spinner /></div>}
             <hr />
             <div className="form">
                 <h2>Insert new product</h2>

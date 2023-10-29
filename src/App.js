@@ -25,6 +25,7 @@ function App () {
                     <Route path="/edit" element={<Edit />}></Route>
                     <Route path="/edit2" element={<Edit2 />}></Route>
                     <Route path="/login" element={<Login />}></Route>
+                    <Route path="/*" element={<Home />}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>

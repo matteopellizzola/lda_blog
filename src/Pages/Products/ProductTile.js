@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import LazyLoad from 'react-lazy-load';
 
 import "./products.scss";
 
@@ -8,12 +7,12 @@ function ProductTile (props) {
     const navigate = useNavigate();
 
     return <>
-        <div className="product-wrapper" key={product._id}>
+        <div className="product-wrapper">
             <div className="product-inner">
                 <h2 className="name-mobile">{product.name}</h2>
                 <div className="image">
-                    <img src={product.img1} alt='' className='first-image' />
-                    <img src={product.img2} alt='' className='second-image' />
+                    <img src={product.img1} alt={product.name + 'image'} className='first-image' />
+                    <img src={product.img2} alt={product.name + 'image'} className='second-image' />
                 </div>
                 <div className="description-container">
                     <div>
@@ -40,16 +39,17 @@ function ProductTile (props) {
                             {product.typeOfCooking ? <div><span className="header">Cottura:</span> {product.typeOfCooking} </div> : ''}
                         </div>
                     </div>
-                    {/* TODO: gestione solo se loggato */}
-                    <div>
-                        <button onClick={(product) => props.removeProduct(props.product._id)}>remove</button>
-                        <button onClick={() => {
-                            navigate({
-                                pathname: '/edit',
-                                search: '?id=' + product._id
-                            });
-                        }}>Edit</button>
-                    </div>
+                    {props.isLoggedIn &&
+                        <div>
+                            <button onClick={(product) => props.removeProduct(props.product._id)}>remove</button>
+                            <button onClick={() => {
+                                navigate({
+                                    pathname: '/edit',
+                                    search: '?id=' + product._id
+                                });
+                            }}>Edit</button>
+                        </div>
+                    }
                 </div>
             </div>
         </div >

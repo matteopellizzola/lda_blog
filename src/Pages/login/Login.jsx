@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import api from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import MpPopUp from "../components/MpPopUp";
 
 
 function Login (props) {
     const navigate = useNavigate();
+    const [popUp, setPopUp] = useState(false);
 
     const [formData, setFormData] = useState({
         username: '',
@@ -21,13 +23,12 @@ function Login (props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
 
         if (formData.username.length > 0 && formData.password.length > 0) {
             api.users.login(formData).then((data) => {
                 console.log(data);
                 if (data.error) {
-                    console.log(data.error);
+                    setPopUp(true);
                 } else {
                     navigate({
                         pathname: "/edit"
@@ -35,7 +36,7 @@ function Login (props) {
                 }
             });
         } else {
-            alert('invalid email or password'); //@todo gestire con popup
+            setPopUp(true);
         }
     };
 
@@ -57,7 +58,10 @@ function Login (props) {
                 <button type="submit">Login</button>
             </div>
         </form>
+
+        {popUp && <MpPopUp values={['invalid Username or Password']} setPopUp={setPopUp} />}
     </>;
 }
+
 
 export default Login;
