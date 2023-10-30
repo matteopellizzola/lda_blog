@@ -5,7 +5,7 @@ import "./about.scss";
 
 const biographyData = loadBiography();
 
-const ig_token = 'IGQVJXOHR2QUFTZA3dzSWxMRUR1NG4tOW1iWm1rMkY1dzJEa3lMN1ZAXQTJwRTU5RzFYUlhWSm5jMVE1LXREYlNvV0pnLW9UYzIwejJZANXUxamt3NDZANay1XWXNWalU5N0tSZAkdzalJReEh6RFp2eVZASWgZDZD';
+const ig_token = process.env.REACT_APP_API_INSTAGRAM_TOKEN;
 
 function About (props) {
     return <>

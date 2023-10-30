@@ -9,7 +9,8 @@
   }
 }
 
-.dual-boxes, .mono-box {
+.dual-boxes,
+.mono-box {
   @media #{$mobile} {
     display: block;
     margin-left: auto;

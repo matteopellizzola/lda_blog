@@ -22,7 +22,7 @@ function Home (props) {
         navigate('/' + path);
     };
 
-    const ig_token = 'IGQVJXOHR2QUFTZA3dzSWxMRUR1NG4tOW1iWm1rMkY1dzJEa3lMN1ZAXQTJwRTU5RzFYUlhWSm5jMVE1LXREYlNvV0pnLW9UYzIwejJZANXUxamt3NDZANay1XWXNWalU5N0tSZAkdzalJReEh6RFp2eVZASWgZDZD';
+    const ig_token = process.env.REACT_APP_API_INSTAGRAM_TOKEN;
 
     return <>
         <div className='main-slider'>
@@ -37,23 +37,23 @@ function Home (props) {
                 autoplay={{ delay: 3000 }}
             >
                 <SwiperSlide>
-                    <img src="https://picsum.photos/1920/1090" alt='slide-img' className='desktop-slide' />
+                    <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' className='desktop-slide' />
                     {/* <img src="https://picsum.photos/1080/1920" alt='' className='mobile-slide'/> TODO:*/}
                 </SwiperSlide>
                 <SwiperSlide><img src="https://picsum.photos/1921/1089" alt='slide-img' /></SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/1922/1090" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' /></SwiperSlide>
                 <SwiperSlide><img src="https://picsum.photos/1920/1089" alt='slide-img' /></SwiperSlide>
             </Swiper>
         </div>
         <div className="dual-boxes">
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1800/1200" alt='slide-img' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1690297373/z4avm70uyslfxzgonzca.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
             </div>
             <div className='box-container' onClick={() => handleClick('menu')}>
-                <img src="https://picsum.photos/1801/1201" alt='slide-img' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     altro testo di esempio
                 </span>
@@ -62,14 +62,14 @@ function Home (props) {
 
         <div className='dual-boxes'>
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1801/1200" alt='slide-img' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1690297358/ovrjeqmvdy5tmswnm2sb.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
             </div>
 
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1800/1201" alt='slide-img' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1690297373/z4avm70uyslfxzgonzca.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
