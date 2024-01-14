@@ -9,7 +9,7 @@ const schedules = loadSchedule();
 
 function Contact (props) {
     return <>
-            <div className="text-center contacts-wrapper">
+        <div className="text-center contacts-wrapper padding-logo-top px-3">
 
             <Row>
                 <Col xs={12} sm={6}>
@@ -23,17 +23,17 @@ function Contact (props) {
                             <div className="cta-contacts">
                                 Sono in laboratorio a creare leccornie, ma puoi sempre mandare una mail, oppure passare a trovarmi
                             </div>
-                             <hr />
+                            <hr />
                             <div className="mail-phone-wrapper">
-                                    {/*TODO: cambiare con cose reali*/ }
+                                {/*TODO: cambiare con cose reali*/}
                                 <a href="mailto:matteo.pellizzola@gmail.com" className="btn btn-outline-dark"> <i className="icon-mail"></i>  Scrivimi una mail</a>
 
                                 <a href="https://wa.me/+393315620020" className="btn btn-outline-dark" rel="noreferrer" target="_blank"><i className="icon-phone"></i> mandami un messaggio</a>
                             </div>
 
                         </Col>
-                        </Row>
-                        <hr />
+                    </Row>
+                    <hr />
                     <Row className="opening-hours">
                         <Col xs={12}>Orari</Col>
 
@@ -47,7 +47,7 @@ function Contact (props) {
             <Row className="bottom-contacts">
                 <Col>
                 </Col>
-                    <NewsLetterForm />
+                <NewsLetterForm />
             </Row>
 
         </div>

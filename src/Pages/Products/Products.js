@@ -29,7 +29,7 @@ function Products (props) {
     };
 
     return <>
-        {products && !isLoading ? products.map(product => <ProductTile product={product} removeProduct={removeProduct} />) : <Spinner />}
+        {products && !isLoading ? products.map(product => <ProductTile product={product} removeProduct={removeProduct} />) : <div className="padding-logo-top"><Spinner /></div>}
     </>;
 }
 

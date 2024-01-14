@@ -26,18 +26,28 @@ $container-max-widths: (
   xl: 1920px,
   ) !default;
 
-$regularFontFamily: "Nunito Script",
+$regularFontFamily: "Fira Sans",
   cursive;
-$boldFontFamily: "Oleo Script",
+$boldFontFamily: "Fira Sans",
   cursive;
 
-$dark-base-color: #ffe0b0;
-$base-text-color: #14212b;
+// $dark-base-color: #ffe0b0;
+// $base-text-color: #14212b;
+// $base-gray-color: #26333c;
+// $base-background-color: #faf1e5;
+// $base-background-color-transparent: #faf1e56c;
+// $orange-color: #faba5c;
+// $dark-orange-color: #99610e;
+
+$dark-base-color: #eab861;
+$base-text-color: #401d13; //#3e4b43;
 $base-gray-color: #26333c;
-$base-background-color: #faf1e5;
+$base-background-color: #F7F4F3;
+$white: #F7F4F3;
 $base-background-color-transparent: #faf1e56c;
-$orange-color: #faba5c;
-$dark-orange-color: #99610e;
+$orange-color: #D98324;
+$dark-orange-color: #502416;
+$logo-color: #401d13;
 
 
 //transitions

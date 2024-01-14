@@ -8,7 +8,7 @@ const biographyData = loadBiography();
 const ig_token = process.env.REACT_APP_API_INSTAGRAM_TOKEN;
 
 function About (props) {
-    return <>
+    return <div className="padding-logo-top px-3">
         <h1 className="text-center">
             Chi sono
         </h1>
@@ -22,7 +22,7 @@ function About (props) {
         <div className="instagram-container">
             <InstaFeed token={ig_token} counter="12" />
         </div>
-    </>;
+    </div>;
 }
 
 export default About;

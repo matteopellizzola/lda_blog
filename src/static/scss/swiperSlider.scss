@@ -4,11 +4,11 @@ span.swiper-pagination-bullet {
   border-radius: 0;
 
   &.swiper-pagination-bullet-active {
-    background-color: $orange-color;
+    background-color: $logo-color;
   }
 }
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
-  color: $orange-color;
+  color: $logo-color;
 }

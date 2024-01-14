@@ -21,13 +21,12 @@
   justify-content: space-between;
 
   .box-container {
-    max-width: 49%;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    flex: 0 0 auto;
+    width: 50%;
     position: relative;
 
     @media #{$mobile} {
-      max-width: 100%;
+      width: 100%;
     }
 
     &::after {
@@ -64,7 +63,8 @@
 
     img {
       max-width: 100%;
-      height: auto;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
     }
 
@@ -84,5 +84,6 @@
 .mono-box {
   .box-container {
     max-width: 100%;
+    width: 100%;
   }
 }
