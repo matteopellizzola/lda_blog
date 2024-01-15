@@ -19,18 +19,22 @@ function Edit (props) {
     };
 
     const [formData, setFormData] = useState(initialFormState);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [searchParams, setSearchParams] = useSearchParams();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const queryID = searchParams.get("id");
     const navigate = useNavigate();
 
 
     useEffect(() => {
-        api.users.isLoggedIn().then((data) => {
-            if (!data || data.error) {
+        api.users.isLoggedIn().then((status) => {
+            if (status == 401) {
                 navigate({
                     pathname: "/login"
                 });
+            } else {
+                setIsLoggedIn(true);
+                setIsLoading(false);
             }
         });
 

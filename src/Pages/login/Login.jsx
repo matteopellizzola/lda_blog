@@ -27,7 +27,7 @@ function Login (props) {
         if (formData.username.length > 0 && formData.password.length > 0) {
             api.users.login(formData).then((data) => {
                 console.log(data);
-                if (data.error) {
+                if (!data.success) {
                     setPopUp(true);
                 } else {
                     navigate({
