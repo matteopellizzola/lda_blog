@@ -71,6 +71,8 @@ function Edit (props) {
     async function createData () {
         if (!formData.name || !formData.description) return;
 
+        if (!isLoggedIn) return;
+
         setIsLoading(true);
 
         if (!queryID) {

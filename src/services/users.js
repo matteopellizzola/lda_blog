@@ -31,7 +31,7 @@ const users = {
 
     isLoggedIn: () => {
         return new Promise((resolve, reject) => {
-            fetch(apiUrl + "/users/profile", {
+            fetch(apiUrl + "/users/loggedIn", {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             })
                 .then((res) => {
