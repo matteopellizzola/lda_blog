@@ -14,6 +14,8 @@ import { useNavigate } from 'react-router-dom';
 
 import 'react-ig-feed/dist/index.css';
 import InstaFeed from '../../Components/InstaFeed';
+import DualBoxesComponent from '../components/DualBoxesComponent';
+import TextAndImageComponent from '../components/TextAndImageComponent';
 
 function Home (props) {
 
@@ -45,6 +47,16 @@ function Home (props) {
                 <SwiperSlide><img src="https://picsum.photos/1920/1089" alt='slide-img' /></SwiperSlide>
             </Swiper>
         </div>
+
+        <TextAndImageComponent
+            title={"Laboratorio di Antonella"}
+            description={"Benvenuti nel mio laboratorio, dove c'è profumo di buono. Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum."}
+            image={"https://res.cloudinary.com/dbdivqgja/image/upload/v170543632/home/TextImageComponent.jpg"}
+            link={"products"}
+            handleClick={handleClick}
+            reverse={false}
+        />
+
         <div className="dual-boxes">
             <div className='box-container' onClick={() => handleClick('about')}>
                 <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1690297373/z4avm70uyslfxzgonzca.jpg" alt='slide-img' />
@@ -75,6 +87,25 @@ function Home (props) {
                 </span>
             </div>
         </div>
+
+        <TextAndImageComponent
+            title={"Laboratorio di altro"}
+            description={"Benvenuti nel mio laboratorio, dove c'è profumo di buono. Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum."}
+            image={"https://res.cloudinary.com/dbdivqgja/image/upload/v1705439161/home/web-11_kfmcvu.jpg"}
+            link={"about"}
+            handleClick={handleClick}
+            reverse={true}
+        />
+
+        <DualBoxesComponent
+            leftTitle={"This is an example"}
+            rightTitle={"This is another example"}
+            leftLink={'about'}
+            rightLink={'about'}
+            handleClick={handleClick}
+            leftImage={'https://res.cloudinary.com/dbdivqgja/image/upload/v1690297358/ovrjeqmvdy5tmswnm2sb.jpg'}
+            rightImage={'https://res.cloudinary.com/dbdivqgja/image/upload/v1705356150/matteoImmagine.png'}
+        />
 
         <div className='mono-box'>
             <div className='box-container' onClick={() => handleClick('about')}>
