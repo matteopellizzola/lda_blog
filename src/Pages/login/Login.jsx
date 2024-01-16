@@ -41,23 +41,25 @@ function Login (props) {
     };
 
     return <>
-        <form action="" onSubmit={(e) => handleSubmit(e)}>
-            <div className="form row">
-                <label htmlFor="username">
-                    username*
-                    <input type="text" name="username" onChange={(e) => handleFormData(e.target.value, 'username')} />
-                </label>
-            </div>
-            <div className="form row">
-                <label htmlFor="password">
-                    Password*
-                    <input type="password" name="password" onChange={(e) => handleFormData(e.target.value, 'password')} />
-                </label>
-            </div>
-            <div className="form-row">
-                <button type="submit">Login</button>
-            </div>
-        </form>
+        <div className="padding-logo-top">
+            <form action="" onSubmit={(e) => handleSubmit(e)}>
+                <div className="form row">
+                    <label htmlFor="username">
+                        username*
+                        <input type="text" name="username" onChange={(e) => handleFormData(e.target.value, 'username')} />
+                    </label>
+                </div>
+                <div className="form row">
+                    <label htmlFor="password">
+                        Password*
+                        <input type="password" name="password" onChange={(e) => handleFormData(e.target.value, 'password')} />
+                    </label>
+                </div>
+                <div className="form-row">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
 
         {popUp && <MpPopUp values={['invalid Username or Password']} setPopUp={setPopUp} />}
     </>;

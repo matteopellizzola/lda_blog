@@ -100,7 +100,7 @@ function Edit (props) {
     }
 
     return (
-        <>
+        <div className='px-3'>
             {isLoading && <div className='spinner-loading-form'><Spinner /></div>}
             <hr />
             <div className="form">
@@ -217,7 +217,7 @@ function Edit (props) {
             </div>
 
             {/* {todoRecord.map((e) => <ProductTile product={e} getData={getData} user={user} formData={formData} setFormData={setFormData} />)} */}
-        </>
+        </div>
     );
 }
 
