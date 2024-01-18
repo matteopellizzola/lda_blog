@@ -8,6 +8,15 @@ function Products (props) {
     //const products = loadProducts();
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        api.users.isLoggedIn().then(status => {
+            if (status == 200) {
+                setIsLoggedIn(true);
+            }
+        });
+    }, []);
 
     useEffect(() => {
         setIsLoading(true);
@@ -29,7 +38,7 @@ function Products (props) {
     };
 
     return <>
-        {products && !isLoading ? products.map(product => <ProductTile product={product} removeProduct={removeProduct} />) : <div className="padding-logo-top"><Spinner /></div>}
+        {products && !isLoading ? products.map(product => <ProductTile product={product} removeProduct={removeProduct} isLoggedIn={isLoggedIn} />) : <div className="padding-logo-top"><Spinner /></div>}
     </>;
 }
 

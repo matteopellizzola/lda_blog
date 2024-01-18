@@ -3,7 +3,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import "./edit.scss";
 import api from "../../services/api";
 import Spinner from "../components/Spinner";
-
+import MpPopUp from "../components/MpPopUp";
 
 function Edit (props) {
     const initialFormState = {
@@ -22,6 +22,7 @@ function Edit (props) {
     const [isLoading, setIsLoading] = useState(true);
     const [searchParams, setSearchParams] = useSearchParams();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [popUp, setPopUp] = useState(false);
     const queryID = searchParams.get("id");
     const navigate = useNavigate();
 
@@ -82,6 +83,8 @@ function Edit (props) {
                     console.log('done');
                     setFormData(initialFormState);
                     console.log(JSON.stringify(formData));
+                } else if (!data.success) {
+                    setPopUp(true);
                 }
             });
         } else {
@@ -94,6 +97,8 @@ function Edit (props) {
                     searchParams.delete('id');
                     setSearchParams(searchParams);
                     console.log(JSON.stringify(formData));
+                } else if (!data.success) {
+                    setPopUp(true);
                 }
             });
         }
@@ -217,6 +222,8 @@ function Edit (props) {
             </div>
 
             {/* {todoRecord.map((e) => <ProductTile product={e} getData={getData} user={user} formData={formData} setFormData={setFormData} />)} */}
+
+            {popUp && <MpPopUp values={['Error: not authorized']} setPopUp={setPopUp} />}
         </div>
     );
 }

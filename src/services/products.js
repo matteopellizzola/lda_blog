@@ -45,7 +45,11 @@ const products = {
                 },
                 body: JSON.stringify(formData)
             }).then((res) => {
-                resolve(res.json());
+                if (res.status == 200) {
+                    resolve(res.json());
+                } else {
+                    resolve({ success: false });
+                }
             }).catch(err => reject(err.response ? err.response.data.error : err.message));
         });
     },
