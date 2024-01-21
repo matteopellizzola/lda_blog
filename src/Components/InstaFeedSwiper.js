@@ -1,4 +1,3 @@
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, Lazy, FreeMode, Scrollbar } from 'swiper';
 import 'swiper/css';
@@ -183,9 +182,6 @@ var InstaFeed = function InstagramFeed (props) {
             </Swiper>
         </div >
     );
-} else {
-    return <div className='to-be-disabled'>Instagram al momento non disponibile</div>;
-    }
     //return result;
 };
 
