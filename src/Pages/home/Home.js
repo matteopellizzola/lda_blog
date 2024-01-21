@@ -55,6 +55,7 @@ function Home (props) {
             link={"products"}
             handleClick={handleClick}
             reverse={false}
+            outer={true}
         />
 
         <div className="dual-boxes">

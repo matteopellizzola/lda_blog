@@ -1,16 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import classnames from "classnames";
+import classNames from "classnames";
 
 function TextAndImageComponent (props) {
     const navigate = useNavigate();
     return <>
-        <div className={classnames('text-and-image-component', props.reverse ? 'reverse' : '')}>
+        <div className={classnames('text-and-image-component', props.reverse ? 'reverse' : '', props.outer ? 'outer-image' : '')}>
             <div className="image-container">
-                <img src={props.image} alt="image" onClick={() => props.handleClick(props.link)}/>
+                <img src={props.image} className={props.link ? 'cursor-pointer': ''} alt="image" onClick={() => props.handleClick(props.link)}/>
             </div>
             <div className="text-container">
                 <div className="text-container-inner">
-                    <div className="title" onClick={() => props.handleClick(props.link)}>
+                    <div className={classNames('title', props.link ? 'cursor-pointer': '')} onClick={() => props.handleClick(props.link)}>
                         {props.title}
                     </div>
                     <div className="description">
