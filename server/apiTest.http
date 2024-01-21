@@ -1,0 +1,63 @@
+### /api/v1/products
+
+GET http://localhost:3000/api/v1/exams
+
+###
+
+POST http://localhost:3000/api/v1/exams
+Content-Type: application/json
+
+{
+    "code":"02LSEASX",
+    "name":"MPelliz",
+    "cfu":10,
+    "score":18,
+    "date":"2023-12-31"
+}
+
+###
+
+GET http://localhost:3000/api/v1/products
+
+###
+
+POST http://localhost:3000/api/v1/products
+Content-Type: application/json
+
+{
+    "id": 3,
+    "name": "ciambellone",
+    "description": "con arancia 🍊, cioccolato 🍫 e farina di grano tenero Maiorca 🌾",
+    "ingredients": "",
+    "bakingDay": "Lunedì",
+    "typeOfCooking": "Forno",
+    "shelfLife": "5 giorni",
+    "img1": "https://picsum.photos/1801/1440",
+    "img2": "https://picsum.photos/1800/1441"
+}
+
+###
+
+POST http://localhost:3000/api/v1/productRemove
+Content-Type: application/json
+
+{
+    "id": 3
+}
+
+###
+
+POST http://localhost:3000/api/v1/productUpdate
+Content-Type: application/json
+
+{
+    "id": 2,
+    "name": "ciambellone",
+    "description": "con arancia 🍊, cioccolato 🍫 e farina di grano tenero Maiorca 🌾",
+    "ingredients": "",
+    "bakingDay": "Lunedì",
+    "typeOfCooking": "Forno",
+    "shelfLife": "5 giorni",
+    "img1": "https://picsum.photos/1801/1440",
+    "img2": "https://picsum.photos/1800/1441"
+}

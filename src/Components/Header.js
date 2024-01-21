@@ -6,6 +6,8 @@ import { useState } from "react";
 import loadNavigation from "../database/loadNavigation";
 import HeaderMenuLink from "./HeaderMenuLink";
 
+import Logo from "../static/logo.png";
+
 const menuItems = loadNavigation();
 
 function Header (props) {
@@ -25,12 +27,12 @@ function Header (props) {
         <div className="menu-header-desktop">
             <div className="header-wrapper">
                 <div className="logo">
-                    <Link to="/" onClick={() => setPage("home")}>
-                        LOGO
+                    <Link to="/" onClick={() => setPage("home")} key="/">
+                        <img src={Logo} alt="logo_lda" />
                     </Link>
                 </div>
                 <div className="menu-item">
-                    {menuItems.navigationList.map((item) => <HeaderMenuLink page={page} item={item} setPage={setPage} toggleMobileMenu={() => { return; }} />)}
+                    {menuItems.navigationList.map((item) => <HeaderMenuLink key={item.name} page={page} item={item} setPage={setPage} toggleMobileMenu={() => { return; }} />)}
                 </div>
             </div>
         </div>
@@ -44,14 +46,14 @@ function Header (props) {
                     </div>
                     <div className="mobile-logo">
                         <h1>
-                            <Link to="/">
-                                <i className="icon-home"></i>
+                            <Link to="/" onClick={() => setPage("home")} key="/m">
+                                <img src={Logo} alt="logo_lda" />
                             </Link>
                         </h1>
                     </div>
                 </div>
             </Col>
-            {mobileMenu && <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} page={page} menuItems={menuItems} setPage={setPage} />}
+            <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} page={page} menuItems={menuItems} setPage={setPage} mobileMenu={mobileMenu} />
         </Row>
     </header>;
 }
@@ -59,14 +61,14 @@ function Header (props) {
 function ModalMobileMenu (props) {
 
     return <>
-        <div className="modal-backdrop-custom" onClick={() => props.setMobileMenu(false)}>
+        <div className={props.mobileMenu ? 'modal-backdrop-custom open' : 'modal-backdrop-custom closed'} onClick={() => props.setMobileMenu(false)}>
         </div>
-        <Col className="modal-menu-mobile">
+        <Col className={props.mobileMenu ? 'modal-menu-mobile open' : 'modal-menu-mobile closed'}>
             <div className="link-wrapper">
                 <h3 onClick={() => props.toggleMobileMenu()}>
                     <i className="icon-cross"></i>
                 </h3>
-                {props.menuItems.navigationList.map((item) => <HeaderMenuLink page={props.page} item={item} setPage={props.setPage} toggleMobileMenu={props.toggleMobileMenu} />)}
+                {props.menuItems.navigationList.map((item) => <HeaderMenuLink key={item.name} page={props.page} item={item} setPage={props.setPage} toggleMobileMenu={props.toggleMobileMenu} />)}
             </div>
         </Col>
     </>;

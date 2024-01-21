@@ -14,6 +14,8 @@ import { useNavigate } from 'react-router-dom';
 
 import 'react-ig-feed/dist/index.css';
 import InstaFeed from '../../Components/InstaFeed';
+import DualBoxesComponent from '../components/DualBoxesComponent';
+import TextAndImageComponent from '../components/TextAndImageComponent';
 
 function Home (props) {
 
@@ -22,7 +24,7 @@ function Home (props) {
         navigate('/' + path);
     };
 
-    const ig_token = 'IGQVJXOHR2QUFTZA3dzSWxMRUR1NG4tOW1iWm1rMkY1dzJEa3lMN1ZAXQTJwRTU5RzFYUlhWSm5jMVE1LXREYlNvV0pnLW9UYzIwejJZANXUxamt3NDZANay1XWXNWalU5N0tSZAkdzalJReEh6RFp2eVZASWgZDZD';
+    const ig_token = process.env.REACT_APP_API_INSTAGRAM_TOKEN;
 
     return <>
         <div className='main-slider'>
@@ -37,23 +39,34 @@ function Home (props) {
                 autoplay={{ delay: 3000 }}
             >
                 <SwiperSlide>
-                    <img src="https://picsum.photos/1920/1090" alt='' className='desktop-slide' />
+                    <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' className='desktop-slide' />
                     {/* <img src="https://picsum.photos/1080/1920" alt='' className='mobile-slide'/> TODO:*/}
                 </SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/1921/1089" alt='' /></SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/1922/1090" alt='' /></SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/1920/1089" alt='' /></SwiperSlide>
+                <SwiperSlide><img src="https://picsum.photos/1921/1089" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://picsum.photos/1920/1089" alt='slide-img' /></SwiperSlide>
             </Swiper>
         </div>
+
+        <TextAndImageComponent
+            title={"Laboratorio di Antonella"}
+            description={"Benvenuti nel mio laboratorio, dove c'è profumo di buono. Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum."}
+            image={"https://res.cloudinary.com/dbdivqgja/image/upload/v170543632/home/TextImageComponent.jpg"}
+            link={"products"}
+            handleClick={handleClick}
+            reverse={false}
+            outer={true}
+        />
+
         <div className="dual-boxes">
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1800/1200" alt='' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1690297373/z4avm70uyslfxzgonzca.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
             </div>
             <div className='box-container' onClick={() => handleClick('menu')}>
-                <img src="https://picsum.photos/1801/1201" alt='' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     altro testo di esempio
                 </span>
@@ -62,23 +75,42 @@ function Home (props) {
 
         <div className='dual-boxes'>
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1801/1200" alt='' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1690297358/ovrjeqmvdy5tmswnm2sb.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
             </div>
 
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1800/1201" alt='' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1690297373/z4avm70uyslfxzgonzca.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
             </div>
         </div>
 
+        <TextAndImageComponent
+            title={"Laboratorio di altro"}
+            description={"Benvenuti nel mio laboratorio, dove c'è profumo di buono. Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum."}
+            image={"https://res.cloudinary.com/dbdivqgja/image/upload/v1705439161/home/web-11_kfmcvu.jpg"}
+            link={"about"}
+            handleClick={handleClick}
+            reverse={true}
+        />
+
+        <DualBoxesComponent
+            leftTitle={"This is an example"}
+            rightTitle={"This is another example"}
+            leftLink={'about'}
+            rightLink={'about'}
+            handleClick={handleClick}
+            leftImage={'https://res.cloudinary.com/dbdivqgja/image/upload/v1690297358/ovrjeqmvdy5tmswnm2sb.jpg'}
+            rightImage={'https://res.cloudinary.com/dbdivqgja/image/upload/v1705356150/matteoImmagine.png'}
+        />
+
         <div className='mono-box'>
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1801/1200" alt='' />
+                <img src="https://picsum.photos/1801/1200" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
@@ -97,4 +129,4 @@ function Home (props) {
 
 export default Home;
 
-   //https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=IGQVJYdXVuWFpGci1VbXlGcXZAwR3JLbGd0Wi1FSXd2cmZAOT0J3djVnMzUwbEFCNUpXLS1vcVM3ZA3cyT3cyd1ZAlZAXU4SVJtVFdUdmJuTF8wc2VvMnh2YlUwQnoxZAmZA1cy1mdTZAEV1VLSk85dlhsTjlMWgZDZD
+//https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=IGQVJYdXVuWFpGci1VbXlGcXZAwR3JLbGd0Wi1FSXd2cmZAOT0J3djVnMzUwbEFCNUpXLS1vcVM3ZA3cyT3cyd1ZAlZAXU4SVJtVFdUdmJuTF8wc2VvMnh2YlUwQnoxZAmZA1cy1mdTZAEV1VLSk85dlhsTjlMWgZDZD

@@ -34,9 +34,12 @@
         text-decoration: none;
         color: $base-text-color;
         font-weight: 400;
+        border-radius: 5px;
+        border: 1px solid $logo-color;
 
         &:hover {
-          color: $orange-color;
+          color: $logo-color;
+          background-color: $dark-base-color;
         }
       }
     }
@@ -100,7 +103,7 @@
     .warning,
     .text-warning {
       border-color: $dark-orange-color;
-      color: $dark-orange-color;
+      color: $dark-orange-color !important;
     }
 
     .mc__field-container {
@@ -110,8 +113,7 @@
     }
 
     button {
-      background-color: $orange-color !important;
-      @include formInputs();
+      @include buttons();
     }
   }
 }

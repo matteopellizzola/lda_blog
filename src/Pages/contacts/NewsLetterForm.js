@@ -9,7 +9,7 @@ function NewsLetterForm (props) {
         <Row>
             <Col sm={6} xs={12} className="newsletter-image-col">
                 <div className='newsletter-image'>
-                    <img src="https://picsum.photos/300/200" alt="img" />
+                    <img src="https://picsum.photos/300/200" alt="img_newsletter" />
                 </div>
             </Col>
             <Col sm={6} xs={12}>
@@ -19,7 +19,7 @@ function NewsLetterForm (props) {
                 <MailChimpForm />
             </Col>
         </Row>
-    </div>
+    </div>;
 }
 
 export default NewsLetterForm;

@@ -1,7 +1,7 @@
 @mixin maxWidth {
   max-width: 1680px;
-  padding-left: 15px;
-  padding-right: 15px;
+  //padding-left: 15px;
+  //padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -12,4 +12,21 @@
   padding: 0.55rem;
   border-radius: 5px;
   border: 1px solid $base-text-color;
+}
+
+@mixin buttons() {
+  width: 100%;
+  margin: 0.75rem 0;
+  padding: 0.55rem;
+  border-radius: 5px;
+  border: 1px solid $base-text-color;
+  background-color: $dark-base-color ;
+  color: $base-text-color;
+  transition: .3s all ease;
+
+  &:hover,
+  &:active {
+    background-color: $dark-orange-color;
+    color: $white;
+  }
 }
