@@ -16,6 +16,8 @@ import 'react-ig-feed/dist/index.css';
 import InstaFeed from '../../Components/InstaFeed';
 import DualBoxesComponent from '../components/DualBoxesComponent';
 import TextAndImageComponent from '../components/TextAndImageComponent';
+import { useState } from 'react';
+import classNames from 'classnames';
 
 function Home (props) {
 
@@ -25,6 +27,7 @@ function Home (props) {
     };
 
     const ig_token = process.env.REACT_APP_API_INSTAGRAM_TOKEN;
+    const [isInstagramActive, setIsInstagramActive] = useState(true);
 
     return <>
         <div className='main-slider'>
@@ -117,12 +120,12 @@ function Home (props) {
             </div>
         </div>
 
-        <div className='instagram-container text-center'>
+        <div className={classNames('instagram-container text-center', isInstagramActive ? '' : 'd-none')}>
             <h4>Segui gli aggiornamenti in tempo reale</h4>
             <h6>alcuni post del mio profilo instagram </h6>
 
             {/* <InstagramFeed token={ig_token} counter="9" /> */}
-            <InstaFeed token={ig_token} counter="12" />
+            <InstaFeed token={ig_token} counter="12" setIsInstagramActive={setIsInstagramActive} />
         </div>
     </>;
 }
