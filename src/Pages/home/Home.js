@@ -36,7 +36,7 @@ function Home (props) {
                 loop={true}
                 navigation={{ clickable: true }}
                 pagination={{ clickable: true }}
-                spaceBetween={15}
+                spaceBetween={0}
                 slidesPerView={1}
                 lazy={true}
                 autoplay={{ delay: 3000 }}
