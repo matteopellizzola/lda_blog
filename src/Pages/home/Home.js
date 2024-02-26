@@ -41,13 +41,11 @@ function Home (props) {
                 lazy={true}
                 autoplay={{ delay: 3000 }}
             >
-                <SwiperSlide>
-                    <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' className='desktop-slide' />
-                    {/* <img src="https://picsum.photos/1080/1920" alt='' className='mobile-slide'/> TODO:*/}
-                </SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/1921/1089" alt='slide-img' /></SwiperSlide>
-                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' /></SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/1920/1089" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide1.jpg" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide2.jpg" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide3.jpg" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide4.jpg" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide5.jpg" alt='slide-img' /></SwiperSlide>
             </Swiper>
         </div>
 
@@ -69,7 +67,7 @@ function Home (props) {
                 </span>
             </div>
             <div className='box-container' onClick={() => handleClick('menu')}>
-                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide5.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     altro testo di esempio
                 </span>
@@ -113,7 +111,7 @@ function Home (props) {
 
         <div className='mono-box'>
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1801/1200" alt='slide-img' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide2.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
