@@ -59,3 +59,12 @@ body {
 .cursor-pointer {
   cursor: pointer !important;
 }
+
+.btn-link {
+  color: $base-text-color !important;
+  font-weight: 500 !important;
+
+  &:hover {
+    color: $base-gray-color !important;
+  }
+}

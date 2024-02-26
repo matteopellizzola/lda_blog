@@ -25,7 +25,6 @@ function Products (props) {
 
     async function getProducts () {
         api.products.loadProducts().then((data) => {
-            console.log(data);
             setProducts(data);
             setIsLoading(false);
         });

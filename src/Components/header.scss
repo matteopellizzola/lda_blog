@@ -216,3 +216,10 @@ header {
     }
   }
 }
+
+.popover-link-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 230px;
+}

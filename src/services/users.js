@@ -29,13 +29,17 @@ const users = {
         });
     },
 
-    isLoggedIn: () => {
+    isLoggedIn: (withUserData) => {
         return new Promise((resolve, reject) => {
             fetch(apiUrl + "/users/loggedIn", {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             })
                 .then((res) => {
-                    resolve(res.status);
+                    if (withUserData) {
+                        resolve(res.json());
+                    } else {
+                        resolve(res.status);
+                    }
                 })
                 .catch(err => reject(err.response ? err.response.data.error : err.message));
         });

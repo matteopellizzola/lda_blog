@@ -2,11 +2,13 @@ import { Col, Row } from "react-bootstrap";
 
 import "./header.scss";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import loadNavigation from "../database/loadNavigation";
 import HeaderMenuLink from "./HeaderMenuLink";
 
 import Logo from "../static/logo.png";
+import api from "../services/api";
+import LoggedinPopOver from "./LoggedInPopover";
 
 const menuItems = loadNavigation();
 
@@ -14,6 +16,20 @@ function Header (props) {
 
     const [mobileMenu, setMobileMenu] = useState(false);
     const [page, setPage] = useState(window.location.pathname);
+
+    const [userData, setUserData] = useState();
+    const refUrser = useRef();
+
+    useEffect(() => {
+        if (!refUrser.current) {
+            api.users.isLoggedIn(true).then(data => {
+                if (data) {
+                    refUrser.current = data;
+                    setUserData(data);
+                }
+            });
+        }
+    }, []);
 
     function toggleMobileMenu () {
         if (mobileMenu) {
@@ -34,6 +50,9 @@ function Header (props) {
                 <div className="menu-item">
                     {menuItems.navigationList.map((item) => <HeaderMenuLink key={item.name} page={page} item={item} setPage={setPage} toggleMobileMenu={() => { return; }} />)}
                 </div>
+                {refUrser.current &&
+                    <LoggedinPopOver userData={userData} />
+                }
             </div>
         </div>
         <Row className="menu-header-mobile">
@@ -53,7 +72,7 @@ function Header (props) {
                     </div>
                 </div>
             </Col>
-            <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} page={page} menuItems={menuItems} setPage={setPage} mobileMenu={mobileMenu} />
+            <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} page={page} menuItems={menuItems} setPage={setPage} mobileMenu={mobileMenu} userData={userData} refUrser={refUrser} />
         </Row>
     </header>;
 }
@@ -70,6 +89,17 @@ function ModalMobileMenu (props) {
                 </h3>
                 {props.menuItems.navigationList.map((item) => <HeaderMenuLink key={item.name} page={props.page} item={item} setPage={props.setPage} toggleMobileMenu={props.toggleMobileMenu} />)}
             </div>
+
+            {props.refUrser.current &&
+                <div className="link-wrapper">
+                    <h3>{props.userData.user.username}</h3>
+                    <div className="menu-link">
+                        <a className='btn-link btn' href={props.userData.editPath}>Add a product</a>
+                        -
+                        <a className='btn-link btn' href={props.userData.mediaLibraryLink} target='_blank'>Image Library</a>
+                    </div>
+                </div>
+            }
         </Col>
     </>;
 }
