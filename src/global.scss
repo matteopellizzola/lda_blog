@@ -68,3 +68,10 @@ body {
     color: $base-gray-color !important;
   }
 }
+
+.btn-primary {
+  @include buttons();
+  background-color: $base-text-color !important;
+  color: $base-background-color !important;
+  border-radius: 5px !important;
+}
