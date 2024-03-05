@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MpPopUp from "../components/MpPopUp";
 
 
-function Login (props) {
+function Login(props) {
     const navigate = useNavigate();
     const [popUp, setPopUp] = useState(false);
 
@@ -41,7 +41,7 @@ function Login (props) {
     };
 
     return <>
-        <div className="padding-logo-top">
+        <div className="padding-logo-top px-3 pb-5">
             <form action="" onSubmit={(e) => handleSubmit(e)}>
                 <div className="form row">
                     <label htmlFor="username">
