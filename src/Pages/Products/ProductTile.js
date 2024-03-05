@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 
 import "./products.scss";
+import classNames from 'classnames';
 
-function ProductTile (props) {
+function ProductTile(props) {
     const product = props.product;
     const navigate = useNavigate();
 
@@ -13,7 +14,7 @@ function ProductTile (props) {
                     <h2 className="name-mobile">{product.name}</h2>
                     <div className="image">
                         <img src={product.img1} alt={product.name + 'image'} className='first-image' />
-                        <img src={product.img2} alt={product.name + 'image'} className='second-image' />
+                        {<img src={product.img2 || product.img1} alt={product.name + 'image'} className='second-image' />}
                     </div>
                     <div className="description-container">
                         <div>
@@ -41,17 +42,17 @@ function ProductTile (props) {
                             </div>
                         </div>
                         {props.isLoggedIn &&
-                            <div>
-                                <button onClick={(product) => props.removeProduct(props.product._id)}>remove</button>
-                                <button onClick={() => {
+                            <div className='logged-infos'>
+                                <div className={classNames('online-info', product.online ? 'online' : 'offline')}>
+                                    online: {product.online ? 'true' : 'false'}
+                                </div>
+                                <button className='btn-secondary' onClick={() => {
                                     navigate({
                                         pathname: '/edit',
                                         search: '?id=' + product._id
                                     });
                                 }}>Edit</button>
-                                <div className='online-info'>
-                                    online: {product.online ? 'true' : 'false'}
-                                </div>
+                                <button className='btn-primary' onClick={(product) => props.removeProduct(props.product._id)}>Remove</button>
                             </div>
                         }
                     </div>
