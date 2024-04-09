@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ProductTile from "./ProductTile";
 import api from "../../services/api";
 import Spinner from "../components/Spinner";
+import ProductsLoadingTile from "./ProductsLoadingTile";
 
 function Products (props) {
     //const products = loadProducts();
@@ -37,8 +38,17 @@ function Products (props) {
     };
 
     return <>
-        {products && !isLoading ? products.map(product => <ProductTile product={product} removeProduct={removeProduct} isLoggedIn={isLoggedIn} />) : <div className="padding-logo-top"><Spinner /></div>}
+        {products && !isLoading ? products.map(product => <ProductTile product={product} removeProduct={removeProduct} isLoggedIn={isLoggedIn} />) : <div className="padding-logo-top"><LoadingComponent /></div>}
     </>;
+}
+
+function LoadingComponent() {
+    return <>
+        <ProductsLoadingTile />
+        <ProductsLoadingTile />
+        <ProductsLoadingTile />
+        <ProductsLoadingTile />
+    </>
 }
 
 export default Products;

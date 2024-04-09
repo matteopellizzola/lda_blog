@@ -1,0 +1,57 @@
+@import "../../static/scss/variables.scss";
+
+.data-loading-products {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    opacity: .6;
+    animation: animateFadeIn 2s infinite;
+
+    // @media #{$tablet},
+    // #{$mobile} {
+    //     flex-direction: column;
+    // }
+
+    &:nth-of-type(even) {
+        flex-direction: row-reverse;
+    }
+
+
+    .data-image {
+        width: 50%;
+        background-color: $base-gray-color;
+    }
+
+    .data-text {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 16px;
+
+
+        .text-item {
+            width: 46%;
+            height: 1rem;
+            background-color: $base-gray-color;
+
+            &:nth-of-type(odd) {
+                width: 59%;
+            }
+        }
+    }
+}
+
+@keyframes animateFadeIn {
+    0% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: .6;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
