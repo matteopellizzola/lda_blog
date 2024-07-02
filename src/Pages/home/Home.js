@@ -18,6 +18,7 @@ import DualBoxesComponent from '../components/DualBoxesComponent';
 import TextAndImageComponent from '../components/TextAndImageComponent';
 import { useState } from 'react';
 import classNames from 'classnames';
+import VideoPlayer from '../components/VideoPlayer';
 
 function Home (props) {
 
@@ -73,6 +74,13 @@ function Home (props) {
                 </span>
             </div>
         </div>
+
+        <VideoPlayer
+            id="demo-player"
+            publicId="home/km0czw697uzn6j54yudx"
+            width="3840"
+            height="2160"
+        />
 
         <div className='dual-boxes'>
             <div className='box-container' onClick={() => handleClick('about')}>
