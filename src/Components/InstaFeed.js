@@ -13,7 +13,7 @@ var styles = {
     hidePlaceholder: "_3rVly",
 };
 
-var InstaFeed = function InstaFeed (props) {
+var InstaFeed = function InstaFeed(props) {
     var token = props.token,
         counter = props.counter;
     var placeholder = React.useRef();
@@ -48,7 +48,7 @@ var InstaFeed = function InstaFeed (props) {
 
     React.useEffect(
         function () {
-            var fetchData = function fetchData () {
+            var fetchData = function fetchData() {
                 try {
                     setIsLoading(true);
                     fetch(url)
@@ -74,7 +74,7 @@ var InstaFeed = function InstaFeed (props) {
 
             fetchData();
 
-            var callback = function callback (entries) {
+            var callback = function callback(entries) {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         setShowImage(true);

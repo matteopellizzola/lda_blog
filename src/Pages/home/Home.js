@@ -13,14 +13,14 @@ import "./home.scss";
 import { useNavigate } from 'react-router-dom';
 
 import 'react-ig-feed/dist/index.css';
-import InstaFeed from '../../Components/InstaFeed';
+// import InstaFeed from '../../Components/InstaFeed';
 import DualBoxesComponent from '../components/DualBoxesComponent';
 import TextAndImageComponent from '../components/TextAndImageComponent';
 import { useState } from 'react';
 import classNames from 'classnames';
 import VideoPlayer from '../components/VideoPlayer';
 
-function Home (props) {
+function Home(props) {
 
     const navigate = useNavigate();
     const handleClick = (path) => {
@@ -131,7 +131,7 @@ function Home (props) {
             <h6>alcuni post del mio profilo instagram </h6>
 
             {/* <InstagramFeed token={ig_token} counter="9" /> */}
-            <InstaFeed token={ig_token} counter="12" setIsInstagramActive={setIsInstagramActive} />
+            {/* <InstaFeed token={ig_token} counter="12" setIsInstagramActive={setIsInstagramActive} /> */}
         </div>
     </>;
 }
