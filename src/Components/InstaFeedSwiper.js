@@ -1,4 +1,3 @@
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, Lazy, FreeMode, Scrollbar } from 'swiper';
 import 'swiper/css';
