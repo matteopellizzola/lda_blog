@@ -6,7 +6,7 @@ import { useUser } from "../../contexts/userContext";
 
 function Login(props) {
     const navigate = useNavigate();
-    const { loginResult, loginCustomer } = useUser()
+    const { loginResult, loginCustomer, loggedIn } = useUser()
     const [popUp, setPopUp] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -31,8 +31,12 @@ function Login(props) {
                     pathname: "/edit",
                 });
             }
+        } else if (loggedIn) {
+            navigate({
+                pathname: "/edit",
+            });
         }
-      }, [loginResult]);
+      }, [loginResult, navigate, loggedIn]);
 
       const handleSubmit = async (e) => {
         e.preventDefault();
