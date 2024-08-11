@@ -22,7 +22,9 @@ export const UserProvider = ({ children }) => {
 
     const logoutCustomer = () => {
       api.users.logout().then(data => {
-        window.location.replace('/');
+        setLoggedIn(false);
+        setUserData(null);
+        localStorage.removeItem('token');
     });
     }
 
