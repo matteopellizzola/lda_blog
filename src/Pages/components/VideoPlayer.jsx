@@ -14,7 +14,7 @@ const VideoPlayer = ({ id, publicId, ...props }) => {
 
         console.log('aaaaa');
         playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, {
-            cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
+            cloud_name: import.meta.env.VITE_REACT_APP_CLOUDINARY_CLOUD_NAME,
             secure: true,
             autoPlay: true,
             muted: true,

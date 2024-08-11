@@ -5,7 +5,7 @@ import "./about.scss";
 
 const biographyData = loadBiography();
 
-const ig_token = process.env.REACT_APP_API_INSTAGRAM_TOKEN;
+const ig_token = import.meta.env.VITE_REACT_APP_API_INSTAGRAM_TOKEN;
 
 function About (props) {
     return <div className="padding-logo-top px-3">

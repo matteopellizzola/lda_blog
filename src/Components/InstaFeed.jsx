@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-var React = require("react");
+import React, { useState } from "react";
 
 var styles = {
     instagramItems: "_2R-kh",

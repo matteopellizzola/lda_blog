@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const apiUrl = process.env.REACT_APP_API_PUBLIC_URL || "http://localhost:5050";
+const apiUrl = import.meta.env.VITE_REACT_APP_API_PUBLIC_URL || "http://localhost:5050";
 
 function Edit2 () {
     //const [image, setImage] = useState({});

@@ -27,7 +27,7 @@ function Home (props) {
         navigate('/' + path);
     };
 
-    const ig_token = process.env.REACT_APP_API_INSTAGRAM_TOKEN;
+    const ig_token = import.meta.env.VITE_REACT_APP_API_INSTAGRAM_TOKEN;
     const [isInstagramActive, setIsInstagramActive] = useState(true);
 
     return <>

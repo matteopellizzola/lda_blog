@@ -1,4 +1,5 @@
 
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, Lazy, FreeMode, Scrollbar } from 'swiper';
 import 'swiper/css';
@@ -8,10 +9,6 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css/lazy';
 import 'swiper/css/free-mode';
-
-import { useState } from "react";
-
-var React = require("react");
 
 var styles = {
     instagramItems: "_2R-kh",
