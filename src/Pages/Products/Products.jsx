@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 //import loadProducts from "../../database/loadProducts";
 import ProductTile from "./ProductTile";
 import api from "../../services/api";
-import Spinner from "../components/Spinner";
 import ProductsLoadingTile from "./ProductsLoadingTile";
 import { useUser } from "../../contexts/userContext";
 

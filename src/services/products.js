@@ -47,7 +47,7 @@ const products = {
                 },
                 body: JSON.stringify(formData)
             }).then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
                     resolve(res.json());
                 } else {
                     resolve({ success: false });

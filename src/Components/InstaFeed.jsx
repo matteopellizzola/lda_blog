@@ -44,6 +44,7 @@ var InstaFeed = function InstaFeed (props) {
         if ((isError || isLoading) && props.setIsInstagramActive) {
             props.setIsInstagramActive(false);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isError, isLoading]);
 
     React.useEffect(

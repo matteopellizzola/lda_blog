@@ -4,6 +4,7 @@ import "./edit.scss";
 import api from "../../services/api";
 import Spinner from "../components/Spinner";
 import MpPopUp from "../components/MpPopUp";
+import { useUser } from '../../contexts/userContext';
 
 function Edit (props) {
     const initialFormState = {
@@ -25,22 +26,22 @@ function Edit (props) {
     const [popUp, setPopUp] = useState(false);
     const queryID = searchParams.get("id");
     const navigate = useNavigate();
+    const {loggedIn} = useUser()
 
 
     useEffect(() => {
-        api.users.isLoggedIn().then((status) => {
-            if (status == 401) {
-                navigate({
-                    pathname: "/login"
-                });
-            } else {
-                setIsLoggedIn(true);
-                setIsLoading(false);
-            }
-        });
+        if(!loggedIn) {
+            navigate({
+                pathname: "/login"
+            });
+        } else {
+            setIsLoggedIn(true);
+            setIsLoading(false);
+        }
 
         getData();
-    }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [loggedIn]);
 
     async function getData () {
         if (queryID) {

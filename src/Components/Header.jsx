@@ -83,7 +83,7 @@ function ModalMobileMenu (props) {
                     <div className="menu-link">
                         <a className='btn-link btn' href={props.userData.editPath}>Add a product</a>
                         -
-                        <a className='btn-link btn' href={props.userData.mediaLibraryLink} target='_blank'>Image Library</a>
+                        <a className='btn-link btn' href={props.userData.mediaLibraryLink} target='_blank' rel="noreferrer">Image Library</a>
                     </div>
                 </div>
             }

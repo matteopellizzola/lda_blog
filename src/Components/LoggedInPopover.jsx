@@ -9,7 +9,7 @@ function LoggedinPopOver({ userData }) {
         <Popover id="popover-user" className='popover'>
             <div className='popover-link-container'>
                 <a className='btn-link btn' href={userData.editPath}>Add a product</a>
-                <a className='btn-link btn' href={userData.mediaLibraryLink} target='_blank'>Image Library</a>
+                <a className='btn-link btn' href={userData.mediaLibraryLink} target='_blank' rel="noreferrer">Image Library</a>
                 <div className='btn-link btn' onClick={() => {
                     logoutCustomer()
                 }}>Logout</div>
