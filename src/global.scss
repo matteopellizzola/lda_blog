@@ -59,3 +59,19 @@ body {
 .cursor-pointer {
   cursor: pointer !important;
 }
+
+.btn-link {
+  color: $base-text-color !important;
+  font-weight: 500 !important;
+
+  &:hover {
+    color: $base-gray-color !important;
+  }
+}
+
+.btn-primary {
+  @include buttons();
+  background-color: $base-text-color !important;
+  color: $base-background-color !important;
+  border-radius: 5px !important;
+}

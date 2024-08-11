@@ -7,10 +7,13 @@ import loadNavigation from "../database/loadNavigation";
 import HeaderMenuLink from "./HeaderMenuLink";
 
 import Logo from "../static/logo.png";
+import LoggedinPopOver from "./LoggedInPopover";
+import { useUser } from "../contexts/userContext";
 
 const menuItems = loadNavigation();
 
 function Header (props) {
+    const { loggedIn, userData } = useUser();
 
     const [mobileMenu, setMobileMenu] = useState(false);
     const [page, setPage] = useState(window.location.pathname);
@@ -34,6 +37,9 @@ function Header (props) {
                 <div className="menu-item">
                     {menuItems.navigationList.map((item) => <HeaderMenuLink key={item.name} page={page} item={item} setPage={setPage} toggleMobileMenu={() => { return; }} />)}
                 </div>
+                {loggedIn && userData && userData?.user &&
+                    <LoggedinPopOver userData={userData} />
+                }
             </div>
         </div>
         <Row className="menu-header-mobile">
@@ -53,7 +59,7 @@ function Header (props) {
                     </div>
                 </div>
             </Col>
-            <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} page={page} menuItems={menuItems} setPage={setPage} mobileMenu={mobileMenu} />
+            <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} page={page} menuItems={menuItems} setPage={setPage} mobileMenu={mobileMenu} userData={userData} />
         </Row>
     </header>;
 }
@@ -70,6 +76,17 @@ function ModalMobileMenu (props) {
                 </h3>
                 {props.menuItems.navigationList.map((item) => <HeaderMenuLink key={item.name} page={props.page} item={item} setPage={props.setPage} toggleMobileMenu={props.toggleMobileMenu} />)}
             </div>
+
+            {props.userData && props.userData?.user &&
+                <div className="link-wrapper">
+                    <h3>{props.userData.user.username}</h3>
+                    <div className="menu-link">
+                        <a className='btn-link btn' href={props.userData.editPath}>Add a product</a>
+                        -
+                        <a className='btn-link btn' href={props.userData.mediaLibraryLink} target='_blank'>Image Library</a>
+                    </div>
+                </div>
+            }
         </Col>
     </>;
 }

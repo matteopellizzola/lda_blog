@@ -39,6 +39,13 @@ var InstaFeed = function InstaFeed (props) {
     var url =
         "https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=" +
         token;
+
+    React.useEffect(() => {
+        if ((isError || isLoading) && props.setIsInstagramActive) {
+            props.setIsInstagramActive(false);
+        }
+    }, [isError, isLoading]);
+
     React.useEffect(
         function () {
             var fetchData = function fetchData () {

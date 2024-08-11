@@ -1,11 +1,12 @@
-import { useState } from "react";
-import api from "../../services/api";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MpPopUp from "../components/MpPopUp";
+import { useUser } from "../../contexts/userContext";
 
 
-function Login (props) {
+function Login(props) {
     const navigate = useNavigate();
+    const { loginResult, loginCustomer, loggedIn } = useUser()
     const [popUp, setPopUp] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -21,27 +22,34 @@ function Login (props) {
         });
     };
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        if (loginResult) {
+            if (!loginResult?.success) {
+                setPopUp(true);
+            } else {
+                navigate({
+                    pathname: "/edit",
+                });
+            }
+        } else if (loggedIn) {
+            navigate({
+                pathname: "/edit",
+            });
+        }
+      }, [loginResult, navigate, loggedIn]);
+
+      const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (formData.username.length > 0 && formData.password.length > 0) {
-            api.users.login(formData).then((data) => {
-                console.log(data);
-                if (!data.success) {
-                    setPopUp(true);
-                } else {
-                    navigate({
-                        pathname: "/edit"
-                    });
-                }
-            });
+            loginCustomer(formData);
         } else {
             setPopUp(true);
         }
-    };
+      };
 
     return <>
-        <div className="padding-logo-top">
+        <div className="padding-logo-top px-3 pb-5">
             <form action="" onSubmit={(e) => handleSubmit(e)}>
                 <div className="form row">
                     <label htmlFor="username">

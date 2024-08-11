@@ -11,6 +11,7 @@ import Products from './Pages/Products/Products';
 import Edit from './Pages/Edit/Edit';
 import Edit2 from './Pages/Edit/Edit2';
 import Login from './Pages/login/Login';
+import Logout from './Pages/logout/Logout';
 
 function App () {
 
@@ -25,6 +26,7 @@ function App () {
                     <Route path="/edit" element={<Edit />}></Route>
                     <Route path="/edit2" element={<Edit2 />}></Route>
                     <Route path="/login" element={<Login />}></Route>
+                    <Route path="/logout" element={<Logout />}></Route>
                     <Route path="/*" element={<Home />}></Route>
                 </Route>
             </Routes>

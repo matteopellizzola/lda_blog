@@ -27,7 +27,8 @@ const products = {
             fetch(apiUrl + "/products", {
                 method: "POST",
                 headers: {
-                    "content-type": "application/json"
+                    "content-type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify(formData)
             }).then((res) => {
@@ -41,7 +42,8 @@ const products = {
             fetch(apiUrl + `/products/${id}`, {
                 method: "PATCH",
                 headers: {
-                    "content-type": "application/json"
+                    "content-type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify(formData)
             }).then((res) => {
@@ -57,7 +59,10 @@ const products = {
     removeProduct: (id) => {
         return new Promise((resolve, reject) => {
             fetch(apiUrl + `/products/${id}`, {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`
+                }
             }).then((res) => {
                 resolve(res.json());
             }).catch(err => reject(err.response ? err.response.data.error : err.message));

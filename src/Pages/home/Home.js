@@ -16,6 +16,9 @@ import 'react-ig-feed/dist/index.css';
 import InstaFeed from '../../Components/InstaFeed';
 import DualBoxesComponent from '../components/DualBoxesComponent';
 import TextAndImageComponent from '../components/TextAndImageComponent';
+import { useState } from 'react';
+import classNames from 'classnames';
+import VideoPlayer from '../components/VideoPlayer';
 
 function Home (props) {
 
@@ -25,6 +28,7 @@ function Home (props) {
     };
 
     const ig_token = process.env.REACT_APP_API_INSTAGRAM_TOKEN;
+    const [isInstagramActive, setIsInstagramActive] = useState(true);
 
     return <>
         <div className='main-slider'>
@@ -33,18 +37,16 @@ function Home (props) {
                 loop={true}
                 navigation={{ clickable: true }}
                 pagination={{ clickable: true }}
-                spaceBetween={15}
+                spaceBetween={0}
                 slidesPerView={1}
                 lazy={true}
                 autoplay={{ delay: 3000 }}
             >
-                <SwiperSlide>
-                    <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' className='desktop-slide' />
-                    {/* <img src="https://picsum.photos/1080/1920" alt='' className='mobile-slide'/> TODO:*/}
-                </SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/1921/1089" alt='slide-img' /></SwiperSlide>
-                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' /></SwiperSlide>
-                <SwiperSlide><img src="https://picsum.photos/1920/1089" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide1.jpg" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide2.jpg" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide3.jpg" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide4.jpg" alt='slide-img' /></SwiperSlide>
+                <SwiperSlide><img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide5.jpg" alt='slide-img' /></SwiperSlide>
             </Swiper>
         </div>
 
@@ -66,12 +68,19 @@ function Home (props) {
                 </span>
             </div>
             <div className='box-container' onClick={() => handleClick('menu')}>
-                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1691492621/ktcxchatxfnnntjrarj0.jpg" alt='slide-img' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide5.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     altro testo di esempio
                 </span>
             </div>
         </div>
+
+        <VideoPlayer
+            id="demo-player"
+            publicId="home/km0czw697uzn6j54yudx"
+            width="3840"
+            height="2160"
+        />
 
         <div className='dual-boxes'>
             <div className='box-container' onClick={() => handleClick('about')}>
@@ -110,19 +119,19 @@ function Home (props) {
 
         <div className='mono-box'>
             <div className='box-container' onClick={() => handleClick('about')}>
-                <img src="https://picsum.photos/1801/1200" alt='slide-img' />
+                <img src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide2.jpg" alt='slide-img' />
                 <span className='cta-box'>
                     testo di esempio
                 </span>
             </div>
         </div>
 
-        <div className='instagram-container text-center'>
+        <div className={classNames('instagram-container text-center', isInstagramActive ? '' : 'd-none')}>
             <h4>Segui gli aggiornamenti in tempo reale</h4>
             <h6>alcuni post del mio profilo instagram </h6>
 
             {/* <InstagramFeed token={ig_token} counter="9" /> */}
-            <InstaFeed token={ig_token} counter="12" />
+            <InstaFeed token={ig_token} counter="12" setIsInstagramActive={setIsInstagramActive} />
         </div>
     </>;
 }
