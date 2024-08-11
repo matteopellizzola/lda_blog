@@ -1,19 +1,17 @@
-import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
-import api from '../services/api';
+import { useUser } from '../contexts/userContext';
 
 
 function LoggedinPopOver({ userData }) {
+    const {logoutCustomer} = useUser();
     const popover = (
         <Popover id="popover-user" className='popover'>
             <div className='popover-link-container'>
                 <a className='btn-link btn' href={userData.editPath}>Add a product</a>
                 <a className='btn-link btn' href={userData.mediaLibraryLink} target='_blank'>Image Library</a>
                 <div className='btn-link btn' onClick={() => {
-                    api.users.logout().then(data => {
-                        window.location.replace('/');
-                    });
+                    logoutCustomer()
                 }}>Logout</div>
             </div>
         </Popover>

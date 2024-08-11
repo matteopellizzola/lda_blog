@@ -4,20 +4,13 @@ import ProductTile from "./ProductTile";
 import api from "../../services/api";
 import Spinner from "../components/Spinner";
 import ProductsLoadingTile from "./ProductsLoadingTile";
+import { useUser } from "../../contexts/userContext";
 
 function Products (props) {
     //const products = loadProducts();
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    useEffect(() => {
-        api.users.isLoggedIn().then(status => {
-            if (status == 200) {
-                setIsLoggedIn(true);
-            }
-        });
-    }, []);
+    const {loggedIn} = useUser()
 
     useEffect(() => {
         setIsLoading(true);
@@ -38,7 +31,7 @@ function Products (props) {
     };
 
     return <>
-        {products && !isLoading ? products.map(product => <ProductTile product={product} removeProduct={removeProduct} isLoggedIn={isLoggedIn} />) : <div className="padding-logo-top"><LoadingComponent /></div>}
+        {products && !isLoading ? products.map(product => <ProductTile product={product} removeProduct={removeProduct} isLoggedIn={loggedIn} />) : <div className="padding-logo-top"><LoadingComponent /></div>}
     </>;
 }
 

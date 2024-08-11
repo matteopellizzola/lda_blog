@@ -1,14 +1,12 @@
 import { useEffect } from "react";
 import Spinner from "../components/Spinner";
-import api from "../../services/api";
-import { BrowserRouter } from "react-router-dom";
+import { useUser } from "../../contexts/userContext";
 
 function Logout (props) {
+    const {logoutCustomer} = useUser();
 
     useEffect(() => {
-        api.users.logout().then(data => {
-            window.location.replace('/');
-        });
+        logoutCustomer()
     })
 
     return <>
