@@ -31,7 +31,7 @@ function Products (props) {
     };
 
     return <>
-        {products && !isLoading ? products.map(product => <ProductTile product={product} removeProduct={removeProduct} isLoggedIn={loggedIn} />) : <div className="padding-logo-top"><LoadingComponent /></div>}
+        {products && !isLoading ? products.map(product => <ProductTile key={product.id} product={product} removeProduct={removeProduct} isLoggedIn={loggedIn} />) : <div className="padding-logo-top"><LoadingComponent /></div>}
     </>;
 }
 
