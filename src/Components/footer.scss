@@ -8,6 +8,11 @@
 
   .footer-inner {
     @include maxWidth();
+
+    .phone {
+      text-decoration: underline;
+      color: $base-text-color;
+    }
   }
 
   .follow {

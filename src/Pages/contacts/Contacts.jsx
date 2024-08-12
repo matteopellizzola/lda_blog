@@ -28,7 +28,7 @@ function Contact(props) {
                 <div className="mail-phone-wrapper">
                   {/*TODO: cambiare con cose reali*/}
                   <a
-                    href="mailto:matteo.pellizzola@gmail.com"
+                    href="mailto:laboratoriodiantonella@gmail.com"
                     className="btn btn-outline-dark"
                   >
                     {" "}
