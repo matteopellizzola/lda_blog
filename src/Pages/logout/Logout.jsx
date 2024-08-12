@@ -2,16 +2,18 @@ import { useEffect } from "react";
 import Spinner from "../components/Spinner";
 import { useUser } from "../../contexts/userContext";
 
-function Logout (props) {
-    const {logoutCustomer} = useUser();
+function Logout(props) {
+  const { logoutCustomer } = useUser();
 
-    useEffect(() => {
-        logoutCustomer()
-    })
+  useEffect(() => {
+    logoutCustomer();
+  });
 
-    return <>
-        <Spinner />
-    </>;
+  return (
+    <>
+      <Spinner />
+    </>
+  );
 }
 
 export default Logout;

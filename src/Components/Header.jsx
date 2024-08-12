@@ -12,83 +12,133 @@ import { useUser } from "../contexts/userContext";
 
 const menuItems = loadNavigation();
 
-function Header (props) {
-    const { loggedIn, userData } = useUser();
+function Header(props) {
+  const { loggedIn, userData } = useUser();
 
-    const [mobileMenu, setMobileMenu] = useState(false);
-    const [page, setPage] = useState(window.location.pathname);
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [page, setPage] = useState(window.location.pathname);
 
-    function toggleMobileMenu () {
-        if (mobileMenu) {
-            setMobileMenu(false);
-        } else {
-            setMobileMenu(true);
-        }
+  function toggleMobileMenu() {
+    if (mobileMenu) {
+      setMobileMenu(false);
+    } else {
+      setMobileMenu(true);
     }
+  }
 
-    return <header>
-        <div className="menu-header-desktop">
-            <div className="header-wrapper">
-                <div className="logo">
-                    <Link to="/" onClick={() => setPage("home")} key="/">
-                        <img src={Logo} alt="logo_lda" />
-                    </Link>
-                </div>
-                <div className="menu-item">
-                    {menuItems.navigationList.map((item) => <HeaderMenuLink key={item.name} page={page} item={item} setPage={setPage} toggleMobileMenu={() => { return; }} />)}
-                </div>
-                {loggedIn && userData && userData?.user &&
-                    <LoggedinPopOver userData={userData} />
-                }
-            </div>
+  return (
+    <header>
+      <div className="menu-header-desktop">
+        <div className="header-wrapper">
+          <div className="logo">
+            <Link to="/" onClick={() => setPage("home")} key="/">
+              <img src={Logo} alt="logo_lda" />
+            </Link>
+          </div>
+          <div className="menu-item">
+            {menuItems.navigationList.map((item) => (
+              <HeaderMenuLink
+                key={item.name}
+                page={page}
+                item={item}
+                setPage={setPage}
+                toggleMobileMenu={() => {
+                  return;
+                }}
+              />
+            ))}
+          </div>
+          {loggedIn && userData && userData?.user && (
+            <LoggedinPopOver userData={userData} />
+          )}
         </div>
-        <Row className="menu-header-mobile">
-            <Col xs={12}>
-                <div className="menu-wrapper">
-                    <div className="menu-link" onClick={() => toggleMobileMenu()}>
-                        <h1>
-                            <i className="icon-menu"></i>
-                        </h1>
-                    </div>
-                    <div className="mobile-logo">
-                        <h1>
-                            <Link to="/" onClick={() => setPage("home")} key="/m">
-                                <img src={Logo} alt="logo_lda" />
-                            </Link>
-                        </h1>
-                    </div>
-                </div>
-            </Col>
-            <ModalMobileMenu toggleMobileMenu={toggleMobileMenu} setMobileMenu={setMobileMenu} page={page} menuItems={menuItems} setPage={setPage} mobileMenu={mobileMenu} userData={userData} />
-        </Row>
-    </header>;
+      </div>
+      <Row className="menu-header-mobile">
+        <Col xs={12}>
+          <div className="menu-wrapper">
+            <div className="menu-link" onClick={() => toggleMobileMenu()}>
+              <h1>
+                <i className="icon-menu"></i>
+              </h1>
+            </div>
+            <div className="mobile-logo">
+              <h1>
+                <Link to="/" onClick={() => setPage("home")} key="/m">
+                  <img src={Logo} alt="logo_lda" />
+                </Link>
+              </h1>
+            </div>
+          </div>
+        </Col>
+        <ModalMobileMenu
+          toggleMobileMenu={toggleMobileMenu}
+          setMobileMenu={setMobileMenu}
+          page={page}
+          menuItems={menuItems}
+          setPage={setPage}
+          mobileMenu={mobileMenu}
+          userData={userData}
+        />
+      </Row>
+    </header>
+  );
 }
 
-function ModalMobileMenu (props) {
-
-    return <>
-        <div className={props.mobileMenu ? 'modal-backdrop-custom open' : 'modal-backdrop-custom closed'} onClick={() => props.setMobileMenu(false)}>
+function ModalMobileMenu(props) {
+  return (
+    <>
+      <div
+        className={
+          props.mobileMenu
+            ? "modal-backdrop-custom open"
+            : "modal-backdrop-custom closed"
+        }
+        onClick={() => props.setMobileMenu(false)}
+      ></div>
+      <Col
+        className={
+          props.mobileMenu
+            ? "modal-menu-mobile open"
+            : "modal-menu-mobile closed"
+        }
+      >
+        <div className="link-wrapper">
+          <h3 onClick={() => props.toggleMobileMenu()}>
+            <i className="icon-cross"></i>
+          </h3>
+          {props.menuItems.navigationList.map((item) => (
+            <HeaderMenuLink
+              key={item.name}
+              page={props.page}
+              item={item}
+              setPage={props.setPage}
+              toggleMobileMenu={props.toggleMobileMenu}
+            />
+          ))}
         </div>
-        <Col className={props.mobileMenu ? 'modal-menu-mobile open' : 'modal-menu-mobile closed'}>
-            <div className="link-wrapper">
-                <h3 onClick={() => props.toggleMobileMenu()}>
-                    <i className="icon-cross"></i>
-                </h3>
-                {props.menuItems.navigationList.map((item) => <HeaderMenuLink key={item.name} page={props.page} item={item} setPage={props.setPage} toggleMobileMenu={props.toggleMobileMenu} />)}
-            </div>
 
-            {props.userData && props.userData?.user &&
-                <div className="link-wrapper">
-                    <h3>{props.userData.user.username}</h3>
-                    <div className="menu-link">
-                        <a className='btn-link btn' href={props.userData.editPath}>Add a product</a>
-                        -
-                        <a className='btn-link btn' href={props.userData.mediaLibraryLink} target='_blank' rel="noreferrer">Image Library</a>
-                    </div>
-                </div>
-            }
-        </Col>
-    </>;
+        {props.userData && props.userData?.user && (
+          <div className="link-wrapper">
+            <h3>{props.userData.user.username}</h3>
+            <div className="menu-link">
+              <a className="btn-link btn" href={props.userData.editPath}>
+                Add a product
+              </a>
+              -
+              <a
+                className="btn-link btn"
+                href={props.userData.mediaLibraryLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Image Library
+              </a>
+            </div>
+          </div>
+        )}
+      </Col>
+    </>
+  );
 }
 
 export default Header;

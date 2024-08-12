@@ -49,7 +49,6 @@ header {
 }
 
 .menu-header-desktop {
-
   @media #{$tablet},
   #{$mobile} {
     display: none !important;
