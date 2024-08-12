@@ -12,7 +12,7 @@ import "swiper/css/lazy";
 import "./home.scss";
 import { useNavigate } from "react-router-dom";
 
-import "react-ig-feed/dist/index.css";
+// import "react-ig-feed/dist/index.css";
 import InstaFeed from "../../Components/InstaFeed";
 import DualBoxesComponent from "../components/DualBoxesComponent";
 import TextAndImageComponent from "../components/TextAndImageComponent";
