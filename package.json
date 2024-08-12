@@ -24,7 +24,9 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "format": "turbo run format",
+    "format:check": "turbo run format:check"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +48,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
-    "vite": "^5.3.4"
+    "vite": "^5.3.4",
+    "prettier": "^3.3.3"
   }
 }
