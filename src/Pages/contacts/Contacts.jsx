@@ -33,7 +33,12 @@ function Contact(props) {
                     className="btn btn-outline-dark"
                   >
                     {" "}
-                    <img className="icon" src={IconMail} alt="icon-mail" />{" "}
+                    <img
+                      role="button"
+                      className="icon"
+                      src={IconMail}
+                      alt="icon-mail"
+                    />{" "}
                     Scrivimi una mail
                   </a>
 
@@ -43,7 +48,12 @@ function Contact(props) {
                     rel="noreferrer"
                     target="_blank"
                   >
-                    <img className="icon" src={IconPhone} alt="icon-phone" />{" "}
+                    <img
+                      role="button"
+                      className="icon"
+                      src={IconPhone}
+                      alt="icon-phone"
+                    />{" "}
                     mandami un messaggio
                   </a>
                 </div>

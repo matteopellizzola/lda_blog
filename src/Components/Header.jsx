@@ -60,7 +60,7 @@ function Header(props) {
           <div className="menu-wrapper">
             <div className="menu-link" onClick={() => toggleMobileMenu()}>
               <h1 className="d-flex p-1">
-                <img className="icon" src={IconMenu} />
+                <img role="button" className="icon" src={IconMenu} />
               </h1>
             </div>
             <div className="mobile-logo">
@@ -106,7 +106,12 @@ function ModalMobileMenu(props) {
       >
         <div className="link-wrapper">
           <h3 onClick={() => props.toggleMobileMenu()}>
-            <img className="icon" src={IconClose} alt="icon-close" />
+            <img
+              role="button"
+              className="icon"
+              src={IconClose}
+              alt="icon-close"
+            />
           </h3>
           {props.menuItems.navigationList.map((item) => (
             <HeaderMenuLink
