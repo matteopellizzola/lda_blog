@@ -8,7 +8,7 @@ function GoogleIframeMap(props) {
         height={props.height}
         style={{ border: 0 }}
         allowFullScreen={true}
-        loading="lazy"
+        // loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         title={props.title}
       ></iframe>

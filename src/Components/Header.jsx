@@ -7,6 +7,8 @@ import loadNavigation from "../database/loadNavigation";
 import HeaderMenuLink from "./HeaderMenuLink";
 
 import Logo from "../static/logo.png";
+import IconMenu from "../static/images/icons/icon-menu.svg";
+import IconClose from "../static/images/icons/icon-close.svg";
 import LoggedinPopOver from "./LoggedInPopover";
 import { useUser } from "../contexts/userContext";
 
@@ -57,8 +59,8 @@ function Header(props) {
         <Col xs={12}>
           <div className="menu-wrapper">
             <div className="menu-link" onClick={() => toggleMobileMenu()}>
-              <h1>
-                <i className="icon-menu"></i>
+              <h1 className="d-flex p-1">
+                <img className="icon" src={IconMenu} />
               </h1>
             </div>
             <div className="mobile-logo">
@@ -104,7 +106,7 @@ function ModalMobileMenu(props) {
       >
         <div className="link-wrapper">
           <h3 onClick={() => props.toggleMobileMenu()}>
-            <i className="icon-cross"></i>
+            <img className="icon" src={IconClose} alt="icon-close" />
           </h3>
           {props.menuItems.navigationList.map((item) => (
             <HeaderMenuLink

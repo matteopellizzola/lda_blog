@@ -7,10 +7,10 @@
   opacity: 0.6;
   animation: animateFadeIn 2s infinite;
 
-  // @media #{$tablet},
-  // #{$mobile} {
-  //     flex-direction: column;
-  // }
+  @media #{$tablet},
+  #{$mobile} {
+    flex-direction: column !important;
+  }
 
   &:nth-of-type(even) {
     flex-direction: row-reverse;
@@ -19,6 +19,12 @@
   .data-image {
     width: 50%;
     background-color: $base-gray-color;
+
+    @media #{$tablet}, #{$mobile} {
+      width: 100%;
+      aspect-ratio: 602/482;
+      height: 100%;
+    }
   }
 
   .data-text {
@@ -27,6 +33,10 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 16px;
+
+    @media #{$tablet}, #{$mobile} {
+      width: 100%;
+    }
 
     .text-item {
       width: 46%;

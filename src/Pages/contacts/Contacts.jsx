@@ -4,6 +4,8 @@ import loadSchedule from "../../database/loadSchedules";
 import "./contacts.scss";
 import GoogleIframeMap from "./GoogleIframeMap";
 import NewsLetterForm from "./NewsLetterForm";
+import IconMail from "../../static/images/icons/icon-mail.svg";
+import IconPhone from "../../static/images/icons/icon-phone.svg";
 
 const schedules = loadSchedule();
 
@@ -26,13 +28,13 @@ function Contact(props) {
                 </div>
                 <hr />
                 <div className="mail-phone-wrapper">
-                  {/*TODO: cambiare con cose reali*/}
                   <a
                     href="mailto:laboratoriodiantonella@gmail.com"
                     className="btn btn-outline-dark"
                   >
                     {" "}
-                    <i className="icon-mail"></i> Scrivimi una mail
+                    <img className="icon" src={IconMail} alt="icon-mail" />{" "}
+                    Scrivimi una mail
                   </a>
 
                   <a
@@ -41,7 +43,8 @@ function Contact(props) {
                     rel="noreferrer"
                     target="_blank"
                   >
-                    <i className="icon-phone"></i> mandami un messaggio
+                    <img className="icon" src={IconPhone} alt="icon-phone" />{" "}
+                    mandami un messaggio
                   </a>
                 </div>
               </Col>
