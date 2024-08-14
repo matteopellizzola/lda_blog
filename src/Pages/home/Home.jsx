@@ -16,9 +16,10 @@ import { useNavigate } from "react-router-dom";
 import InstaFeed from "../../Components/InstaFeed";
 import DualBoxesComponent from "../components/DualBoxesComponent";
 import TextAndImageComponent from "../components/TextAndImageComponent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classNames from "classnames";
 import VideoPlayer from "../components/VideoPlayer";
+import api from "../../services/api";
 
 function Home(props) {
   const navigate = useNavigate();
@@ -28,10 +29,18 @@ function Home(props) {
 
   const ig_token = import.meta.env.VITE_REACT_APP_API_INSTAGRAM_TOKEN;
   const [isInstagramActive, setIsInstagramActive] = useState(true);
+  const [homeHeroes, setHomeHeroes] = useState(null);
+
+  useEffect(() => {
+    api.home.getHomeHeroes().then((result) => {
+      console.log("result", result);
+      setHomeHeroes(result.allHeroImages);
+    });
+  }, []);
 
   return (
     <>
-      <div className="main-slider">
+      {/* <div className="main-slider">
         <Swiper
           modules={[Navigation, Pagination, Autoplay, Lazy]}
           loop={true}
@@ -87,9 +96,26 @@ function Home(props) {
         handleClick={handleClick}
         reverse={false}
         outer={true}
-      />
+      /> */}
 
-      <div className="dual-boxes">
+      {homeHeroes?.length && (
+        <>
+          <div className="dual-boxes">
+            {homeHeroes.map((hero) => (
+              <div
+                key={hero.id}
+                className="box-container"
+                onClick={() => handleClick("about")}
+              >
+                <img src={hero.image.url} alt="slide-img" />
+                <span className="cta-box">{hero.buttonText}</span>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* <div className="dual-boxes">
         <div className="box-container" onClick={() => handleClick("about")}>
           <img
             src="https://res.cloudinary.com/dbdivqgja/image/upload/v1690297373/z4avm70uyslfxzgonzca.jpg"
@@ -104,16 +130,16 @@ function Home(props) {
           />
           <span className="cta-box">altro testo di esempio</span>
         </div>
-      </div>
+      </div> */}
 
-      <VideoPlayer
+      {/* <VideoPlayer
         id="demo-player"
         publicId="home/km0czw697uzn6j54yudx"
         width="3840"
         height="2160"
-      />
+      /> */}
 
-      <div className="dual-boxes">
+      {/* <div className="dual-boxes">
         <div className="box-container" onClick={() => handleClick("about")}>
           <img
             src="https://res.cloudinary.com/dbdivqgja/image/upload/v1690297358/ovrjeqmvdy5tmswnm2sb.jpg"
@@ -166,24 +192,24 @@ function Home(props) {
           />
           <span className="cta-box">testo di esempio</span>
         </div>
-      </div>
+      </div> */}
 
-      <div
+      {/* <div
         className={classNames(
           "instagram-container text-center",
-          isInstagramActive ? "" : "d-none",
+          isInstagramActive ? "" : "d-none"
         )}
       >
         <h4>Segui gli aggiornamenti in tempo reale</h4>
         <h6>alcuni post del mio profilo instagram </h6>
 
-        {/* <InstagramFeed token={ig_token} counter="9" /> */}
+
         <InstaFeed
           token={ig_token}
           counter="12"
           setIsInstagramActive={setIsInstagramActive}
         />
-      </div>
+      </div> */}
     </>
   );
 }
