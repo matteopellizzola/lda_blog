@@ -1,7 +1,5 @@
 import { Row, Col } from "react-bootstrap";
 
-import "./footer.scss";
-
 function Footer(props) {
   return (
     <>

@@ -1,6 +1,5 @@
 import { Col, Row } from "react-bootstrap";
 
-import "./header.scss";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import loadNavigation from "../database/loadNavigation";

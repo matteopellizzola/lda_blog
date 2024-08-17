@@ -1,5 +1,3 @@
-import "./MpPopup.scss";
-
 function MpPopUp({ values, setPopUp }) {
   return (
     <div className="mp-popup">

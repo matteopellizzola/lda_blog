@@ -1,7 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import loadSchedule from "../../database/loadSchedules";
 
-import "./contacts.scss";
 import GoogleIframeMap from "./GoogleIframeMap";
 import NewsLetterForm from "./NewsLetterForm";
 import IconMail from "../../static/images/icons/icon-mail.svg";

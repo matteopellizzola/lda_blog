@@ -9,7 +9,6 @@ import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 import "swiper/css/lazy";
 
-import "./home.scss";
 import { useNavigate } from "react-router-dom";
 
 // import "react-ig-feed/dist/index.css";

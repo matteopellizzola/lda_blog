@@ -1,5 +1,4 @@
 import React from "react";
-import "./loading.scss";
 
 function ProductsLoadingTile() {
   return (

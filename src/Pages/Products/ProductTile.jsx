@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-import "./products.scss";
 import classNames from "classnames";
 
 function ProductTile(props) {

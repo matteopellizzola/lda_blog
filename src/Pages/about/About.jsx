@@ -2,8 +2,6 @@ import { useTranslation } from "react-i18next";
 import InstaFeed from "../../Components/InstaFeedSwiper";
 import loadBiography from "../../database/loadBiography";
 
-import "./about.scss";
-
 const biographyData = loadBiography();
 
 const ig_token = import.meta.env.VITE_REACT_APP_API_INSTAGRAM_TOKEN;
