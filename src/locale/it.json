@@ -1,0 +1,22 @@
+{
+  "translation": {
+    "home": "Home",
+    "about": {
+      "title": "Chi sono",
+      "description": {
+        "first": "Sono mamma e ho sentito il bisogno di nutrire i miei figli con alimenti buoni e di cui potessi conoscere il più possibile, dalla provenienza alle mani che lo hanno lavorato. Conoscere il produttore e il suo volto mi rassicura.",
+        "second": "Da sempre ho amato condividere con gli amici momenti di gioia tra chiacchiere e risate accompagnate dai miei piatti.",
+        "third": "Impastare e combinare acqua e farina, in ogni sua forma, mi fa sentire in connessione con la natura, che con tanta generosità ci soddisfa.",
+        "fourth": "Sono nata e vivo in città, ma è nella campagna che, grazie ai suoi paesaggi e ai suoi colori, mi sento a casa. I colori della terra, del giallo e dell'ocra mi trasmettono serenità e tonificano la mia energia.",
+        "fifth": "La mia filosofia è quella di ricercare il più possibile materie prime di ottima qualità che possano donare energia, aiutare il nostro organismo a mantenersi in salute e, non ultimo, appagare il gusto.",
+        "sixth": "Questo laboratorio nasce anche con l'intento di creare momenti di socialità in cui condividere nozioni ed esperienze attorno al cibo"
+      },
+      "claim": {
+        "first": "Benvenuti nel mio laboratorio",
+        "second": "dove c'è profumo di buono"
+      }
+    },
+    "products": "Products",
+    "contacts": "Contacts"
+  }
+}

@@ -19,6 +19,7 @@ import Edit from "./Pages/Edit/Edit";
 import Edit2 from "./Pages/Edit/Edit2";
 import Login from "./Pages/login/Login";
 import Logout from "./Pages/logout/Logout";
+import "./i18n.ts";
 
 let router = createBrowserRouter([
   {
