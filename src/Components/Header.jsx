@@ -32,7 +32,7 @@ function Header(props) {
       <div className="menu-header-desktop">
         <div className="header-wrapper">
           <div className="logo">
-            <Link to="/" onClick={() => setPage("home")} key="/">
+            <Link to="/" key="/">
               <img src={Logo} alt="logo_lda" />
             </Link>
           </div>

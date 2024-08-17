@@ -252,7 +252,7 @@ function Edit(props) {
         {/* <input type='file' onChange={(e) => onChange(e, "img1")} placeholder="Primary Image" />
                 <input type='file' onChange={(e) => onChange(e, "img2")} placeholder="Primary Image" /> */}
 
-        <button className="button btn-submit btn" onClick={createData}>
+        <button className="button btn-submit mb-5" onClick={createData}>
           Save
         </button>
       </div>
