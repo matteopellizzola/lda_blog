@@ -28,8 +28,6 @@ function HeaderMenuLink(props) {
 }
 
 function handleMenuClick(props) {
-  props.setPage(props.item.navigateTo);
-
   if (props.toggleMobileMenu()) {
     props.toggleMobileMenu();
   }

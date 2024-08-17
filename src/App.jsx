@@ -1,7 +1,14 @@
+import * as React from "react";
+
 import "./App.css";
 import "./global.scss";
 
-import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  ScrollRestoration,
+} from "react-router-dom";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Contact from "./Pages/contacts/Contacts";
@@ -13,27 +20,44 @@ import Edit2 from "./Pages/Edit/Edit2";
 import Login from "./Pages/login/Login";
 import Logout from "./Pages/logout/Logout";
 
+let router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      { path: "*", element: <Home /> },
+      { path: "about", element: <About /> },
+      { path: "contacts", element: <Contact /> },
+      { path: "products", element: <Products /> },
+      { path: "edit", element: <Edit /> },
+      { path: "edit2", element: <Edit2 /> },
+      { path: "login", element: <Login /> },
+      { path: "logout", element: <Logout /> },
+    ],
+  },
+]);
+
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/contacts" element={<Contact />}></Route>
-          <Route path="/products" element={<Products />}></Route>
-          <Route path="/edit" element={<Edit />}></Route>
-          <Route path="/edit2" element={<Edit2 />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/logout" element={<Logout />}></Route>
-          <Route path="/*" element={<Home />}></Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 function Layout(props) {
+  let getKey = React.useCallback((location, matches) => {
+    let match = matches.find((m) => m.handle?.scrollMode);
+    if (match?.handle?.scrollMode === "pathname") {
+      console.log("Found", location.pathname);
+
+      return location.pathname;
+    }
+    console.log("not Found", location.key);
+
+    return location.key;
+  }, []);
+
   return (
     <>
       <Header />
@@ -43,6 +67,7 @@ function Layout(props) {
       </div>
 
       <Footer />
+      <ScrollRestoration getKey={getKey} />
     </>
   );
 }

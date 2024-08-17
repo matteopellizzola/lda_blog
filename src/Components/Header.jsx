@@ -1,7 +1,7 @@
 import { Col, Row } from "react-bootstrap";
 
 import "./header.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import loadNavigation from "../database/loadNavigation";
 import HeaderMenuLink from "./HeaderMenuLink";
@@ -16,9 +16,9 @@ const menuItems = loadNavigation();
 
 function Header(props) {
   const { loggedIn, userData } = useUser();
+  const location = useLocation();
 
   const [mobileMenu, setMobileMenu] = useState(false);
-  const [page, setPage] = useState(window.location.pathname);
 
   function toggleMobileMenu() {
     if (mobileMenu) {
@@ -41,9 +41,8 @@ function Header(props) {
             {menuItems.navigationList.map((item) => (
               <HeaderMenuLink
                 key={item.name}
-                page={page}
+                page={location?.pathname}
                 item={item}
-                setPage={setPage}
                 toggleMobileMenu={() => {
                   return;
                 }}
@@ -65,7 +64,7 @@ function Header(props) {
             </div>
             <div className="mobile-logo">
               <h1>
-                <Link to="/" onClick={() => setPage("home")} key="/m">
+                <Link to="/" key="/m">
                   <img src={Logo} alt="logo_lda" />
                 </Link>
               </h1>
@@ -75,9 +74,8 @@ function Header(props) {
         <ModalMobileMenu
           toggleMobileMenu={toggleMobileMenu}
           setMobileMenu={setMobileMenu}
-          page={page}
+          page={location?.pathname}
           menuItems={menuItems}
-          setPage={setPage}
           mobileMenu={mobileMenu}
           userData={userData}
         />
@@ -118,7 +116,6 @@ function ModalMobileMenu(props) {
               key={item.name}
               page={props.page}
               item={item}
-              setPage={props.setPage}
               toggleMobileMenu={props.toggleMobileMenu}
             />
           ))}
