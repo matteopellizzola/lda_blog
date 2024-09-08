@@ -146,7 +146,7 @@ function Home(props) {
       />
 
       <DualBoxesComponent
-        leftTitle={"Fiorentine al cioccolato"}
+        leftTitle={"Paste fiorentine al cioccolato"}
         rightTitle={"Pane in cassetta integrale"}
         leftLink={"products"}
         rightLink={"products"}
