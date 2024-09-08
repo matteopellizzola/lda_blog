@@ -64,6 +64,32 @@ function About(props) {
             __html: t("about.description.sixth"),
           }}
         ></p>
+
+        <p
+          className="bio-text"
+          dangerouslySetInnerHTML={{
+            __html: t("about.description.seventh"),
+          }}
+        ></p>
+
+        <p
+          className="bio-text"
+          dangerouslySetInnerHTML={{
+            __html: t("about.description.eighth"),
+          }}
+        ></p>
+
+        <div className="py-5">
+          <h2 className="text-center claim">{t("about.claimtwo.first")}</h2>
+          {/* <h4 className="text-center">{t("about.claimtwo.second")}</h4> */}
+        </div>
+
+        <p
+          className="bio-text"
+          dangerouslySetInnerHTML={{
+            __html: t("about.materials.first"),
+          }}
+        ></p>
       </div>
 
       <div className="instagram-container">
