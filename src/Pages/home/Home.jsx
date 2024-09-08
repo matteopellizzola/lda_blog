@@ -40,7 +40,7 @@ function Home(props) {
       <TextAndImageComponent
         title={"Laboratorio di Antonella"}
         description={
-          "Benvenuti nel mio laboratorio, dove le lavorazioni e i profumi cambiano a seconda delle giornate e delle stagioni."
+          "Benvenuti nel mio laboratorio, dove le lavorazioni e i profumi cambiano di giorno in giorno e di stagione in stagione."
         }
         image={
           "https://res.cloudinary.com/dbdivqgja/image/upload/v1725803609/home/web-41_shmweg.jpg"
