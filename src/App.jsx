@@ -20,6 +20,7 @@ import Edit2 from "./Pages/Edit/Edit2";
 import Login from "./Pages/login/Login";
 import Logout from "./Pages/logout/Logout";
 import "./i18n.ts";
+import { Checkout } from "./Pages/checkout/Checkout.jsx";
 
 let router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ let router = createBrowserRouter([
       { path: "edit2", element: <Edit2 /> },
       { path: "login", element: <Login /> },
       { path: "logout", element: <Logout /> },
+      { path: "checkout", element: <Checkout /> },
     ],
   },
 ]);
