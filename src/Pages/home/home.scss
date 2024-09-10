@@ -40,21 +40,23 @@
       transition: all 0.5s;
     }
 
-    &:hover {
-      cursor: pointer;
+    @media #{$desktop} {
+      &:hover {
+        cursor: pointer;
 
-      &::after {
-        opacity: 0.5;
-        transition: all 0.5s;
-      }
+        &::after {
+          opacity: 0.5;
+          transition: all 0.5s;
+        }
 
-      .cta-box {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        left: 50%;
-        transition: all 0.5s;
-        transform: translate(-50%, -50%);
+        .cta-box {
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          left: 50%;
+          transition: all 0.5s;
+          transform: translate(-50%, -50%);
+        }
       }
     }
 
@@ -172,7 +174,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: .3s all ease-in-out;
+      transition: 0.3s all ease-in-out;
 
       @media #{$desktop} {
         &:hover {
