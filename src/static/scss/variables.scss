@@ -18,18 +18,16 @@ $grid-breakpoints: (
   md: 1024px,
   lg: 1440px,
   xl: 1920px,
-  ) !default;
+) !default;
 
 $container-max-widths: (
   md: 1024px,
   lg: 1440px,
   xl: 1920px,
-  ) !default;
+) !default;
 
-$regularFontFamily: "Fira Sans",
-  cursive;
-$boldFontFamily: "Fira Sans",
-  cursive;
+$regularFontFamily: "Fira Sans", cursive;
+$boldFontFamily: "Fira Sans", cursive;
 
 // $dark-base-color: #ffe0b0;
 // $base-text-color: #14212b;
@@ -42,14 +40,12 @@ $boldFontFamily: "Fira Sans",
 $dark-base-color: #eab861;
 $base-text-color: #401d13; //#3e4b43;
 $base-gray-color: #26333c;
-$base-background-color: #F7F4F3;
-$white: #F7F4F3;
+$base-background-color: #f7f4f3;
+$white: #f7f4f3;
 $base-background-color-transparent: #faf1e56c;
-$orange-color: #D98324;
+$orange-color: #d98324;
 $dark-orange-color: #502416;
 $logo-color: #401d13;
 
-
 //transitions
-$transition-duration: all 0.2s cubic-bezier(0.4, 1, 0.6, 1
-);
+$transition-duration: all 0.2s cubic-bezier(0.4, 1, 0.6, 1);

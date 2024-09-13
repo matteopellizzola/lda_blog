@@ -1,7 +1,3 @@
-@import "../global.scss";
-
-@import "../static/scss/swiperSlider.scss";
-
 header {
   position: fixed;
   top: 0;
@@ -49,7 +45,6 @@ header {
 }
 
 .menu-header-desktop {
-
   @media #{$tablet},
   #{$mobile} {
     display: none !important;
@@ -124,7 +119,7 @@ header {
 
     .menu-link {
       position: absolute;
-      left: 15px;
+      right: 15px;
       cursor: pointer;
       color: $base-text-color;
     }
@@ -199,7 +194,7 @@ header {
       line-height: 3.3rem;
       position: relative;
 
-      .icon-cross {
+      .icon {
         position: absolute;
         top: 1rem;
         right: 1rem;

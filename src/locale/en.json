@@ -1,0 +1,22 @@
+{
+  "translation": {
+    "home": "Home",
+    "about": {
+      "title": "About me",
+      "description": {
+        "first": "I am a mother and I felt the need to nourish my children with good food and of which I could know as much as possible, from the origin to the hands that worked it. Knowing the producer and his face reassures me.",
+        "second": "I have always loved sharing moments of joy with friends over chats and laughter accompanied by my dishes.",
+        "third": "Kneading and combining water and flour, in all its forms, makes me feel connected to nature, which with so much generosity satisfies us.",
+        "fourth": "I was born and live in the city, but it is in the countryside that, thanks to its landscapes and its colors, I feel at home. The colors of the earth, yellow and ochre, transmit serenity to me and tone my energy.",
+        "fifth": "My philosophy is to search as much as possible for raw materials of excellent quality that can give energy, help our body stay healthy and, last but not least, satisfy the taste.",
+        "sixth": "This laboratory was also born with the intent of creating moments of sociality in which to share knowledge and experiences around food"
+      },
+      "claim": {
+        "first": "Welcome to my laboratory",
+        "second": "where there is a scent of good"
+      }
+    },
+    "products": "Products",
+    "contacts": "Contacts"
+  }
+}

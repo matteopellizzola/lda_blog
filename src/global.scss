@@ -2,6 +2,20 @@
 @import "./static/scss/fontsImport.scss";
 @import "./static/scss/mixins.scss";
 
+@import "./static/scss/swiperSlider.scss";
+@import "./static/scss/instagramContainer.scss";
+
+//pages/assets
+@import "./Components/header.scss";
+@import "./Components/footer.scss";
+@import "./Pages/about/about.scss";
+@import "./Pages/contacts/contacts.scss";
+@import "./Pages/components/MpPopup.scss";
+@import "./Pages/Edit/edit.scss";
+@import "./Pages/home/home.scss";
+@import "./Pages/Products/loading.scss";
+@import "./Pages/Products/products.scss";
+
 h1 {
   color: $base-text-color;
 }
@@ -53,6 +67,10 @@ body {
     #{$tablet} {
       padding-top: 44px;
     }
+  }
+
+  .font-bigger {
+    font-size: 50px;
   }
 }
 

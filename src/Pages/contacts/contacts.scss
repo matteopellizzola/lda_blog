@@ -1,6 +1,3 @@
-@import "../../global.scss";
-@import "../../static/scss/mixins.scss";
-
 .contacts-wrapper {
   max-width: 1200px;
   margin-left: auto;
@@ -14,7 +11,6 @@
     text-align: left;
 
     .mail-phone-wrapper {
-
       @media #{$tablet},
       #{$desktop} {
         display: flex;

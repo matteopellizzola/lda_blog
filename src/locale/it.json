@@ -1,0 +1,30 @@
+{
+  "translation": {
+    "home": "Home",
+    "about": {
+      "title": "Chi sono",
+      "description": {
+        "first": "Sono mamma e ho sentito il bisogno di nutrire i miei figli con alimenti buoni e di cui potessi conoscere il più possibile, dalla provenienza alle mani che lo hanno lavorato. Conoscere il produttore e il suo volto mi rassicura.",
+        "second": "Da sempre ho amato condividere con gli amici momenti di gioia tra chiacchiere e risate accompagnate dai miei piatti.",
+        "third": "Impastare e combinare acqua e farina, in ogni sua forma, mi fa sentire in connessione con la natura, che con tanta generosità ci soddisfa.",
+        "fourth": "Sono nata e vivo in città, ma è nella campagna che, grazie ai suoi paesaggi e ai suoi colori, mi sento a casa. I colori della terra, del giallo e dell'ocra mi trasmettono serenità e tonificano la mia energia.",
+        "fifth": "La mia filosofia è quella di ricercare il più possibile materie prime di qualità che possano donare energia, aiutare il nostro organismo a mantenersi in salute e, non ultimo, appagare il gusto.",
+        "sixth": "Nel mio laboratorio si lavora e si impasta con le mani, rispettando i tempi e le materie, proprio come nella cucina della nonna. I processi non sono standardizzati e non lo sono i prodotti ottenuti, che variano al variare delle temperature e delle materie via via utilizzate. Inoltre, cosa molto importante per me, viene rispettata la stagionalità: siamo parte della natura e solo lei può decidere quando un suo frutto sia pronto per il nostro consumo.",
+        "seventh": "Completa l'artigianalità il forno alimentato a legna, che caratterizza ancor di più i prodotti.",
+        "eighth": "Questo laboratorio nasce anche con l'intento di creare momenti di socialità, in cui condividere nozioni ed esperienze attorno al cibo, mediante laboratori ed eventi."
+      },
+      "claim": {
+        "first": "Benvenuti nel mio laboratorio",
+        "second": "dove c'è profumo di buono"
+      },
+      "claimtwo": {
+        "first": "Le materie"
+      },
+      "materials": {
+        "first": "Le materie utilizzate sono ricercate seguendo il criterio dell'integrità e della territorialità. Provengono principalmente da piccoli produttori che conosco personalmente e di cui ho visitato la realtà."
+      }
+    },
+    "products": "Products",
+    "contacts": "Contacts"
+  }
+}
