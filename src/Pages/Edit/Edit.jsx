@@ -58,8 +58,6 @@ function Edit(props) {
     api.images
       .uploadImage(file)
       .then((res) => {
-        console.log(res);
-        console.log(imageType);
         if (res.secure_url) {
           setFormData({ ...formData, [imageType]: res.secure_url });
           setIsLoading(false);
@@ -82,9 +80,7 @@ function Edit(props) {
       api.products.addProduct(formData).then((data) => {
         setIsLoading(false);
         if (data.acknowledged) {
-          console.log("done");
           setFormData(initialFormState);
-          console.log(JSON.stringify(formData));
         } else if (!data.success) {
           setPopUp(true);
         }
@@ -94,11 +90,9 @@ function Edit(props) {
       api.products.editProduct(formData, queryID).then((data) => {
         setIsLoading(false);
         if (data.acknowledged) {
-          console.log("done");
           setFormData(initialFormState);
           searchParams.delete("id");
           setSearchParams(searchParams);
-          console.log(JSON.stringify(formData));
         } else if (!data.success) {
           setPopUp(true);
         }
@@ -147,7 +141,6 @@ function Edit(props) {
               id="description"
               onChange={(e) => {
                 setFormData({ ...formData, description: e.target.value });
-                console.log(formData.description);
               }}
               placeholder="Description"
               value={formData.description}

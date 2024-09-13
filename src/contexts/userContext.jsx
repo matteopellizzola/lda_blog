@@ -10,7 +10,6 @@ export const UserProvider = ({ children }) => {
 
   const loginCustomer = (formData) => {
     api.users.login(formData).then((data) => {
-      console.log(data);
       setLoginResult(data);
       if (!data.success) {
       } else {
@@ -29,7 +28,6 @@ export const UserProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("ChangedLoggedIN");
     api.users.isLoggedIn(true).then((data) => {
       if (data) {
         setLoggedIn(true);
