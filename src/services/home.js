@@ -1,5 +1,6 @@
 import { executeQuery } from "@datocms/cda-client";
-import { heroQuery } from "./graphQL/home";
+import { buildClient } from "@datocms/cma-client-browser";
+import { heroQuery, heroQuery2 } from "./graphQL/home";
 
 const options = {
   token: "6f3365cf386a2ee3f6936678d38237",
@@ -7,7 +8,10 @@ const options = {
 
 const home = {
   getHomeHeroes: async () => {
-    const result = await executeQuery(heroQuery, options);
+    console.log("1111");
+
+    // const result = await executeQuery(heroQuery, options);
+    const result = await executeQuery(heroQuery2, options);
     localStorage.setItem("homeHeroes", JSON.stringify(result.allHeroImages));
     return result;
   },
