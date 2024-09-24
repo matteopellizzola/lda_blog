@@ -16,6 +16,7 @@ function Edit(props) {
     img1: "",
     img2: "",
     online: true,
+    order: "",
   };
 
   const [formData, setFormData] = useState(initialFormState);
@@ -240,6 +241,19 @@ function Edit(props) {
               value={formData.img2}
             />
           </div>
+        </div>
+
+        <div className="form-row d-block">
+          <label htmlFor="#order">Order number in list</label>
+          <input
+            id="order"
+            type="number"
+            onChange={(e) =>
+              setFormData({ ...formData, order: e.target.value })
+            }
+            placeholder="1 for first position, 9 for last..."
+            value={formData.order}
+          />
         </div>
 
         {/* <input type='file' onChange={(e) => onChange(e, "img1")} placeholder="Primary Image" />

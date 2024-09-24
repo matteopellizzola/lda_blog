@@ -79,11 +79,13 @@ function ProductTile(props) {
                   <div
                     className={classNames(
                       "online-info",
-                      product.online ? "online" : "offline",
+                      product.online ? "online" : "offline"
                     )}
                   >
                     online: {product.online ? "true" : "false"}
                   </div>
+                  <br />
+                  <div>order: {product.order}</div>
                   <button
                     className="btn-secondary"
                     onClick={() => {
