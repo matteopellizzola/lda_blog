@@ -35,7 +35,7 @@ function ProductTile(props) {
 
                 <div className="ingredients">
                   <div className="header">Ingredienti</div>
-                  <div>{product.ingredients}</div>
+                  <div className="ingredients-list">{product.ingredients}</div>
                 </div>
               </div>
 
