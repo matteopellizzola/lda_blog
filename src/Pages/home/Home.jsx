@@ -30,12 +30,12 @@ function Home(props) {
 
   return (
     <>
-      <VideoPlayer
+      {/* <VideoPlayer
         id="demo-player"
         publicId="home/km0czw697uzn6j54yudx"
         width="3840"
         height="2160"
-      />
+      /> */}
 
       <TextAndImageComponent
         title={"Laboratorio di Antonella"}
