@@ -110,7 +110,7 @@ function Home(props) {
             src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide5.jpg"
             alt="slide-img"
           />
-          <span className="cta-box">sfoglietti integrali</span>
+          <span className="cta-box">Sfoglietti integrali</span>
         </div>
       </div>
 
