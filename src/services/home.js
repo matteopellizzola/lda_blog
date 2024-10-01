@@ -7,12 +7,15 @@ const options = {
 };
 
 const home = {
-  getHomeHeroes: async () => {
-    console.log("1111");
-
+  getHomePage: async () => {
+    //TODO; sistemare il salvataggio!
+    if (localStorage.getItem("homepageData")) {
+      console.log("esco rpima");
+      return JSON.parse(localStorage.getItem("homepageData"));
+    }
     // const result = await executeQuery(heroQuery, options);
     const result = await executeQuery(heroQuery2, options);
-    localStorage.setItem("homeHeroes", JSON.stringify(result.allHeroImages));
+    localStorage.setItem("homepageData", JSON.stringify(result));
     return result;
   },
 };

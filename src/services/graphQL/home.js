@@ -31,7 +31,7 @@ export const heroQuery2 = `{
       reverse
     }
     singleBox {
-      fisrt {
+      first {
         image {
           alt
           url

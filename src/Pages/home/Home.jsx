@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 import classNames from "classnames";
 import VideoPlayer from "../components/VideoPlayer";
 import api from "../../services/api";
+import SingleBoxComponent from "../components/SingleBoxComponent";
 
 function Home(props) {
   const navigate = useNavigate();
@@ -29,17 +30,80 @@ function Home(props) {
 
   const ig_token = import.meta.env.VITE_REACT_APP_API_INSTAGRAM_TOKEN;
   const [isInstagramActive, setIsInstagramActive] = useState(true);
-  const [homeHeroes, setHomeHeroes] = useState(null);
+  const [homePageData, setHomePageData] = useState(null);
 
   useEffect(() => {
-    api.home.getHomeHeroes().then((result) => {
+    api.home.getHomePage().then((result) => {
       console.log("result", result);
-      setHomeHeroes(result.allHeroImages);
+      setHomePageData(result.homepage);
     });
   }, []);
 
   return (
     <>
+      {/* VIDEO SECTION */}
+
+      {/* TEXT AND IMAGE 1 */}
+      {homePageData?.textAndImageContainer?.length && (
+        <TextAndImageComponent
+          title={homePageData?.textAndImageContainer?.[0].title}
+          description={homePageData?.textAndImageContainer?.[0].description}
+          image={homePageData?.textAndImageContainer?.[0].image.url}
+          link={homePageData?.textAndImageContainer?.[0].link}
+          handleClick={handleClick}
+          reverse={homePageData?.textAndImageContainer?.[0].reverse}
+        />
+      )}
+
+      {/* IMAGE GALLERY SECTION */}
+
+      {/* DUAL BOX SECTION */}
+      {homePageData?.dualBox?.length && (
+        <DualBoxesComponent
+          leftTitle={homePageData?.dualBox?.[0].first?.title}
+          rightTitle={homePageData?.dualBox?.[0].second?.title}
+          leftLink={"about"} //TODO: add link?
+          rightLink={"about"}
+          handleClick={handleClick}
+          leftImage={homePageData?.dualBox?.[0].first?.image?.url}
+          rightImage={homePageData?.dualBox?.[0].second?.image?.url}
+        />
+      )}
+
+      {/* TEXT AND IMAGE 2 */}
+      {homePageData?.textAndImageContainer?.length &&
+        homePageData?.textAndImageContainer?.[1] && (
+          <TextAndImageComponent
+            title={homePageData?.textAndImageContainer?.[1].title}
+            description={homePageData?.textAndImageContainer?.[1].description}
+            image={homePageData?.textAndImageContainer?.[1].image.url}
+            link={homePageData?.textAndImageContainer?.[1].link}
+            handleClick={handleClick}
+            reverse={homePageData?.textAndImageContainer?.[1].reverse}
+          />
+        )}
+
+      {/* DUAL BOX SECTION 2 */}
+      {homePageData?.dualBox?.length && homePageData?.dualBox?.[1] && (
+        <DualBoxesComponent
+          leftTitle={homePageData?.dualBox?.[1].first?.title}
+          rightTitle={homePageData?.dualBox?.[1].second?.title}
+          leftLink={"about"} //TODO: add link?
+          rightLink={"about"}
+          handleClick={handleClick}
+          leftImage={homePageData?.dualBox?.[1].first?.image?.url}
+          rightImage={homePageData?.dualBox?.[1].second?.image?.url}
+        />
+      )}
+
+      {/* SINGLE BOX SECTION 2 */}
+      {homePageData?.singleBox?.length && (
+        <SingleBoxComponent
+          title={homePageData?.singleBox?.[0].title}
+          image={homePageData?.singleBox?.[0].first?.image?.url}
+        />
+      )}
+
       {/* <div className="main-slider">
         <Swiper
           modules={[Navigation, Pagination, Autoplay, Lazy]}
@@ -97,24 +161,6 @@ function Home(props) {
         reverse={false}
         outer={true}
       /> */}
-
-      {homeHeroes?.length && (
-        <>
-          <div className="dual-boxes">
-            {homeHeroes.map((hero) => (
-              <div
-                key={hero.id}
-                className="box-container"
-                onClick={() => handleClick("about")}
-              >
-                <img src={hero.image.url} alt="slide-img" />
-                <span className="cta-box">{hero.buttonText}</span>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-
       {/* <div className="dual-boxes">
         <div className="box-container" onClick={() => handleClick("about")}>
           <img
@@ -131,14 +177,12 @@ function Home(props) {
           <span className="cta-box">altro testo di esempio</span>
         </div>
       </div> */}
-
       {/* <VideoPlayer
         id="demo-player"
         publicId="home/km0czw697uzn6j54yudx"
         width="3840"
         height="2160"
       /> */}
-
       {/* <div className="dual-boxes">
         <div className="box-container" onClick={() => handleClick("about")}>
           <img
@@ -193,7 +237,6 @@ function Home(props) {
           <span className="cta-box">testo di esempio</span>
         </div>
       </div> */}
-
       {/* <div
         className={classNames(
           "instagram-container text-center",
