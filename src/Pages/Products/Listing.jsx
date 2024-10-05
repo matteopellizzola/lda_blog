@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import ProductsLoadingTile from "./ProductsLoadingTile";
+import React, { useContext, useEffect } from "react";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
 import { ProductsStoreContext, productStore } from "../../store/products";
@@ -44,7 +43,6 @@ const Listing = observer((props) => {
         <div className="pt-2">
           {/* TODO: fixxx */}
           <LoadingComponent />
-          <p>Loading products...</p>
         </div>
       )}
     </div>
@@ -53,12 +51,30 @@ const Listing = observer((props) => {
 
 function LoadingComponent() {
   return (
-    <>
-      <ProductsLoadingTile />
-      <ProductsLoadingTile />
-      <ProductsLoadingTile />
-      <ProductsLoadingTile />
-    </>
+    <div className="listing-wrapper">
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+      <div className="listing-wrapper data-loading-tile"></div>
+    </div>
   );
 }
 

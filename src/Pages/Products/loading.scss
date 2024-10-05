@@ -48,6 +48,19 @@
   }
 }
 
+.data-loading-tile {
+  width: calc(25% - 8px);
+  margin: 4px;
+  aspect-ratio: 1/1;
+  opacity: 0.6;
+  animation: animateFadeIn 2s infinite;
+  background-color: $base-gray-color;
+
+  @media #{$mobile},
+  #{$tablet} {
+    width: calc(50% - 8px);
+  }
+}
 @keyframes animateFadeIn {
   0% {
     opacity: 0.3;
