@@ -58,7 +58,7 @@ function Header(props) {
           <div className="menu-wrapper">
             <div className="menu-link" onClick={() => toggleMobileMenu()}>
               <h1 className="d-flex p-1">
-                <img role="button" className="icon" src={IconMenu} />
+                <img role="button" className="icon" src={IconMenu} alt="logo" />
               </h1>
             </div>
             <div className="mobile-logo">

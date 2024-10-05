@@ -12,7 +12,6 @@ const VideoPlayer = ({ id, publicId, ...props }) => {
 
     cloudinaryRef.current = window.cloudinary;
 
-    console.log("aaaaa");
     playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, {
       cloud_name: import.meta.env.VITE_REACT_APP_CLOUDINARY_CLOUD_NAME,
       secure: true,

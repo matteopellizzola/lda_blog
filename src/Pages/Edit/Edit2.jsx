@@ -25,7 +25,6 @@ function Edit2() {
           reject(err.response ? err.response.data.error : err.message),
         );
     }).then((result) => {
-      console.log(result);
       setImg1Path(result.secure_url);
     });
   }

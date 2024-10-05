@@ -20,6 +20,8 @@ import Edit2 from "./Pages/Edit/Edit2";
 import Login from "./Pages/login/Login";
 import Logout from "./Pages/logout/Logout";
 import "./i18n.ts";
+import { ProductsStoreContext, productStore } from "./store/products.jsx";
+import Listing from "./Pages/Products/Listing.jsx";
 
 let router = createBrowserRouter([
   {
@@ -33,9 +35,23 @@ let router = createBrowserRouter([
       { path: "*", element: <Home /> },
       { path: "about", element: <About /> },
       { path: "contacts", element: <Contact /> },
-      { path: "products", element: <Products /> },
+      {
+        path: "products/details",
+        element: (
+          <ProductsStoreContext.Provider value={productStore}>
+            <Products />
+          </ProductsStoreContext.Provider>
+        ),
+      },
       { path: "edit", element: <Edit /> },
-      { path: "edit2", element: <Edit2 /> },
+      {
+        path: "products",
+        element: (
+          <ProductsStoreContext.Provider value={productStore}>
+            <Listing />
+          </ProductsStoreContext.Provider>
+        ),
+      },
       { path: "login", element: <Login /> },
       { path: "logout", element: <Logout /> },
     ],

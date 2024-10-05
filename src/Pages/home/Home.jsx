@@ -1,5 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Helmet } from "react-helmet";
 
 import { Navigation, Pagination, Autoplay, Lazy } from "swiper";
 import "swiper/css";
@@ -30,12 +31,40 @@ function Home(props) {
 
   return (
     <>
-      <VideoPlayer
+      <Helmet>
+        <title>Laboratorio di Antonella</title>
+        <meta
+          name="description"
+          content="Questa è la home di Laboratorio di Antonella, esplora i miei prodotti da forno"
+        />
+        <meta
+          name="keywords"
+          content="Pane, grani antichi, prodotti da forno"
+        />
+        <link rel="canonical" href="https://www.laboratoriodiantonella.it/" />
+
+        {/* Meta tag Open Graph per la condivisione sui social */}
+        <meta property="og:title" content="Home | Laboratorio di Antonella" />
+        <meta
+          property="og:description"
+          content="Scopri i prodotti del laboratorio di Antonella"
+        />
+        <meta
+          property="og:url"
+          content="https://www.laboratoriodiantonella.it/"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.laboratoriodiantonella.it/apple-icon-180x180.png"
+        />
+      </Helmet>
+      {/* <VideoPlayer
         id="demo-player"
         publicId="home/km0czw697uzn6j54yudx"
         width="3840"
         height="2160"
-      />
+      /> */}
 
       <TextAndImageComponent
         title={"Laboratorio di Antonella"}
@@ -110,7 +139,7 @@ function Home(props) {
             src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide5.jpg"
             alt="slide-img"
           />
-          <span className="cta-box">sfoglietti integrali</span>
+          <span className="cta-box">Sfoglietti integrali</span>
         </div>
       </div>
 

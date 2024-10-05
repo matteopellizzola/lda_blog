@@ -1,6 +1,7 @@
 input[type="text"],
 textarea,
 input[type="file"],
+input[type="number"],
 input[type="password"] {
   @include formInputs();
   margin-top: 8px !important;

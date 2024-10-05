@@ -163,6 +163,12 @@
         }
       }
 
+      .ingredients {
+        .ingredients-list {
+          white-space: pre;
+        }
+      }
+
       .header {
         font-size: 20px;
         font-family: $boldFontFamily;
