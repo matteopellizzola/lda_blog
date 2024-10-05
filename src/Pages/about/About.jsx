@@ -22,7 +22,10 @@ function About(props) {
         <link rel="canonical" href="https://www.laboratoriodiantonella.it/" />
 
         {/* Meta tag Open Graph per la condivisione sui social */}
-        <meta property="og:title" content="Home | Laboratorio di Antonella" />
+        <meta
+          property="og:title"
+          content="Chi somo | Laboratorio di Antonella"
+        />
         <meta
           property="og:description"
           content="Scopri la storia del laboratorio di Antonella"
