@@ -4,28 +4,17 @@ import ProductTile from "./ProductTile";
 import api from "../../services/api";
 import ProductsLoadingTile from "./ProductsLoadingTile";
 import { useUser } from "../../contexts/userContext";
-import { observer, Provider } from "mobx-react";
-import { ProductsStoreContext, productStore } from "../../store/products";
+import { observer } from "mobx-react";
+import { ProductsStoreContext } from "../../store/products";
 
 const Products = observer((props) => {
   //const products = loadProducts();
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const { loggedIn } = useUser();
   const productStore = useContext(ProductsStoreContext);
 
-  useEffect(() => {
-    setIsLoading(true);
-    getProducts();
-  }, []);
-
-  function getProducts() {
-    productStore.fetchProducts();
-  }
-
   async function removeProduct(id) {
     api.products.removeProduct(id).then((data) => {
-      getProducts();
+      productStore.fetchProducts();
     });
   }
 
@@ -38,7 +27,7 @@ const Products = observer((props) => {
       {productStore.products && !productStore.loading ? (
         productStore.products.map((product) => (
           <ProductTile
-            key={product.id}
+            key={product._id}
             product={product}
             removeProduct={removeProduct}
             isLoggedIn={loggedIn}
