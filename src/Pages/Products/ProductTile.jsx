@@ -9,7 +9,7 @@ function ProductTile(props) {
   return (
     <>
       {(product.online || props.isLoggedIn) && (
-        <div className="product-wrapper padding-logo-top">
+        <div className="product-wrapper padding-logo-top" id={product._id}>
           <div className="product-inner">
             <h2 className="name-mobile">{product.name}</h2>
             <div className="image">

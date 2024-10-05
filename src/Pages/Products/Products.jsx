@@ -1,40 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 //import loadProducts from "../../database/loadProducts";
 import ProductTile from "./ProductTile";
 import api from "../../services/api";
 import ProductsLoadingTile from "./ProductsLoadingTile";
 import { useUser } from "../../contexts/userContext";
+import { observer } from "mobx-react";
+import { ProductsStoreContext } from "../../store/products";
 
-function Products(props) {
+const Products = observer((props) => {
   //const products = loadProducts();
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const { loggedIn } = useUser();
-
-  useEffect(() => {
-    setIsLoading(true);
-    getProducts();
-  }, []);
-
-  async function getProducts() {
-    api.products.loadProducts().then((data) => {
-      setProducts(data);
-      setIsLoading(false);
-    });
-  }
+  const productStore = useContext(ProductsStoreContext);
 
   async function removeProduct(id) {
     api.products.removeProduct(id).then((data) => {
-      getProducts();
+      productStore.fetchProducts();
     });
   }
 
+  useEffect(() => {
+    productStore.fetchProducts();
+  }, []);
+
   return (
     <>
-      {products && !isLoading ? (
-        products.map((product) => (
+      {productStore.products && !productStore.loading ? (
+        productStore.products.map((product) => (
           <ProductTile
-            key={product.id}
+            key={product._id}
             product={product}
             removeProduct={removeProduct}
             isLoggedIn={loggedIn}
@@ -47,7 +40,7 @@ function Products(props) {
       )}
     </>
   );
-}
+});
 
 function LoadingComponent() {
   return (
