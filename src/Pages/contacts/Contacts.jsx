@@ -5,12 +5,41 @@ import GoogleIframeMap from "./GoogleIframeMap";
 import NewsLetterForm from "./NewsLetterForm";
 import IconMail from "../../static/images/icons/icon-mail.svg";
 import IconPhone from "../../static/images/icons/icon-phone.svg";
+import { Helmet } from "react-helmet";
 
 const schedules = loadSchedule();
 
 function Contact(props) {
   return (
     <>
+      <Helmet>
+        <title>Contatti | Laboratorio di Antonella</title>
+        <meta name="description" content="Contattami" />
+        <meta
+          name="keywords"
+          content="Pane, grani antichi, prodotti da forno"
+        />
+        <link rel="canonical" href="https://www.laboratoriodiantonella.it/" />
+
+        {/* Meta tag Open Graph per la condivisione sui social */}
+        <meta
+          property="og:title"
+          content="Contatti | Laboratorio di Antonella"
+        />
+        <meta
+          property="og:description"
+          content="Contatta il laboratorio di Antonella"
+        />
+        <meta
+          property="og:url"
+          content="https://www.laboratoriodiantonella.it/"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.laboratoriodiantonella.it/apple-icon-180x180.png"
+        />
+      </Helmet>
       <div className="text-center contacts-wrapper padding-logo-top px-3">
         <Row>
           <Col xs={12} sm={6}>
