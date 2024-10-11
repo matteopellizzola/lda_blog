@@ -102,7 +102,7 @@ function ModalMobileMenu(props) {
         }
       >
         <div className="link-wrapper">
-          <h3 onClick={() => props.toggleMobileMenu()}>
+          <h3 className="close-menu" onClick={() => props.toggleMobileMenu()}>
             <img
               role="button"
               className="icon"
