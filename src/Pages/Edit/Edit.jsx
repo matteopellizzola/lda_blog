@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import Spinner from "../components/Spinner";
 import MpPopUp from "../components/MpPopUp";
 import { useUser } from "../../contexts/userContext";
+import { ProductsStoreContext } from "../../store/products";
 
 function Edit(props) {
   const initialFormState = {
@@ -27,6 +28,7 @@ function Edit(props) {
   const queryID = searchParams.get("id");
   const navigate = useNavigate();
   const { loggedIn } = useUser();
+  const productStore = useContext(ProductsStoreContext);
 
   useEffect(() => {
     if (!loggedIn) {
@@ -82,6 +84,7 @@ function Edit(props) {
         setIsLoading(false);
         if (data.acknowledged) {
           setFormData(initialFormState);
+          productStore.fetchProducts();
         } else if (!data.success) {
           setPopUp(true);
         }
@@ -92,6 +95,7 @@ function Edit(props) {
         setIsLoading(false);
         if (data.acknowledged) {
           setFormData(initialFormState);
+          productStore.fetchProducts();
           searchParams.delete("id");
           setSearchParams(searchParams);
         } else if (!data.success) {

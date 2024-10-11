@@ -10,8 +10,8 @@ class ProductStore {
     makeAutoObservable(this);
   }
 
-  async fetchProducts() {
-    if (this.products.length === 0) {
+  async fetchProducts(ignoreProducts) {
+    if (this.products.length === 0 || ignoreProducts) {
       this.loading = true;
       const response = await api.products.loadProducts().then((data) => {
         return data;

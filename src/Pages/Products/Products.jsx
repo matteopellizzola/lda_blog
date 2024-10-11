@@ -15,7 +15,7 @@ const Products = observer((props) => {
 
   async function removeProduct(id) {
     api.products.removeProduct(id).then((data) => {
-      productStore.fetchProducts();
+      productStore.fetchProducts(true);
     });
   }
 
