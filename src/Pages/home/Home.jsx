@@ -69,7 +69,7 @@ function Home(props) {
       <TextAndImageComponent
         title={"Laboratorio di Antonella"}
         description={
-          "Benvenuti nel mio laboratorio, dove le lavorazioni e i profumi cambiano di giorno in giorno e di stagione in stagione."
+          "Benvenuti nel mio laboratorio, dove in maniera artigianale, si producono prelibatezze che hanno il sapore di casa"
         }
         image={
           "https://res.cloudinary.com/dbdivqgja/image/upload/v1725803609/home/web-41_shmweg.jpg"
@@ -93,13 +93,13 @@ function Home(props) {
         >
           <SwiperSlide>
             <img
-              src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide1.jpg"
+              src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide2.jpg"
               alt="slide-img"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide2.jpg"
+              src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide1.jpg"
               alt="slide-img"
             />
           </SwiperSlide>
