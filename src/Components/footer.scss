@@ -2,7 +2,7 @@
   position: relative;
   //margin-top: 4rem;
   background-color: $dark-base-color;
-  padding: 15px;
+  padding: 15px 15px 5px;
 
   .footer-inner {
     @include maxWidth();
@@ -10,6 +10,11 @@
     a {
       text-decoration: underline;
       color: $base-text-color;
+    }
+
+    .copyright {
+      padding-top: 4px;
+      font-size: 14px;
     }
   }
 

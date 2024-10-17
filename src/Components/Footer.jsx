@@ -23,6 +23,13 @@ function Footer(props) {
                 <a className="phone" href="tel:+393315620020">
                   +39 3315620020
                 </a>
+                <br />
+                <a
+                  className="phone"
+                  href="mailto:laboratoriodiantonella@gmail.com"
+                >
+                  laboratoriodiantonella@gmail.com
+                </a>
               </div>
             </Col>
             <Col xs={6} md={6}>
@@ -37,7 +44,7 @@ function Footer(props) {
             </Col>
           </Row>
           <Row>
-            <Col className="text-center">
+            <Col className="text-center opacity-50 copyright">
               © Laboratorio di Antonella 2024 ©
             </Col>
           </Row>
