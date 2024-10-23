@@ -1,5 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Helmet } from "react-helmet";
 
 import { Navigation, Pagination, Autoplay, Lazy } from "swiper";
 import "swiper/css";
@@ -30,6 +31,56 @@ function Home(props) {
 
   return (
     <>
+      <Helmet>
+        <title>Laboratorio di Antonella</title>
+        <meta
+          name="description"
+          content="Questa è la home di Laboratorio di Antonella, esplora i miei prodotti da forno"
+        />
+        <meta
+          name="keywords"
+          content="Pane, grani antichi, prodotti da forno"
+        />
+        <link rel="canonical" href="https://www.laboratoriodiantonella.it/" />
+
+        {/* Meta tag Open Graph per la condivisione sui social */}
+        <meta property="og:title" content="Home | Laboratorio di Antonella" />
+        <meta
+          property="og:description"
+          content="Scopri i prodotti del laboratorio di Antonella"
+        />
+        <meta
+          property="og:url"
+          content="https://www.laboratoriodiantonella.it/"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.laboratoriodiantonella.it/apple-icon-180x180.png"
+        />
+      </Helmet>
+      {/* <VideoPlayer
+        id="demo-player"
+        publicId="home/km0czw697uzn6j54yudx"
+        width="3840"
+        height="2160"
+      /> */}
+
+      <TextAndImageComponent
+        ish1
+        title={"Laboratorio di Antonella"}
+        description={
+          "Benvenuti nel mio laboratorio, dove in maniera artigianale, si producono prelibatezze che hanno il sapore di casa"
+        }
+        image={
+          "https://res.cloudinary.com/dbdivqgja/image/upload/v1725803609/home/web-41_shmweg.jpg"
+        }
+        link={"about"}
+        handleClick={handleClick}
+        reverse={false}
+        outer={true}
+      />
+
       <div className="main-slider">
         <Swiper
           modules={[Navigation, Pagination, Autoplay, Lazy]}
@@ -43,13 +94,13 @@ function Home(props) {
         >
           <SwiperSlide>
             <img
-              src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide1.jpg"
+              src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide2.jpg"
               alt="slide-img"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide2.jpg"
+              src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide1.jpg"
               alt="slide-img"
             />
           </SwiperSlide>
@@ -74,45 +125,26 @@ function Home(props) {
         </Swiper>
       </div>
 
-      <TextAndImageComponent
-        title={"Laboratorio di Antonella"}
-        description={
-          "Benvenuti nel mio laboratorio, dove c'è profumo di buono. Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum."
-        }
-        image={
-          "https://res.cloudinary.com/dbdivqgja/image/upload/v170543632/home/TextImageComponent.jpg"
-        }
-        link={"products"}
-        handleClick={handleClick}
-        reverse={false}
-        outer={true}
-      />
-
       <div className="dual-boxes">
-        <div className="box-container" onClick={() => handleClick("about")}>
+        <div className="box-container" onClick={() => handleClick("products")}>
           <img
-            src="https://res.cloudinary.com/dbdivqgja/image/upload/v1690297373/z4avm70uyslfxzgonzca.jpg"
+            src="https://res.cloudinary.com/dbdivqgja/image/upload/v1725803987/web-25_uxtgg1.jpg"
             alt="slide-img"
           />
-          <span className="cta-box">testo di esempio</span>
+          <span className="cta-box">
+            Grissini all'olio extravergine di oliva
+          </span>
         </div>
-        <div className="box-container" onClick={() => handleClick("menu")}>
+        <div className="box-container" onClick={() => handleClick("products")}>
           <img
             src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide5.jpg"
             alt="slide-img"
           />
-          <span className="cta-box">altro testo di esempio</span>
+          <span className="cta-box">Sfoglietti integrali</span>
         </div>
       </div>
 
-      <VideoPlayer
-        id="demo-player"
-        publicId="home/km0czw697uzn6j54yudx"
-        width="3840"
-        height="2160"
-      />
-
-      <div className="dual-boxes">
+      {/* <div className="dual-boxes">
         <div className="box-container" onClick={() => handleClick("about")}>
           <img
             src="https://res.cloudinary.com/dbdivqgja/image/upload/v1690297358/ovrjeqmvdy5tmswnm2sb.jpg"
@@ -128,12 +160,12 @@ function Home(props) {
           />
           <span className="cta-box">testo di esempio</span>
         </div>
-      </div>
+      </div> */}
 
       <TextAndImageComponent
-        title={"Laboratorio di altro"}
+        title={"La ricerca"}
         description={
-          "Benvenuti nel mio laboratorio, dove c'è profumo di buono. Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum."
+          "I prodotti utilizzati nel mio laboratorio sono selezionati cercando sempre di conoscere in prima persona i produttori."
         }
         image={
           "https://res.cloudinary.com/dbdivqgja/image/upload/v1705439161/home/web-11_kfmcvu.jpg"
@@ -144,13 +176,13 @@ function Home(props) {
       />
 
       <DualBoxesComponent
-        leftTitle={"This is an example"}
-        rightTitle={"This is another example"}
-        leftLink={"about"}
-        rightLink={"about"}
+        leftTitle={"Paste fiorentine al cioccolato"}
+        rightTitle={"Pane in cassetta integrale"}
+        leftLink={"products"}
+        rightLink={"products"}
         handleClick={handleClick}
         leftImage={
-          "https://res.cloudinary.com/dbdivqgja/image/upload/v1690297358/ovrjeqmvdy5tmswnm2sb.jpg"
+          "https://res.cloudinary.com/dbdivqgja/image/upload/v1705438881/home/TextImageComponent.jpg"
         }
         rightImage={
           "https://res.cloudinary.com/dbdivqgja/image/upload/v1705356150/matteoImmagine.png"
@@ -163,14 +195,14 @@ function Home(props) {
             src="https://res.cloudinary.com/dbdivqgja/image/upload/v1708982424/home/Slider/slide2.jpg"
             alt="slide-img"
           />
-          <span className="cta-box">testo di esempio</span>
+          <span className="cta-box">Pane con farina integra</span>
         </div>
       </div>
 
       <div
         className={classNames(
           "instagram-container text-center",
-          isInstagramActive ? "" : "d-none",
+          isInstagramActive ? "" : "d-none"
         )}
       >
         <h4>Segui gli aggiornamenti in tempo reale</h4>

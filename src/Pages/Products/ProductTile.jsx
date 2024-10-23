@@ -9,7 +9,7 @@ function ProductTile(props) {
   return (
     <>
       {(product.online || props.isLoggedIn) && (
-        <div className="product-wrapper padding-logo-top">
+        <div className="product-wrapper padding-logo-top" id={product._id}>
           <div className="product-inner">
             <h2 className="name-mobile">{product.name}</h2>
             <div className="image">
@@ -35,7 +35,7 @@ function ProductTile(props) {
 
                 <div className="ingredients">
                   <div className="header">Ingredienti</div>
-                  <div>{product.ingredients}</div>
+                  <div className="ingredients-list">{product.ingredients}</div>
                 </div>
               </div>
 
@@ -79,11 +79,13 @@ function ProductTile(props) {
                   <div
                     className={classNames(
                       "online-info",
-                      product.online ? "online" : "offline",
+                      product.online ? "online" : "offline"
                     )}
                   >
                     online: {product.online ? "true" : "false"}
                   </div>
+                  <br />
+                  <div>order: {product.order}</div>
                   <button
                     className="btn-secondary"
                     onClick={() => {

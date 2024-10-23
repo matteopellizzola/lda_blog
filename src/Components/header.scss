@@ -119,9 +119,12 @@ header {
 
     .menu-link {
       position: absolute;
-      left: 15px;
+      right: 0;
+      top: 0;
       cursor: pointer;
       color: $base-text-color;
+      padding-block: 6px;
+      padding-inline: 15px;
     }
 
     .mobile-logo {
@@ -196,8 +199,9 @@ header {
 
       .icon {
         position: absolute;
-        top: 1rem;
-        right: 1rem;
+        top: 0;
+        right: 0;
+        padding: 15px;
 
         cursor: pointer;
       }

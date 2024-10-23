@@ -1,5 +1,12 @@
 import { defineConfig } from "vite";
+import sitemapPlugin from "vite-plugin-sitemap";
 import react from "@vitejs/plugin-react";
+import loadNavigation from "./src/database/loadNavigation";
+
+const menuItems = loadNavigation();
+const dynamicRoutes = menuItems.navigationList.map(
+  (item) => `${item.navigateTo}`
+);
 
 export default defineConfig(() => {
   return {
@@ -9,6 +16,14 @@ export default defineConfig(() => {
     server: {
       port: 3000,
     },
-    plugins: [react()],
+    plugins: [
+      react(),
+      sitemapPlugin({
+        outDir: "build",
+        hostname: "https://www.laboratoriodiantonella.it",
+        dynamicRoutes: dynamicRoutes,
+        changefreq: "yearly",
+      }),
+    ],
   };
 });

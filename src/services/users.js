@@ -18,7 +18,7 @@ const users = {
           resolve(data);
         })
         .catch((err) =>
-          reject(err.response ? err.response.data.error : err.message)
+          reject(err.response ? err.response.data.error : err.message),
         );
     });
   },
@@ -36,7 +36,7 @@ const users = {
           }
         })
         .catch((err) =>
-          reject(err.response ? err.response.data.error : err.message)
+          reject(err.response ? err.response.data.error : err.message),
         );
     });
   },
@@ -49,7 +49,7 @@ const users = {
           resolve(res.json);
         })
         .catch((err) =>
-          reject(err.response ? err.response.data.error : err.message)
+          reject(err.response ? err.response.data.error : err.message),
         );
     });
   },

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import Spinner from "../components/Spinner";
 import MpPopUp from "../components/MpPopUp";
 import { useUser } from "../../contexts/userContext";
+import { ProductsStoreContext } from "../../store/products";
 
 function Edit(props) {
   const initialFormState = {
@@ -16,6 +17,7 @@ function Edit(props) {
     img1: "",
     img2: "",
     online: true,
+    order: "",
   };
 
   const [formData, setFormData] = useState(initialFormState);
@@ -26,6 +28,7 @@ function Edit(props) {
   const queryID = searchParams.get("id");
   const navigate = useNavigate();
   const { loggedIn } = useUser();
+  const productStore = useContext(ProductsStoreContext);
 
   useEffect(() => {
     if (!loggedIn) {
@@ -58,8 +61,6 @@ function Edit(props) {
     api.images
       .uploadImage(file)
       .then((res) => {
-        console.log(res);
-        console.log(imageType);
         if (res.secure_url) {
           setFormData({ ...formData, [imageType]: res.secure_url });
           setIsLoading(false);
@@ -82,9 +83,8 @@ function Edit(props) {
       api.products.addProduct(formData).then((data) => {
         setIsLoading(false);
         if (data.acknowledged) {
-          console.log("done");
           setFormData(initialFormState);
-          console.log(JSON.stringify(formData));
+          productStore.fetchProducts();
         } else if (!data.success) {
           setPopUp(true);
         }
@@ -94,11 +94,10 @@ function Edit(props) {
       api.products.editProduct(formData, queryID).then((data) => {
         setIsLoading(false);
         if (data.acknowledged) {
-          console.log("done");
           setFormData(initialFormState);
+          productStore.fetchProducts();
           searchParams.delete("id");
           setSearchParams(searchParams);
-          console.log(JSON.stringify(formData));
         } else if (!data.success) {
           setPopUp(true);
         }
@@ -147,7 +146,6 @@ function Edit(props) {
               id="description"
               onChange={(e) => {
                 setFormData({ ...formData, description: e.target.value });
-                console.log(formData.description);
               }}
               placeholder="Description"
               value={formData.description}
@@ -247,6 +245,19 @@ function Edit(props) {
               value={formData.img2}
             />
           </div>
+        </div>
+
+        <div className="form-row d-block">
+          <label htmlFor="#order">Order number in list</label>
+          <input
+            id="order"
+            type="number"
+            onChange={(e) =>
+              setFormData({ ...formData, order: e.target.value })
+            }
+            placeholder="1 for first position, 9 for last..."
+            value={formData.order}
+          />
         </div>
 
         {/* <input type='file' onChange={(e) => onChange(e, "img1")} placeholder="Primary Image" />

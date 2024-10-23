@@ -10,6 +10,7 @@
 
     @media #{$mobile} {
       max-width: 100%;
+      margin-bottom: 24px;
     }
 
     @media #{$tablet},
