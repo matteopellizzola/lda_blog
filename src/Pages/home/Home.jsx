@@ -67,6 +67,7 @@ function Home(props) {
       /> */}
 
       <TextAndImageComponent
+        ish1
         title={"Laboratorio di Antonella"}
         description={
           "Benvenuti nel mio laboratorio, dove in maniera artigianale, si producono prelibatezze che hanno il sapore di casa"
