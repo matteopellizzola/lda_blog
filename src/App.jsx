@@ -16,7 +16,7 @@ import About from "./Pages/about/About";
 import Home from "./Pages/home/Home";
 import Products from "./Pages/Products/Products";
 import Edit from "./Pages/Edit/Edit";
-import Edit2 from "./Pages/Edit/Edit2";
+import EditProductsToBuy from "./Pages/Edit/EditProductsToBuy";
 import Login from "./Pages/login/Login";
 import Logout from "./Pages/logout/Logout";
 import "./i18n.ts";
@@ -45,6 +45,14 @@ let router = createBrowserRouter([
         ),
       },
       { path: "edit", element: <Edit /> },
+      {
+        path: "editProductsToBuy",
+        element: (
+          <ProductsStoreContext.Provider value={productStore}>
+            <EditProductsToBuy />
+          </ProductsStoreContext.Provider>
+        ),
+      },
       {
         path: "products",
         element: (

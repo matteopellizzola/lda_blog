@@ -4,6 +4,7 @@ import { createContext } from "react";
 
 class ProductStore {
   products = [];
+  productsToBuy = [];
   loading = false;
 
   constructor() {
@@ -18,6 +19,18 @@ class ProductStore {
       });
 
       this.products = response;
+      this.loading = false;
+    }
+  }
+
+  async fetchProductsToBuy(ignoreProducts) {
+    if (this.productsToBuy.length === 0 || ignoreProducts) {
+      this.loading = true;
+      const response = await api.products.loadProductsToBuy().then((data) => {
+        return data;
+      });
+
+      this.productsToBuy = response;
       this.loading = false;
     }
   }

@@ -16,6 +16,7 @@
 @import "./Pages/Products/loading.scss";
 @import "./Pages/Products/products.scss";
 @import "./Pages/Products/listing.scss";
+@import "./Pages/checkout/checkout.scss";
 
 h1 {
   color: $base-text-color;
@@ -86,6 +87,11 @@ body {
   &:hover {
     color: $base-gray-color !important;
   }
+}
+
+a.text-link {
+  color: $orange-color !important;
+  font-style: italic;
 }
 
 .btn-primary {

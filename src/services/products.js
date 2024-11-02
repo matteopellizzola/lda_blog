@@ -8,7 +8,7 @@ const products = {
           resolve(res.json());
         })
         .catch((err) =>
-          reject(err.response ? err.response.data.error : err.message),
+          reject(err.response ? err.response.data.error : err.message)
         );
     });
   },
@@ -20,7 +20,7 @@ const products = {
           resolve(res.json());
         })
         .catch((err) =>
-          reject(err.response ? err.response.data.error : err.message),
+          reject(err.response ? err.response.data.error : err.message)
         );
     });
   },
@@ -39,7 +39,7 @@ const products = {
           resolve(res.json());
         })
         .catch((err) =>
-          reject(err.response ? err.response.data.error : err.message),
+          reject(err.response ? err.response.data.error : err.message)
         );
     });
   },
@@ -62,7 +62,7 @@ const products = {
           }
         })
         .catch((err) =>
-          reject(err.response ? err.response.data.error : err.message),
+          reject(err.response ? err.response.data.error : err.message)
         );
     });
   },
@@ -79,7 +79,90 @@ const products = {
           resolve(res.json());
         })
         .catch((err) =>
-          reject(err.response ? err.response.data.error : err.message),
+          reject(err.response ? err.response.data.error : err.message)
+        );
+    });
+  },
+
+  loadProductsToBuy: () => {
+    return new Promise((resolve, reject) => {
+      fetch(apiUrl + "/productsToBuy")
+        .then((res) => {
+          resolve(res.json());
+        })
+        .catch((err) =>
+          reject(err.response ? err.response.data.error : err.message)
+        );
+    });
+  },
+
+  getProductToBuy: (id) => {
+    return new Promise((resolve, reject) => {
+      fetch(apiUrl + `/productsToBuy/${id}`)
+        .then((res) => {
+          resolve(res.json());
+        })
+        .catch((err) =>
+          reject(err.response ? err.response.data.error : err.message)
+        );
+    });
+  },
+
+  addProductToBuy: (formData) => {
+    return new Promise((resolve, reject) => {
+      fetch(apiUrl + "/productsToBuy", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((res) => {
+          resolve(res.json());
+        })
+        .catch((err) =>
+          reject(err.response ? err.response.data.error : err.message)
+        );
+    });
+  },
+
+  editProductToBuy: (formData, id) => {
+    return new Promise((resolve, reject) => {
+      fetch(apiUrl + `/productsToBuy/${id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            resolve(res.json());
+          } else {
+            resolve({ success: false });
+          }
+        })
+        .catch((err) =>
+          reject(err.response ? err.response.data.error : err.message)
+        );
+    });
+  },
+
+  removeProductToBuy: (id) => {
+    return new Promise((resolve, reject) => {
+      fetch(apiUrl + `/productsToBuy/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then((res) => {
+          resolve(res.json());
+        })
+        .catch((err) =>
+          reject(err.response ? err.response.data.error : err.message)
         );
     });
   },
