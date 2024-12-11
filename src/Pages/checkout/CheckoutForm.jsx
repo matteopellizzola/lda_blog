@@ -6,6 +6,8 @@ import { observer } from "mobx-react";
 import api from "../../services/api";
 import { renderToString } from "react-dom/server";
 import { EmailConfirm } from "../../Components/EmailConfirm";
+import classNames from "classnames";
+import QRCode from "qrcode";
 
 export const CheckoutForm = observer((props) => {
   const {
@@ -14,13 +16,13 @@ export const CheckoutForm = observer((props) => {
     formState: { errors },
   } = useForm();
   const formRef = React.useRef();
+  const submitButtonRef = React.useRef();
   const onSubmit = (data) => console.log(data);
   const [totals, setTotals] = useState();
+  const [showRecap, setShowRecap] = useState();
+  const [satispayCode, setSatispayCode] = useState();
 
   const productStore = useContext(ProductsStoreContext);
-
-  console.log(errors);
-  console.log(totals);
 
   useEffect(() => {
     productStore.fetchProductsToBuy();
@@ -40,23 +42,50 @@ export const CheckoutForm = observer((props) => {
     return result.toFixed(2);
   };
 
-  const sendEmail = (formData) => {
-    const emailHtml = renderToString(
-      <EmailConfirm formData={formData} totals={totals} />
-    );
+  const generateQrAndLink = async () => {
+    const amount = renderTotals().replace(".", "");
+    const link = `https://www.satispay.com/app/match/link/user/S6Y-CON--E5C12E35-3F4F-4A82-95F3-09E5CB957266?amount=${amount}&currency=EUR`;
+    // Generate the QR code data URI
+    const result = await QRCode.toDataURL(link, { width: 300 })
+      .then((url) => {
+        return url;
+      })
+      .catch((err) => console.error("Error generating QR code", err));
+    return { qrCode: result, link };
+  };
 
-    console.log(totals);
+  const sendEmail = async (formData) => {
+    const _satispayCode = await generateQrAndLink();
+
+    setSatispayCode(_satispayCode);
+
+    const emailHtml = await renderToString(
+      <EmailConfirm
+        formData={formData}
+        totals={totals}
+        renderTotals={renderTotals}
+        satispayCode={_satispayCode}
+      />
+    );
 
     formData.html = emailHtml; //`<strong>and easy to do anywhere, even with Node.js</strong> ${JSON.stringify(formData)}`;
 
-    api.emails.sendConfirmation(formData);
+    api.emails.sendConfirmation(formData).then((data) => {
+      if (data.success) {
+        console.log("Email sent, redirect to success page");
+      } else {
+        console.log("Email error, show a modal");
+      }
+    });
   };
-
-  // return <EmailConfirm />;
 
   return (
     <div className="checkout-form">
-      <form onSubmit={handleSubmit(sendEmail)} ref={formRef}>
+      <form
+        onSubmit={handleSubmit(sendEmail)}
+        ref={formRef}
+        onChange={(e) => console.log("update form", e.target.elements)}
+      >
         <div>
           <label className="rich-label" htmlFor="paymentMethod">
             Metodo di pagamento:{" "}
@@ -68,8 +97,8 @@ export const CheckoutForm = observer((props) => {
             <option disabled selected value="">
               seleziona...
             </option>
-            <option value="satispay">satispay</option>
-            <option value="bankTransfer">bankTransfer</option>
+            <option value="satispay">Satispay</option>
+            <option value="bankTransfer">Bonifico bancario</option>
           </select>
         </div>
 
@@ -118,6 +147,7 @@ export const CheckoutForm = observer((props) => {
               <input
                 className={errors.address ? "is-invalid" : ""}
                 type="text"
+                autoComplete="address-line1"
                 placeholder={errors?.address?.message ?? "Indirizzo"}
                 {...register("address", {
                   required: "L'indirizzo è obbligatorio",
@@ -133,12 +163,24 @@ export const CheckoutForm = observer((props) => {
               />
             </div>
           </div>
-          <input
-            className={errors.city ? "is-invalid" : ""}
-            type="text"
-            placeholder="city to be changed to select"
+          <select
             {...register("city", { required: "Il comune è obbligatorio" })}
-          />
+          >
+            <option value="Alpignano">Alpignano</option>
+            <option value="Beinasco">Beinasco</option>
+            <option value="Borgaro">Borgaro</option>
+            <option value="Collegno">Collegno</option>
+            <option value="Grugliasco">Grugliasco</option>
+            <option value="Orbassano">Orbassano</option>
+            <option value="Pianezza">Pianezza</option>
+            <option value="Rivalta di Torino">Rivalta di Torino</option>
+            <option value="Rivoli" selected>
+              Rivoli
+            </option>
+            <option value="Torino">Torino</option>
+            <option value="Venaria Reale">Venaria Reale</option>
+            <option value="Villarbasse">Villarbasse</option>
+          </select>
           <input
             className={errors.cap ? "is-invalid" : ""}
             type="text"
@@ -286,7 +328,7 @@ export const CheckoutForm = observer((props) => {
             ?.filter((product) => product.online)
             ?.map((product) => (
               <div className="checkout-products">
-                <div>
+                <div className="name-description">
                   {product.image && (
                     <div className="image-wrapper">
                       <img src={product.image} />
@@ -323,24 +365,59 @@ export const CheckoutForm = observer((props) => {
         </div>
         {/* <input type="hidden" value={parseFloat(pane) + parseFloat(biscotti)} /> */}
         <div className="d-flex align-items-center">
-          <span className="w-75 h6">Totale: {renderTotals()} €</span>
-          <input type="submit" className="button btn-primary" />
+          <span className="w-75 h6 my-0">Totale: {renderTotals()} €</span>
+          <button
+            type="submit"
+            className="button btn-primary"
+            ref={submitButtonRef}
+          >
+            Ordina
+          </button>
         </div>
       </form>
+
       <div className="checkout-recap">
-        <div>
-          recap:
-          {totals &&
-            Object?.keys(totals)?.map((key) =>
-              totals[key]?.quantity != "-" ? (
-                <div key={key}>
-                  {totals[key]?.name}: {totals[key]?.quantity} -{" "}
-                  {totals[key]?.price}
-                </div>
-              ) : (
-                <></>
-              )
-            )}
+        <div className="recap-title" onClick={() => setShowRecap(!showRecap)}>
+          Riepilogo ordine
+        </div>
+        <div
+          className={classNames("recap-content", showRecap ? "show-recap" : "")}
+        >
+          {totals && (
+            <div className="recap-products">
+              {totals &&
+                Object?.keys(totals)?.map((key) =>
+                  totals[key]?.quantity != "-" ? (
+                    <div
+                      key={key}
+                      className="product-line d-flex justify-content-between"
+                    >
+                      <div>
+                        <span className="font-italic">
+                          {totals[key]?.quantity} x{" "}
+                        </span>
+                        {totals[key]?.name}
+                      </div>
+                      <div>{totals[key]?.price.toFixed(2)} €</div>
+                    </div>
+                  ) : (
+                    <></>
+                  )
+                )}
+            </div>
+          )}
+          <div className="recap-total d-flex justify-content-between">
+            <div className="">Totale</div>
+            <div className="">{renderTotals()} €</div>
+          </div>
+          <div>
+            <button
+              className="button btn-primary my-0"
+              onClick={() => submitButtonRef.current?.click()}
+            >
+              Ordina
+            </button>
+          </div>
         </div>
       </div>
     </div>
