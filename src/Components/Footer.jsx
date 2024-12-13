@@ -1,4 +1,5 @@
 import { Row, Col } from "react-bootstrap";
+import constants from "../constants";
 
 function Footer(props) {
   return (
@@ -20,15 +21,12 @@ function Footer(props) {
                   <br />
                   Rivoli 10098
                 </div>
-                <a className="phone" href="tel:+393315620020">
-                  +39 3315620020
+                <a className="phone" href={constants.TELEPHONE_LINK}>
+                  {constants.TELEPHONE}
                 </a>
                 <br />
-                <a
-                  className="phone"
-                  href="mailto:laboratoriodiantonella@gmail.com"
-                >
-                  laboratoriodiantonella@gmail.com
+                <a className="phone" href={constants.EMAIL_LINK}>
+                  {constants.EMAIL}
                 </a>
               </div>
             </Col>

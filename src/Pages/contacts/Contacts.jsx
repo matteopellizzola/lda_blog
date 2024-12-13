@@ -6,6 +6,7 @@ import NewsLetterForm from "./NewsLetterForm";
 import IconMail from "../../static/images/icons/icon-mail.svg";
 import IconPhone from "../../static/images/icons/icon-phone.svg";
 import { Helmet } from "react-helmet";
+import constants from "../../constants";
 
 const schedules = loadSchedule();
 
@@ -57,7 +58,7 @@ function Contact(props) {
                 <hr />
                 <div className="mail-phone-wrapper">
                   <a
-                    href="mailto:laboratoriodiantonella@gmail.com"
+                    href={constants.EMAIL_LINK}
                     className="btn btn-outline-dark"
                   >
                     {" "}
@@ -71,7 +72,7 @@ function Contact(props) {
                   </a>
 
                   <a
-                    href="https://wa.me/+393315620020"
+                    href={constants.WHATSAPP_LINK}
                     className="btn btn-outline-dark"
                     rel="noreferrer"
                     target="_blank"
