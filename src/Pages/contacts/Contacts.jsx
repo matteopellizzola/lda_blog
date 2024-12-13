@@ -105,10 +105,10 @@ function Contact(props) {
             />
           </Col>
         </Row>
-        <Row className="bottom-contacts">
+        {/* <Row className="bottom-contacts">
           <Col></Col>
           <NewsLetterForm />
-        </Row>
+        </Row> */}
       </div>
     </>
   );
