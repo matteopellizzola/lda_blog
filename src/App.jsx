@@ -23,6 +23,7 @@ import "./i18n.ts";
 import { Checkout } from "./Pages/checkout/Checkout.jsx";
 import { ProductsStoreContext, productStore } from "./store/products.jsx";
 import Listing from "./Pages/Products/Listing.jsx";
+import { Confirm } from "./Pages/checkout/Confirm.jsx";
 
 let router = createBrowserRouter([
   {
@@ -64,6 +65,7 @@ let router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "logout", element: <Logout /> },
       { path: "checkout", element: <Checkout /> },
+      { path: "checkout/confirm", element: <Confirm /> },
     ],
   },
 ]);

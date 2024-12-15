@@ -130,11 +130,10 @@ const EditProductsToBuy = observer((props) => {
             type="text"
             id="productPrice"
             onChange={(e) => {
-              console.log(e.target.value.replace(",", ".")),
-                setFormData({
-                  ...formData,
-                  price: e.target.value.replace(",", "."),
-                });
+              setFormData({
+                ...formData,
+                price: e.target.value.replace(",", "."),
+              });
             }}
             placeholder="Product Price"
             value={formData.price}

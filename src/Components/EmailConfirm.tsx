@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
 
+/**
+ * React component to show the confirmation page after the order is sent
+ * @param {object} formData The form data
+ * @param {object} totals The total of each product
+ * @param {function} renderTotals A function to render the total price
+ * @param {object} satispayCode The satispay code if the payment method is satispay
+ * @returns {ReactElement} The react element to show the confirmation page
+ */
 export const EmailConfirm = ({
   formData,
   totals,
@@ -64,7 +72,7 @@ export const EmailConfirm = ({
               Puoi cliccare il pulsante qui sotto per poter effettuare il
               pagamento. Una volta pagato potrò elaborare il tuo ordine.
             </div>
-            {formData?.paymentMethod === "satispay" || true ? (
+            {formData?.paymentMethod === "satispay" ? (
               <>
                 <br />
                 <a

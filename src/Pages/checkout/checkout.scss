@@ -13,6 +13,11 @@
     display: flex;
     gap: 15px;
 
+    &.loading {
+      opacity: 0.5;
+      animation: animateFadeIn 2s infinite;
+    }
+
     form {
       width: 66%;
       display: flex;
@@ -106,6 +111,29 @@
       .recap-total {
         padding: 12px;
         border-top: 1px solid $base-text-color;
+      }
+    }
+  }
+
+  .checkout-confirm {
+    max-width: 900px;
+    margin-inline: auto;
+
+    .satispay-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-inline: auto;
+      width: 25%;
+      margin-bottom: 15px;
+
+      @media #{$tablet} {
+        width: 50%;
+
+      }
+
+      @media #{$mobile} {
+        width: 100%;
       }
     }
   }

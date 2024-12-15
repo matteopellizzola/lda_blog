@@ -8,8 +8,10 @@ import { renderToString } from "react-dom/server";
 import { EmailConfirm } from "../../Components/EmailConfirm";
 import classNames from "classnames";
 import QRCode from "qrcode";
+import { useNavigate } from "react-router-dom";
 
 export const CheckoutForm = observer((props) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,6 +23,7 @@ export const CheckoutForm = observer((props) => {
   const [totals, setTotals] = useState();
   const [showRecap, setShowRecap] = useState();
   const [satispayCode, setSatispayCode] = useState();
+  const [loading, setLoading] = useState(false);
 
   const productStore = useContext(ProductsStoreContext);
 
@@ -36,8 +39,6 @@ export const CheckoutForm = observer((props) => {
         result += singlePrice;
       });
     }
-
-    console.log(totals);
 
     return result.toFixed(2);
   };
@@ -55,6 +56,7 @@ export const CheckoutForm = observer((props) => {
   };
 
   const sendEmail = async (formData) => {
+    setLoading(true);
     const _satispayCode = await generateQrAndLink();
 
     setSatispayCode(_satispayCode);
@@ -71,8 +73,17 @@ export const CheckoutForm = observer((props) => {
     formData.html = emailHtml; //`<strong>and easy to do anywhere, even with Node.js</strong> ${JSON.stringify(formData)}`;
 
     api.emails.sendConfirmation(formData).then((data) => {
+      setLoading(false);
       if (data.success) {
         console.log("Email sent, redirect to success page");
+        navigate("/checkout/confirm", {
+          state: {
+            formData,
+            totals,
+            totalRendered: renderTotals(),
+            satispayCode: _satispayCode,
+          },
+        });
       } else {
         console.log("Email error, show a modal");
       }
@@ -80,12 +91,8 @@ export const CheckoutForm = observer((props) => {
   };
 
   return (
-    <div className="checkout-form">
-      <form
-        onSubmit={handleSubmit(sendEmail)}
-        ref={formRef}
-        onChange={(e) => console.log("update form", e.target.elements)}
-      >
+    <div className={classNames("checkout-form", loading ? "loading" : "")}>
+      <form onSubmit={handleSubmit(sendEmail)} ref={formRef}>
         <div>
           <label className="rich-label" htmlFor="paymentMethod">
             Metodo di pagamento:{" "}
@@ -341,7 +348,6 @@ export const CheckoutForm = observer((props) => {
                   key={product._id}
                   {...register(product.name)}
                   onChange={(e) => {
-                    console.log(e.target);
                     setTotals({
                       ...totals,
                       [product._id]: {
@@ -369,6 +375,7 @@ export const CheckoutForm = observer((props) => {
           <button
             type="submit"
             className="button btn-primary"
+            disabled={loading}
             ref={submitButtonRef}
           >
             Ordina
@@ -414,6 +421,7 @@ export const CheckoutForm = observer((props) => {
             <button
               className="button btn-primary my-0"
               onClick={() => submitButtonRef.current?.click()}
+              disabled={loading}
             >
               Ordina
             </button>
