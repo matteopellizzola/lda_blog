@@ -78,6 +78,7 @@ export const CheckoutForm = observer((props) => {
         console.log("Email sent, redirect to success page");
         navigate("/checkout/confirm", {
           state: {
+            key: Date.now(), // unique value for each navigation
             formData,
             totals,
             totalRendered: renderTotals(),

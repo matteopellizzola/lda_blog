@@ -10,6 +10,22 @@ input[type="password"] {
   margin-top: 8px !important;
 }
 
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+
+  &::before {
+    content: "V";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background-color: red;
+  }
+}
+
 button {
   @include buttons();
 }

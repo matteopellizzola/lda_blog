@@ -12,6 +12,8 @@
   padding: 0.55rem;
   border-radius: 5px;
   border: 1px solid $base-text-color;
+  height: 44px;
+  color: $base-text-color;
 
   &.is-invalid:focus-visible {
       outline: 2px solid $color-error-red;
