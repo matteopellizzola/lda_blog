@@ -60,16 +60,34 @@ export const ConfirmData = ({
           </tr>
           {totals &&
             Object?.keys(totals)?.map((key) =>
-              totals[key]?.quantity != "-" ? (
+              totals[key]?.quantity != "-" && key != "shipping" ? (
                 <tr key={key} style={{ height: "24px" }}>
                   <td>{totals[key]?.name}</td>
                   <td>{totals[key]?.quantity}</td>
-                  <td>{totals[key]?.price}</td>
+                  <td>{totals[key]?.price} €</td>
                 </tr>
               ) : (
                 <></>
               )
             )}
+          {totals["shipping"] && (
+            <>
+              <tr
+                style={{
+                  height: "24px",
+                  width: "auto",
+                }}
+              >
+                <td>{totals["shipping"]?.name}</td>
+                <td></td>
+                <td>
+                  {totals["shipping"]?.price != "0"
+                    ? totals["shipping"]?.price + " €"
+                    : "-"}
+                </td>
+              </tr>
+            </>
+          )}
           {totalRendered && (
             <>
               <tr

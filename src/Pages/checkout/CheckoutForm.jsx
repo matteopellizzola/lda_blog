@@ -56,6 +56,11 @@ export const CheckoutForm = observer((props) => {
   };
 
   const sendEmail = async (formData) => {
+    if (renderTotals() == 0) {
+      alert("Seleziona almeno un prodotto");
+      return;
+    }
+
     setLoading(true);
     const _satispayCode = await generateQrAndLink();
 
@@ -117,6 +122,28 @@ export const CheckoutForm = observer((props) => {
           <select
             {...register("shipping", { required: true })}
             className={errors?.name ? "is-invalid" : ""}
+            onChange={(e) => {
+              const CONSTANTS_SHIPPING_COST = 2;
+              if (e.target.value === "home") {
+                setTotals({
+                  ...totals,
+                  ["shipping"]: {
+                    name: "consegna a casa",
+                    price: parseFloat(CONSTANTS_SHIPPING_COST),
+                    quantity: 1,
+                  },
+                });
+              } else {
+                setTotals({
+                  ...totals,
+                  ["shipping"]: {
+                    name: "Ritiro in laboratorio",
+                    price: 0,
+                    quantity: 0,
+                  },
+                });
+              }
+            }}
           >
             <option disabled selected value="">
               seleziona...
@@ -386,7 +413,10 @@ export const CheckoutForm = observer((props) => {
 
       <div className="checkout-recap">
         <div className="recap-title" onClick={() => setShowRecap(!showRecap)}>
-          Riepilogo ordine
+          <div className="d-flex justify-content-between">
+            <div>Riepilogo ordine</div>
+            <div>{renderTotals()} €</div>
+          </div>
         </div>
         <div
           className={classNames("recap-content", showRecap ? "show-recap" : "")}
