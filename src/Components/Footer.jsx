@@ -43,7 +43,7 @@ function Footer(props) {
           </Row>
           <Row>
             <Col className="text-center opacity-50 copyright">
-              © Laboratorio di Antonella 2024 ©
+              © Laboratorio di Antonella {new Date().getFullYear()} ©
             </Col>
           </Row>
         </div>
