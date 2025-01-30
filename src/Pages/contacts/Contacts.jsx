@@ -89,13 +89,13 @@ function Contact(props) {
               </Col>
             </Row>
             <hr />
-            <Row className="opening-hours">
+            {/* <Row className="opening-hours">
               <Col xs={12}>Orari</Col>
 
               {schedules.scheduleList.map((day) => (
                 <OpeningDay day={day.day} hour={day.hour} closed={day.closed} />
               ))}
-            </Row>
+            </Row> */}
           </Col>
           <Col xs={12} sm={6} className="map">
             <GoogleIframeMap
