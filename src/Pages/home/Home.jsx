@@ -90,6 +90,7 @@ function Home(props) {
           spaceBetween={0}
           slidesPerView={1}
           lazy={true}
+          speed={1500}
           autoplay={{ delay: 3000 }}
         >
           <SwiperSlide>
@@ -167,9 +168,15 @@ function Home(props) {
         description={
           "I prodotti utilizzati nel mio laboratorio sono selezionati cercando sempre di conoscere in prima persona i produttori."
         }
-        image={
-          "https://res.cloudinary.com/dbdivqgja/image/upload/v1705439161/home/web-11_kfmcvu.jpg"
-        }
+        // image={
+        //   "https://res.cloudinary.com/dbdivqgja/image/upload/v1738606730/home/rawMaterials/web-17.jpg"
+        // }
+        imageArray={[
+          "https://res.cloudinary.com/dbdivqgja/image/upload/v1738606730/home/rawMaterials/web-17_ts8pnm.jpg",
+          "https://res.cloudinary.com/dbdivqgja/image/upload/v1738606729/home/rawMaterials/web-16_epi91z.jpg",
+          "https://res.cloudinary.com/dbdivqgja/image/upload/v1738606730/home/rawMaterials/web-18_gmljk5.jpg",
+          "https://res.cloudinary.com/dbdivqgja/image/upload/v1738606729/home/rawMaterials/web-15_lselco.jpg",
+        ]}
         link={"about"}
         handleClick={handleClick}
         reverse={true}

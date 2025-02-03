@@ -42,6 +42,8 @@
   }
 
   .opening-hours {
+    font-size: 20px;
+
     .closed {
       color: $base-gray-color;
       font-weight: 400;
@@ -49,6 +51,19 @@
 
     font-weight: 600;
     font-style: italic;
+
+    .day,
+    .hour {
+      display: flex;
+    }
+
+    .day {
+      justify-content: right;
+    }
+
+    .hour {
+      justify-content: left;
+    }
   }
 
   .map {
