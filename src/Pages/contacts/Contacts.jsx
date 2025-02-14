@@ -5,6 +5,7 @@ import GoogleIframeMap from "./GoogleIframeMap";
 import NewsLetterForm from "./NewsLetterForm";
 import IconMail from "../../static/images/icons/icon-mail.svg";
 import IconPhone from "../../static/images/icons/icon-phone.svg";
+import IconWhatsapp from "../../static/images/icons/icon-whatsapp.svg";
 import { Helmet } from "react-helmet";
 import constants from "../../constants";
 
@@ -80,29 +81,28 @@ function Contact(props) {
                     <img
                       role="button"
                       className="icon"
-                      src={IconPhone}
+                      src={IconWhatsapp}
                       alt="icon-phone"
                     />{" "}
-                    mandami un messaggio
+                    Mandami un messaggio
                   </a>
                 </div>
               </Col>
             </Row>
             <hr />
             <div className="opening-hours">
-              <Col xs={12}>Orari</Col>
-
               {/* {schedules.scheduleList.map((day) => (
                 <OpeningDay day={day.day} hour={day.hour} closed={day.closed} />
-              ))} */}
-              {/* {import.meta.env.VITE_REACT_APP_SHOW_OPENING_HOURS && (
+                ))} */}
+              {import.meta.env.VITE_REACT_APP_SHOW_OPENING_HOURS == "true" && (
                 <>
+                  <Col xs={12}>Orari</Col>
                   <Row className={props.closed ? "closed" : ""}>
                     <Col className="day">Lunedì e giovedì</Col>
                     <Col className="hour">15:00 - 19:30</Col>
                   </Row>
                 </>
-              )} */}
+              )}
             </div>
           </Col>
           <Col xs={12} sm={6} className="map">
