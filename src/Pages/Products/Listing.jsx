@@ -3,6 +3,7 @@ import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
 import { ProductsStoreContext, productStore } from "../../store/products";
 import { Helmet } from "react-helmet";
+import Placeholder from "../../static/images/placeholder.jpg";
 
 const Listing = observer((props) => {
   const productStore = useContext(ProductsStoreContext);
@@ -57,7 +58,7 @@ const Listing = observer((props) => {
                     >
                       <div className="image-wrapper">
                         <img
-                          src={product.img1}
+                          src={product.img1 || Placeholder}
                           alt={product.name + "image"}
                           className="first-image"
                         />

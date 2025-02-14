@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import classNames from "classnames";
+import Placeholder from "../../static/images/placeholder.jpg";
 
 function ProductTile(props) {
   const product = props.product;
@@ -14,7 +15,7 @@ function ProductTile(props) {
             <h2 className="name-mobile">{product.name}</h2>
             <div className="image">
               <img
-                src={product.img1}
+                src={product.img1 || Placeholder}
                 alt={product.name + "image"}
                 className="first-image"
               />

@@ -158,6 +158,12 @@
     }
   }
 
+  .slider {
+    @media #{$mobile} {
+      width: 80%;
+    }
+  }
+
   .image-container {
     aspect-ratio: 4/3;
     width: 60%;

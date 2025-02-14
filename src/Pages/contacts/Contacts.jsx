@@ -5,7 +5,9 @@ import GoogleIframeMap from "./GoogleIframeMap";
 import NewsLetterForm from "./NewsLetterForm";
 import IconMail from "../../static/images/icons/icon-mail.svg";
 import IconPhone from "../../static/images/icons/icon-phone.svg";
+import IconWhatsapp from "../../static/images/icons/icon-whatsapp.svg";
 import { Helmet } from "react-helmet";
+import constants from "../../constants";
 
 const schedules = loadSchedule();
 
@@ -57,7 +59,7 @@ function Contact(props) {
                 <hr />
                 <div className="mail-phone-wrapper">
                   <a
-                    href="mailto:laboratoriodiantonella@gmail.com"
+                    href={constants.EMAIL_LINK}
                     className="btn btn-outline-dark"
                   >
                     {" "}
@@ -71,7 +73,7 @@ function Contact(props) {
                   </a>
 
                   <a
-                    href="https://wa.me/+393315620020"
+                    href={constants.WHATSAPP_LINK}
                     className="btn btn-outline-dark"
                     rel="noreferrer"
                     target="_blank"
@@ -79,22 +81,29 @@ function Contact(props) {
                     <img
                       role="button"
                       className="icon"
-                      src={IconPhone}
+                      src={IconWhatsapp}
                       alt="icon-phone"
                     />{" "}
-                    mandami un messaggio
+                    Mandami un messaggio
                   </a>
                 </div>
               </Col>
             </Row>
             <hr />
-            <Row className="opening-hours">
-              <Col xs={12}>Orari</Col>
-
-              {schedules.scheduleList.map((day) => (
+            <div className="opening-hours">
+              {/* {schedules.scheduleList.map((day) => (
                 <OpeningDay day={day.day} hour={day.hour} closed={day.closed} />
-              ))}
-            </Row>
+                ))} */}
+              {import.meta.env.VITE_REACT_APP_SHOW_OPENING_HOURS == "true" && (
+                <>
+                  <Col xs={12}>Orari</Col>
+                  <Row className={props.closed ? "closed" : ""}>
+                    <Col className="day">Lunedì e giovedì</Col>
+                    <Col className="hour">15:00 - 19:30</Col>
+                  </Row>
+                </>
+              )}
+            </div>
           </Col>
           <Col xs={12} sm={6} className="map">
             <GoogleIframeMap
@@ -104,10 +113,10 @@ function Contact(props) {
             />
           </Col>
         </Row>
-        <Row className="bottom-contacts">
+        {/* <Row className="bottom-contacts">
           <Col></Col>
           <NewsLetterForm />
-        </Row>
+        </Row> */}
       </div>
     </>
   );

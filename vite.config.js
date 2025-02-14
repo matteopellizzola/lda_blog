@@ -4,9 +4,9 @@ import react from "@vitejs/plugin-react";
 import loadNavigation from "./src/database/loadNavigation";
 
 const menuItems = loadNavigation();
-const dynamicRoutes = menuItems.navigationList.map(
-  (item) => `${item.navigateTo}`
-);
+const dynamicRoutes = menuItems.navigationList
+  .filter((item) => item.navigateTo != "/")
+  .map((item) => `${item.navigateTo}`);
 
 export default defineConfig(() => {
   return {
