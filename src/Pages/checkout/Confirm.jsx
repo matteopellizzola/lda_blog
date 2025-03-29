@@ -3,19 +3,22 @@ import { useLocation } from "react-router-dom";
 
 export const Confirm = () => {
   const location = useLocation();
-  const { formData, totals, totalRendered, satispayCode } = location.state;
+  const { formData, totals, totalRendered, satispayCode, shippingPrice } =
+    location.state;
 
   return (
     <div className="checkout-page">
       <div className="padding-logo-top checkout-confirm">
         <h1 className="text-center">Grazie!</h1>
-        <h4 className="text-center">Il tuo ordine è stato confermato</h4>
+        <h4 className="text-center">Ho ricevuto il tuo ordine</h4>
 
         <ConfirmData
           formData={formData}
           totals={totals}
           totalRendered={totalRendered}
+          shippingPrice={shippingPrice}
           satispayCode={satispayCode}
+          showQR
         />
       </div>
     </div>
@@ -26,6 +29,7 @@ export const Confirm = () => {
  * React component to show the confirmation page after the order is sent
  * @param {object} formData The form data
  * @param {object} totals The total of each product
+ * @param {object} shipping The total of each product
  * @param {function} renderTotals A function to render the total price
  * @param {object} satispayCode The satispay code if the payment method is satispay
  * @returns {ReactElement} The react element to show the confirmation page
@@ -33,14 +37,17 @@ export const Confirm = () => {
 export const ConfirmData = ({
   formData,
   totals,
+  shippingPrice,
   totalRendered,
   satispayCode,
+  showQR,
 }) => {
   return (
     <>
       <div>
-        Ciao {formData?.name}, <br /> ho ricevuto la tua prenotazione e
-        provvederò a preparare l'ordine il prima possibile.
+        Ciao {formData?.name}, <br /> ho ricevuto il tuo ordine. Una volta
+        confermato il pagamento, potrò elaborarlo e aggiornarti sui tempi di
+        consegna.
       </div>
       <div style={{ marginTop: "20px" }}>
         <h4>Riepilogo del tuo ordine</h4>
@@ -54,9 +61,9 @@ export const ConfirmData = ({
           // border="1"
         >
           <tr style={{ height: "24px" }}>
-            <th>Prodotto</th>
-            <th>Quantita'</th>
-            <th>Prezzo</th>
+            <th style={{ textAlign: "left" }}>Prodotto</th>
+            <th style={{ textAlign: "left" }}>Quantita'</th>
+            <th style={{ textAlign: "left" }}>Prezzo</th>
           </tr>
           {totals &&
             Object?.keys(totals)?.map((key) =>
@@ -70,7 +77,7 @@ export const ConfirmData = ({
                 <></>
               )
             )}
-          {totals["shipping"] && (
+          {shippingPrice && (
             <>
               <tr
                 style={{
@@ -78,11 +85,11 @@ export const ConfirmData = ({
                   width: "auto",
                 }}
               >
-                <td>{totals["shipping"]?.name}</td>
+                <td>{shippingPrice?.name}</td>
                 <td></td>
                 <td>
-                  {totals["shipping"]?.price != "0"
-                    ? totals["shipping"]?.price + " €"
+                  {shippingPrice?.price != "0"
+                    ? shippingPrice?.price + " €"
                     : "-"}
                 </td>
               </tr>
@@ -124,7 +131,7 @@ export const ConfirmData = ({
               </div>
               <br />
               <div className="satispay-container">
-                <img src={satispayCode.qrCode} alt="satispay" />
+                {showQR && <img src={satispayCode.qrCode} alt="satispay" />}
                 <a
                   target="_blank"
                   style={{
@@ -151,8 +158,9 @@ export const ConfirmData = ({
               <table
                 style={{
                   marginTop: "20px",
+                  marginInline: "auto",
                   borderCollapse: "collapse",
-                  width: "100%",
+                  width: "60%",
                   height: "48px;",
                 }}
                 // border="1"
@@ -189,6 +197,27 @@ export const ConfirmData = ({
               </div>
             </>
           )}
+        </div>
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <h4>I tuoi dati</h4>
+        <div>
+          Nome: {formData?.name} {formData?.surname}
+          <br />
+          Email: {formData?.mail}
+          <br />
+          Indirizzo: {formData?.address} {formData?.addressNumber}
+          {formData?.postalCode}, {formData?.city} {formData?.province}
+          <br />
+          Telefono: {formData?.phone}
+          {formData?.note && (
+            <>
+              <br />
+              Note: {formData?.note}
+            </>
+          )}
+          <br />
+          <br />
         </div>
       </div>
     </>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ConfirmData } from "../Pages/checkout/Confirm";
 
 /**
  * React component to show the confirmation page after the order is sent
@@ -11,7 +12,8 @@ import React, { useEffect, useState } from "react";
 export const EmailConfirm = ({
   formData,
   totals,
-  renderTotals,
+  shippingPrice,
+  totalRendered,
   satispayCode,
 }) => {
   return (
@@ -30,9 +32,17 @@ export const EmailConfirm = ({
           <h4>La tua prenotazione e' stata accettata</h4>
         </div>
         <hr></hr>
-        <div>
-          Ciao {formData?.name}, <br /> ho ricevuto la tua prenotazione e
-          provvederò a preparare l'ordine il prima possibile.
+        <ConfirmData
+          formData={formData}
+          totals={totals}
+          shippingPrice={shippingPrice}
+          totalRendered={totalRendered}
+          satispayCode={satispayCode}
+        />
+        {/* <div>
+          Ciao {formData?.name}, <br /> ho ricevuto il tuo ordine. Una volta
+          confermato il pagamento, potrò elaborarlo e aggiornarti sui tempi di
+          consegna.
         </div>
         <div style={{ marginTop: "20px" }}>
           <h4>Riepilogo del tuo ordine</h4>
@@ -62,6 +72,13 @@ export const EmailConfirm = ({
                   <></>
                 )
               )}
+            {shippingPrice && (
+              <tr style={{ textAlign: "center", height: "24px" }}>
+                <td>{shippingPrice?.name}</td>
+                <td>{shippingPrice?.quantity}</td>
+                <td>{shippingPrice?.price}</td>
+              </tr>
+            )}
           </table>
           <div style={{ marginTop: "20px", textAlign: "center" }}>
             <h4>Pagamento</h4>
@@ -124,7 +141,7 @@ export const EmailConfirm = ({
               </>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

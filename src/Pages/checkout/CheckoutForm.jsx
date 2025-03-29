@@ -10,6 +10,8 @@ import classNames from "classnames";
 import QRCode from "qrcode";
 import { useNavigate } from "react-router-dom";
 
+const CONSTANTS_SHIPPING_COST = 2;
+
 export const CheckoutForm = observer((props) => {
   const navigate = useNavigate();
   const {
@@ -21,8 +23,8 @@ export const CheckoutForm = observer((props) => {
   const submitButtonRef = React.useRef();
   const onSubmit = (data) => console.log(data);
   const [totals, setTotals] = useState();
+  const [shippingPrice, setShippingPrice] = useState();
   const [showRecap, setShowRecap] = useState();
-  const [satispayCode, setSatispayCode] = useState();
   const [loading, setLoading] = useState(false);
 
   const productStore = useContext(ProductsStoreContext);
@@ -32,20 +34,29 @@ export const CheckoutForm = observer((props) => {
   }, []);
 
   const renderTotals = () => {
-    let result = 0;
+    let productsTotal = 0;
+    let shippingTotal = 0;
+
     if (totals) {
       Object?.keys(totals)?.forEach((key) => {
         const singlePrice = totals[key]?.price;
-        result += singlePrice;
+        productsTotal += singlePrice;
       });
     }
 
-    return result.toFixed(2);
+    if (shippingPrice) {
+      const singlePrice = shippingPrice?.price;
+      shippingTotal += singlePrice;
+    }
+
+    const result = productsTotal + shippingTotal;
+
+    return productsTotal ? result.toFixed(2) : 0;
   };
 
   const generateQrAndLink = async () => {
     const amount = renderTotals().replace(".", "");
-    const link = `https://www.satispay.com/app/match/link/user/S6Y-CON--E5C12E35-3F4F-4A82-95F3-09E5CB957266?amount=${amount}&currency=EUR`;
+    const link = `https://www.satispay.com/app/pay/shops/f5b01ae7-0999-40b1-91e5-692a1a2f9429?amount=${amount}&currency=EUR`;
     // Generate the QR code data URI
     const result = await QRCode.toDataURL(link, { width: 300 })
       .then((url) => {
@@ -64,13 +75,12 @@ export const CheckoutForm = observer((props) => {
     setLoading(true);
     const _satispayCode = await generateQrAndLink();
 
-    setSatispayCode(_satispayCode);
-
     const emailHtml = await renderToString(
       <EmailConfirm
         formData={formData}
         totals={totals}
-        renderTotals={renderTotals}
+        shippingPrice={shippingPrice}
+        totalRendered={renderTotals()}
         satispayCode={_satispayCode}
       />
     );
@@ -86,6 +96,7 @@ export const CheckoutForm = observer((props) => {
             key: Date.now(), // unique value for each navigation
             formData,
             totals,
+            shippingPrice,
             totalRendered: renderTotals(),
             satispayCode: _satispayCode,
           },
@@ -123,24 +134,17 @@ export const CheckoutForm = observer((props) => {
             {...register("shipping", { required: true })}
             className={errors?.name ? "is-invalid" : ""}
             onChange={(e) => {
-              const CONSTANTS_SHIPPING_COST = 2;
               if (e.target.value === "home") {
-                setTotals({
-                  ...totals,
-                  ["shipping"]: {
-                    name: "consegna a casa",
-                    price: parseFloat(CONSTANTS_SHIPPING_COST),
-                    quantity: 1,
-                  },
+                setShippingPrice({
+                  name: "Consegna a casa",
+                  price: parseFloat(CONSTANTS_SHIPPING_COST),
+                  quantity: 1,
                 });
               } else {
-                setTotals({
-                  ...totals,
-                  ["shipping"]: {
-                    name: "Ritiro in laboratorio",
-                    price: 0,
-                    quantity: 0,
-                  },
+                setShippingPrice({
+                  name: "Ritiro in laboratorio",
+                  price: 0,
+                  quantity: 0,
                 });
               }
             }}
@@ -149,7 +153,9 @@ export const CheckoutForm = observer((props) => {
               seleziona...
             </option>
             <option value="lab">Ritiro in laboratorio</option>
-            <option value="home">Consegna a casa - 2€</option>
+            <option value="home">
+              Consegna a casa - {CONSTANTS_SHIPPING_COST}€
+            </option>
           </select>
         </div>
 
@@ -355,6 +361,11 @@ export const CheckoutForm = observer((props) => {
               />
             </div>
           </div>
+          <div className="row">
+            <div className="col-12">
+              <textarea placeholder={"Note"} {...register("note")} />
+            </div>
+          </div>
         </div>
         <div>
           <label className="rich-label">Scegli i prodotti:</label>
@@ -442,6 +453,19 @@ export const CheckoutForm = observer((props) => {
                     <></>
                   )
                 )}
+            </div>
+          )}
+          {shippingPrice && (
+            <div className="recap-products">
+              {shippingPrice && (
+                <div className="product-line d-flex justify-content-between">
+                  <div>
+                    <span className="font-italic"> </span>
+                    {shippingPrice?.name}
+                  </div>
+                  <div>{shippingPrice?.price.toFixed(2)} €</div>
+                </div>
+              )}
             </div>
           )}
           <div className="recap-total d-flex justify-content-between">

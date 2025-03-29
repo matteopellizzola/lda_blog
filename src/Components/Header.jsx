@@ -123,9 +123,12 @@ function ModalMobileMenu(props) {
         {props.userData && props.userData?.user && (
           <div className="link-wrapper">
             <h3>{props.userData.user.username}</h3>
-            <div className="menu-link">
+            <div className="menu-link d-flex flex-column">
               <a className="btn-link btn" href={props.userData.editPath}>
                 Add a product
+              </a>
+              <a className="btn-link btn" href={props.userData.addProductPath}>
+                Add a product to buy
               </a>
               -
               <a

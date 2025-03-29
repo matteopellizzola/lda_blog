@@ -10,6 +10,9 @@ function LoggedinPopOver({ userData }) {
         <a className="btn-link btn" href={userData.editPath}>
           Add a product
         </a>
+        <a className="btn-link btn" href={userData.addProductPath}>
+          Add a product to buy
+        </a>
         <a
           className="btn-link btn"
           href={userData.mediaLibraryLink}
